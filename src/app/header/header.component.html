@@ -1,24 +1,24 @@
 
 <nav [ngClass]="{  'color-change': scrollNav }" class="navbar navbar-expand-lg navbar-light align-items-baseline">
-  <div class="col col-lg-3 col-md-5 d-flex align-items-baseline" > 
+  <div class="col col-lg-3 col-md-5 d-flex align-items-baseline" >
   <a class="navbar-brand" routerLink="accueil"><img [ngClass]="{ 'tailleImg': scrollNav }" class="imgNav" src="../../assets/img-nav.png" alt=""></a>
     <p>Eau Service De Bébé</p>
-  </div> 
+  </div>
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> -->
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" (click)="this.collapse()" [attr.aria-expanded]="!navbarCollapsed" 
-   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarSupportedContent"> 
-   <span class="navbar-toggler-icon"></span>  
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" (click)="this.collapse()" [attr.aria-expanded]="!navbarCollapsed"
+   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarSupportedContent">
+   <span class="navbar-toggler-icon"></span>
  </button>
-  
+
     <div class="collapse navbar-collapse col-sm " id="navbarSupportedContent" [ngbCollapse]="navbarCollapsed">
       <ul class="navbar-nav ">
         <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link activerLink 
+          <a class="nav-link activerLink
           " routerLink="accueil">Accueil </a>
         </li>
-        
+
         <li routerLinkActive="active" ngbDropdown class="nav-item">
           <a href (click)="false" class="nav-link" ngbDropdownToggle>Ateliers</a>
           <div ngbDropdownMenu>
@@ -27,7 +27,7 @@
             <button  routerLink="allaitement" ngbDropdownItem>Allaitement</button>
             <button  routerLink="massageBebe" ngbDropdownItem>Massage bébé/ Jeune enfant</button>
             <button  routerLink="naturopediatrie" ngbDropdownItem>Naturopédiatrie</button>
-            <button  routerLink="deuilPerinatal" ngbDropdownItem>Deuil périnatal</button>   
+            <button  routerLink="deuilPerinatal" ngbDropdownItem>Deuil périnatal</button>
           </div>
         </li>
         <li routerLinkActive="active" class="nav-item ">
@@ -39,10 +39,16 @@
         <li routerLinkActive="active" class="nav-item ">
           <a routerLink="contact" class="nav-link" >Contact / Avis </a>
         </li>
-       
+        <li routerLinkActive="active" class="nav-item" *ngIf="authService.isAuth" >
+          <a routerLink="formulaireEvenement" class="nav-link" >Créer un évènement </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item " *ngIf="!authService.isAuth">
+          <a (click)="open()" class="nav-link" >Connexion</a>
+        </li>
       </ul>
     </div>
-      <div class="d-flex">
+      <div class="d-flex align-items-center ">
+        <span class="text-dark text-uppercase font-weight-bold" *ngIf="authService.isAuth" >ADMIN</span>
       <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
       <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -60,6 +66,6 @@
           </g>
       </svg></a>
     </div>
-  
-    
+
+
   </nav>

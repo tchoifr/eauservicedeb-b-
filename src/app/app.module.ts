@@ -21,6 +21,8 @@ import { BlocpackinfoComponent } from './blocpackinfo/blocpackinfo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EvenementComponent } from './evenement/evenement.component';
 import { FormulaireEvenementComponent } from './formulaire-evenement/formulaire-evenement.component';
+import { LoginComponent } from './login/login.component';
+import {AuthGuardService} from "./service/auth-guard.service";
 
 
 const appRoute: Routes = [
@@ -32,9 +34,10 @@ const appRoute: Routes = [
   { path: 'naturopediatrie', component: NaturopediatrieComponent },
   { path: 'deuilPerinatal', component: DeuilPerinatalComponent },
   { path: 'contact', component: ContactComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'pack', component: LesPacksComponent},
   { path: 'evenement', component: EvenementComponent},
-  { path: 'formulaireEvenement', component: FormulaireEvenementComponent},
+  { path: 'formulaireEvenement', canActivate: [AuthGuardService], component: FormulaireEvenementComponent},
   // { path: 'list-personnage', component: ListPersonnageComponent },
   // { path: 'list-personnage/:id', component: SinglePersonnageComponent },
   // { path: 'monture', component: MontureComponent },
@@ -63,7 +66,8 @@ const appRoute: Routes = [
     NgbCarouselComponent,
     BlocpackinfoComponent,
     EvenementComponent,
-    FormulaireEvenementComponent
+    FormulaireEvenementComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

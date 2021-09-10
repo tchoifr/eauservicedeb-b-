@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="col-6 offset-3" (ngSubmit)="submit()" novalidate>
+  <div class="form-group flexFormulaire">
+
+    <label for="email">Email</label>
+    <input formControlName="email" id="email" name="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" />
+    <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">
+      Email requis
+    </div> <br/>
+
+    <label for="mdp">Mot de passe</label>
+    <input formControlName="mdp" name="mdp" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.mdp.errors }" />
+    <div *ngIf="submitted && form.controls.mdp.errors" class="invalid-feedback">
+      Mot de passe requis
+    </div> <br/>
+
+
+
+    <button class="btn btn-dark" (click)="activeModal.close('Close click')">Envoyer</button>
+  </div>
+</form>

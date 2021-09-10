@@ -1,18 +1,14 @@
-<section  class="section">
-    <div id="prix" class="blocPrix">
-     
+<section  class="section row" >
+    <div id="prix" class="blocPrix col-4" *ngFor="let tab of postService.tableauEvenement" >
+
             <h2 class="titrebloc text-align-center">
-               Mes Évènement / {{postService.tableauEvenement[0].titre }}
+               {{tab.titre }}
             </h2>
             <p class=" paddingbloc textbebe text-align-center"><br>
-                Séance : 50€ / {{postService.tableauEvenement[0].message }}
-  
+               {{tab.message }}
+
             </p>
            <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>
         </a>
-            
-                
-        
-  
     </div>
 </section>

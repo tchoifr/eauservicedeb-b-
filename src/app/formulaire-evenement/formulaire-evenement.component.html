@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="col-10 offset-1" (ngSubmit)="submit()" novalidate>
+    <div class="form-group flexFormulaire">
+
+        <label for="titre">Titre de l'évènement</label>
+    <input formControlName="titre" id="titre" name="titre" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" />
+    <div *ngIf="submitted && form.controls.titre.errors" class="invalid-feedback">
+        titre requis
+    </div> <br/>
+
+    <label for="message">Message</label>
+    <textarea formControlName="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea> 
+    <div *ngIf="submitted && form.controls.message.errors" class="invalid-feedback">
+        Message vide
+     </div> <br/>
+
+    
+
+    <button class="btn btn-dark">Envoyer</button>
+</div>
+  </form>

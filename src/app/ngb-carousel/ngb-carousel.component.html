@@ -1,0 +1,109 @@
+<!-- <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[0]" alt="Random first slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[2]" alt="Random third slide">
+      </div>
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel> -->
+  
+
+  <div class="titrebloc text-align-center" *ngIf="titre">
+    Vos Avis
+  </div>
+  <ngb-carousel *ngIf="images && pack == false" class="section">
+    
+    <ng-template ngbSlide *ngFor="let image of images">
+      <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
+        <img [src]="image" alt="Random first slide" class="imageCarousel">
+      </div>
+      <div class="carousel-caption">
+        <!-- <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+
+
+
+  <ngb-carousel *ngIf="pack" class="section">
+    
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
+        <div id="prix" class="blocPrix margin100">
+     
+          <h2 class="titrebloc padding0 text-align-center">
+            Pack Merveille
+          </h2>
+          <p class=" textbebe text-align-center"><br>
+            Thalasso bain bébé avec montage photos/video<br>
+            +<br>
+            Atelier Massage bébé<br>
+            +<br>
+            Une séance de Naturopédiatrie<br>
+            - 265 € -<br>
+          </p>
+      
+      
+      </div>
+      </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
+        <div id="prix" class="blocPrix margin100">
+     
+          <h2 class="titrebloc padding0 text-align-center">
+            Pack Tendresse
+          </h2>
+          <p class=" textbebe text-align-center"><br>Atelier préparer l'arrivée de bébé ou Initiation à l'allaitement<br>
+
+            +<br>
+            Thalasso bain bébé<br>
+            - 125 € -<br>
+          </p>
+          
+      
+      </div>
+      </div>
+    </ng-template>
+
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
+        <div id="prix" class="blocPrix margin100">
+     
+          <h2 class="titrebloc padding0 text-align-center">
+            Pack Douceur
+          </h2>
+          <p class=" textbebe text-align-center"><br>Thalasso bain bébé<br>
+            +<br>
+            Atelier Massage bébé<br>
+            - 140 € -<br>
+          </p>
+          
+      </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>

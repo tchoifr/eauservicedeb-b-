@@ -1,0 +1,22 @@
+.blocFooter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blocLogo{
+    margin: 50px;
+}
+.blocLiens{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    
+}
+a{
+    margin: 20px;
+    color: black;
+}
+.navbar-brand{
+    margin-left: 80px;
+
+}

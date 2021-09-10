@@ -1,0 +1,52 @@
+
+<app-ngb-carousel [images]="images" [titre]='true'></app-ngb-carousel>
+
+<div class="row justify-content-center centreForm">
+
+    <h2 class="titrebloc">Eau service de bébé</h2>
+<form [formGroup]="form" class="col-9" (ngSubmit)="submit()" novalidate>
+    <div class="form-group">
+
+        <label for="nom">Nom</label>
+    <input formControlName="nom" id="nom" name="nom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" />
+    <div *ngIf="submitted && form.controls.nom.errors" class="invalid-feedback">
+       Nom requis
+    </div> <br/>
+
+    <label for="email">Email</label>
+    <input formControlName="email" name="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }"/> 
+    <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">
+        Email requis 
+     </div>
+     <div *ngIf="submitted && form.controls.email.errors?.pattern" class="invalid-feedback">
+        Mauvais format email (exemple@exemple.com)
+     </div>
+     <br/>
+
+    <label for="tel">Téléphone</label>
+    <input formControlName="tel" name="tel" type="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.tel.errors }"/> 
+    <div *ngIf="submitted && form.controls.tel.errors" class="invalid-feedback">
+        Téléphone requis
+     </div>
+     <div *ngIf="submitted && form.controls.tel.errors?.maxLength" class="invalid-feedback">
+        Numéro trop long
+     </div>
+     <br/>
+
+    <label for="message">Message</label>
+    <textarea formControlName="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea> 
+    <div *ngIf="submitted && form.controls.message.errors" class="invalid-feedback">
+        Message vide
+     </div> <br/>
+
+    <div class="form-group form-check">
+        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && form.controls.acceptTerms.errors }" />
+        <label for="acceptTerms" class="form-check-label">J'ai lu <a routerLink="/politique">la Politique de confidentialité </a>et je l'accepte.</label>
+        <div *ngIf="submitted && form.controls.acceptTerms.errors" class="invalid-feedback">Accepter la politique de confidentialité requis</div>
+    </div>
+
+    <button class="btn btn-dark">Envoyer</button>
+</div>
+  </form>
+
+</div>

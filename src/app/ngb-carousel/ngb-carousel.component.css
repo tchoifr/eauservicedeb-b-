@@ -1,0 +1,29 @@
+.imageCarousel{
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+    
+}
+
+.section{
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.titrebloc{
+    padding-top: 150px;
+    background-color: rgb(231, 175, 203);
+    display: flex;
+    justify-content: center;
+}
+
+.margin100{
+    margin-top: 100px;
+    height: 350px;
+    width: 50%;
+}
+
+.padding0{
+    padding: 0;
+}

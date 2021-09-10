@@ -1,0 +1,70 @@
+.activerLink{
+    border-bottom: 2px solid;
+}
+
+.imgNav{
+width: 4em;
+-webkit-transition : all 0.3s ease-in-out ;
+    transition: all 0.3s ease-in;
+}
+svg{
+    margin: 25px;
+}
+nav{
+    background-color: rgb(207, 148, 177);
+    color: white!important;
+    font-family: EB Garamond,serif;
+    position: fixed;
+    width: 100%;
+    z-index: 50;    
+}
+
+.nav-link{
+    
+    color: white!important;
+    margin: 20px;
+
+}
+a{
+    color: white!important;
+}
+
+.none{
+    display: none;
+}
+
+.displayFlex{
+    display: flex;
+}
+
+/* .collapse:not(.show){
+    display: none !important;
+} */
+
+
+
+.navbar{
+    -webkit-transition :all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  
+}
+
+.color-change{
+    -webkit-transition : all 0.3s ease-in-out ;
+  transition: all 0.3s ease-in-out ;
+  /* transform: scaleY(0.9); */
+  /* transform: scaleY(40px);
+  transform-origin: top;
+  transition: transform 1s ease-in-out; */
+    
+    
+    
+ transform: translate(0, -20px);
+
+}
+
+.tailleImg{
+    -webkit-transition : all 0.3s ease-in-out ;
+    transition: all 0.3s ease-in-out ;
+    width: 2.2em;
+}

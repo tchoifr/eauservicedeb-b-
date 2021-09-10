@@ -1,0 +1,65 @@
+
+<nav [ngClass]="{  'color-change': scrollNav }" class="navbar navbar-expand-lg navbar-light align-items-baseline">
+  <div class="col col-lg-3 col-md-5 d-flex align-items-baseline" > 
+  <a class="navbar-brand" routerLink="accueil"><img [ngClass]="{ 'tailleImg': scrollNav }" class="imgNav" src="../../assets/img-nav.png" alt=""></a>
+    <p>Eau Service De Bébé</p>
+  </div> 
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" (click)="this.collapse()" [attr.aria-expanded]="!navbarCollapsed" 
+   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarSupportedContent"> 
+   <span class="navbar-toggler-icon"></span>  
+ </button>
+  
+    <div class="collapse navbar-collapse col-sm " id="navbarSupportedContent" [ngbCollapse]="navbarCollapsed">
+      <ul class="navbar-nav ">
+        <li routerLinkActive="active" class="nav-item">
+          <a class="nav-link activerLink 
+          " routerLink="accueil">Accueil </a>
+        </li>
+        
+        <li routerLinkActive="active" ngbDropdown class="nav-item">
+          <a href (click)="false" class="nav-link" ngbDropdownToggle>Ateliers</a>
+          <div ngbDropdownMenu>
+            <button  routerLink="arriverBebe" ngbDropdownItem>Préparer l'arrivée de bébé</button>
+            <button  routerLink="thalasso" ngbDropdownItem>Thalasso Bain bébé</button>
+            <button  routerLink="allaitement" ngbDropdownItem>Allaitement</button>
+            <button  routerLink="massageBebe" ngbDropdownItem>Massage bébé/ Jeune enfant</button>
+            <button  routerLink="naturopediatrie" ngbDropdownItem>Naturopédiatrie</button>
+            <button  routerLink="deuilPerinatal" ngbDropdownItem>Deuil périnatal</button>   
+          </div>
+        </li>
+        <li routerLinkActive="active" class="nav-item ">
+          <a routerLink="pack" class="nav-link" >Les Packs </a>
+        </li>
+        <li routerLinkActive="active" class="nav-item ">
+          <a routerLink="evenement" class="nav-link" >Évènement</a>
+        </li>
+        <li routerLinkActive="active" class="nav-item ">
+          <a routerLink="contact" class="nav-link" >Contact / Avis </a>
+        </li>
+       
+      </ul>
+    </div>
+      <div class="d-flex">
+      <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
+      <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Social/Facebook" transform="translate(-16.000000, -13.000000)">
+                  <path d="M24,16 L22.077,16 C21.461,16 21,16.252 21,16.889 L21,18 L24,18 L23.761,21 L21,21 L21,29 L18,29 L18,21 L16,21 L16,18 L18,18 L18,16.077 C18,14.055 19.064,13 21.461,13 L24,13 L24,16 Z" fill="currentColor" fill-rule="nonzero"></path>
+              </g>
+          </g>
+      </svg></a>
+    <a href="https://www.instagram.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
+      <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Social/Instagram" transform="translate(-10.000000, -10.000000)">
+                  <path d="M24.0335249,11.8763976 C26.7380658,11.9994825 28.0013491,13.2827256 28.124434,15.9673067 C28.17267,17.0193498 28.1818182,17.3353786 28.1818182,20 C28.1818182,22.6654531 28.1718383,22.9806502 28.124434,24.0326933 C28.0005175,26.7147794 26.7405607,28.0005175 24.0335249,28.1236024 C22.9806502,28.1718383 22.6662847,28.1818182 20,28.1818182 C17.3353786,28.1818182 17.0193498,28.1718383 15.9673067,28.1236024 C13.2561127,27.9996858 11.9994825,26.7106212 11.8763976,24.0318616 C11.8281617,22.9798185 11.8181818,22.6646214 11.8181818,19.9991683 C11.8181818,17.3345469 11.8289933,17.0193498 11.8763976,15.9664751 C12.0003142,13.2827256 13.2602709,11.9986509 15.9673067,11.875566 C17.0201815,11.8281617 17.3353786,11.8181818 20,11.8181818 C22.6646214,11.8181818 22.9806502,11.8281617 24.0335249,11.8763976 Z M20,10 C17.2841667,10 16.9441667,10.0116667 15.8775,10.06 C12.2458333,10.2266667 10.2275,12.2416667 10.0608333,15.8766667 C10.0116667,16.9441667 10,17.2841667 10,20 C10,22.7158333 10.0116667,23.0566667 10.06,24.1233333 C10.2266667,27.755 12.2416667,29.7733333 15.8766667,29.94 C16.9441667,29.9883333 17.2841667,30 20,30 C22.7158333,30 23.0566667,29.9883333 24.1233333,29.94 C27.7516667,29.7733333 29.775,27.7583333 29.9391667,24.1233333 C29.9883333,23.0566667 30,22.7158333 30,20 C30,17.2841667 29.9883333,16.9441667 29.94,15.8775 C29.7766667,12.2491667 27.7591667,10.2275 24.1241667,10.0608333 C23.0566667,10.0116667 22.7158333,10 20,10 Z M20,14.5454545 C16.9876958,14.5454545 14.5454545,16.9874977 14.5454545,19.9995574 C14.5454545,23.0116172 16.9876958,25.4545455 20,25.4545455 C23.0123042,25.4545455 25.4545455,23.0125023 25.4545455,19.9995574 C25.4545455,16.9874977 23.0123042,14.5454545 20,14.5454545 Z M20,23.6363636 C17.9918182,23.6363636 16.3636364,22.0090909 16.3636364,20 C16.3636364,17.9918182 17.9918182,16.3636364 20,16.3636364 C22.0081818,16.3636364 23.6363636,17.9918182 23.6363636,20 C23.6363636,22.0090909 22.0081818,23.6363636 20,23.6363636 Z M25.4551768,13.6363636 C24.9526515,13.6363636 24.5454545,14.0435606 24.5454545,14.5454545 C24.5454545,15.0473485 24.9526515,15.4545455 25.4551768,15.4545455 C25.9570707,15.4545455 26.3636364,15.0473485 26.3636364,14.5454545 C26.3636364,14.0435606 25.9570707,13.6363636 25.4551768,13.6363636 Z" fill="currentColor"></path>
+              </g>
+          </g>
+      </svg></a>
+    </div>
+  
+    
+  </nav>

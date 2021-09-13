@@ -23,3 +23,27 @@ img{
     height: 247px;
     width: 50%;
 }
+@media screen and (min-width: 320px) and (max-width: 780px){
+    .textbebe{
+        font-size: 13px !important;
+    }
+    .titre{
+    font-size: 50px !important;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.textp{
+    font-size: 16px !important;
+}
+.blocPrix{
+    width: 90%;
+}
+
+
+}
+
+@media screen and (min-width: 310px) and (max-width: 430px){
+    .buttonbebe{
+        padding-bottom: 100px;
+    }
+}

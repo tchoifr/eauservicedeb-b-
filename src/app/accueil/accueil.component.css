@@ -1,6 +1,8 @@
 .img1{
     width: 46em;
-    padding-top: 150px;
+    box-shadow: 1px 1px 12px 1px;
+    margin-top: 150px;
+
 }
 
 .fond{
@@ -13,6 +15,8 @@
 .img2{
     width: 25em;
     margin: 20px;
+    box-shadow: 1px 1px 12px 1px;
+
 }
 h2{
  
@@ -69,7 +73,10 @@ a{
     width: 100% !important;
     padding-top: 100px;
 }
-
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
 @media screen and (min-width: 320px) and (max-width: 780px){
     .tel{
         display: flex;
@@ -97,5 +104,5 @@ a{
    .col-logo{
        max-width: 80% !important;
    }
-
+  
 }

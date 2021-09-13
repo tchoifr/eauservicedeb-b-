@@ -27,3 +27,13 @@
 .padding0{
     padding: 0;
 }
+@media screen and (min-width: 310px) and (max-width: 790px){
+
+    .imageCarousel{
+        width: 90% !important;
+    }
+    .margin100{
+        width: 80% !important;
+    }
+    
+    }

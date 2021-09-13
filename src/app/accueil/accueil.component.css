@@ -70,3 +70,32 @@ a{
     padding-top: 100px;
 }
 
+@media screen and (min-width: 320px) and (max-width: 780px){
+    .tel{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .row{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+   .img1{
+       width: 40em;
+   }
+   .col-img{
+       max-width: 80% !important;
+       display: flex;
+       justify-content: center;
+   
+   }
+   .img2{
+       margin: 0px;
+       margin-top: 30px;
+   }
+   .col-logo{
+       max-width: 80% !important;
+   }
+
+}

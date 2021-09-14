@@ -2,7 +2,7 @@
     width: 500px;
     height: 500px;
     object-fit: contain;
-    
+
 }
 
 .section{
@@ -27,6 +27,7 @@
 .padding0{
     padding: 0;
 }
+
 @media screen and (min-width: 310px) and (max-width: 790px){
 
     .imageCarousel{
@@ -35,5 +36,5 @@
     .margin100{
         width: 80% !important;
     }
-    
+
     }

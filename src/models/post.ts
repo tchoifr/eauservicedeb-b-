@@ -1,6 +1,9 @@
 export class Post {
 
-    constructor(public titre: string,
-                public message: string
+    constructor(public id: number,
+                public titre: string,
+                public message: string,
+                public compteur: number,
+                public idUser: number[]
     ) {  }
   }

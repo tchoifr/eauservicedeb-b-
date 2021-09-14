@@ -16,10 +16,11 @@ public form: FormGroup;
 
   constructor( private formBuilder: FormBuilder,private postService: PostService, private router: Router) {
     this.form = this.formBuilder.group({
+      id: this.postService.tableauEvenement.length + 1,
       titre: ['', Validators.required],
       message: ['', Validators.required],
-
-
+      compteur: 0,
+      idUser: [[]]
 
     })
 this.tableauEvenement = [];
@@ -35,8 +36,8 @@ this.tableauEvenement = [];
     this.submitted = true;
 
     if (this.form.valid) {
-     this.tableauEvenement.push(this.form.value);
-     this.postService.tableauEvenement.unshift(this.form.value);
+     // this.tableauEvenement.push(this.form.value);
+     this.postService.tableauEvenement.push(this.form.value);
      console.log(this.postService.tableauEvenement)
         console.log('form value: ', this.form.value);
         console.log('message: ', this.form.value['message']);

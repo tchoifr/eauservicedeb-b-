@@ -8,12 +8,12 @@
     </div> <br/>
 
     <label for="message">Message</label>
-    <textarea formControlName="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea> 
+    <textarea formControlName="message" id="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea>
     <div *ngIf="submitted && form.controls.message.errors" class="invalid-feedback">
         Message vide
      </div> <br/>
 
-    
+
 
     <button class="btn btn-dark">Envoyer</button>
 </div>

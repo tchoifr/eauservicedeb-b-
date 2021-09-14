@@ -1,5 +1,5 @@
 <section  class="section row" >
-    <div id="prix" class="blocPrix " *ngFor="let tab of postService.tableauEvenement" >
+    <div id="prix" class="blocPrix " *ngFor="let tab of postService.tableauEvenement; let index = index" >
 
             <h2 class="titrebloc text-align-center">
                {{tab.titre }}
@@ -8,7 +8,12 @@
                {{tab.message }}
 
             </p>
-           <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>
-        </a>
+<!--           <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>-->
+<!--        </a>-->
+      <div *ngIf="authService.isAuth">
+        Nombre de participants :  {{tab.compteur}}
+        <button (click)="participerEvenement(index)" class="btn btn-primary" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>
+      </div>
+
     </div>
 </section>

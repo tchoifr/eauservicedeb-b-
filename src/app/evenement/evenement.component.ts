@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../service/post.service';
+import {AuthService} from "../service/auth.service";
 
 @Component({
   selector: 'app-evenement',
@@ -8,10 +9,28 @@ import { PostService } from '../service/post.service';
 })
 export class EvenementComponent implements OnInit {
 
-  constructor(public postService: PostService)  { }
-  
+  constructor(public postService: PostService, public authService: AuthService)  { }
+
 
   ngOnInit(): void {
+    this.postService.tableauEvenement.sort((a,b) => b.id - a.id);
+  }
+
+  participerEvenement(index: number){
+  console.log('user id : ',this.authService.user.id);
+    console.log('tab evenement : ',this.postService.tableauEvenement);
+    if (this.userParticipeDeja(index)){
+      return false
+    }
+    else {
+      this.postService.tableauEvenement[index].idUser.push(this.authService.user.id)
+      this.postService.tableauEvenement[index].compteur++;
+      return true
+    }
+  }
+
+  userParticipeDeja(index: number){
+    return this.postService.tableauEvenement[index].idUser.includes(this.authService.user.id);
   }
 
 }

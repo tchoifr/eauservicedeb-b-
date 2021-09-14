@@ -12,16 +12,25 @@ tableauEvenement : Array<Post> = [];
   constructor() {
       this.tableauEvenement = [
         {
+          id: 1,
           titre: 'Premier post',
-          message: 'test pour voir '
+          message: 'test pour voir ',
+          compteur: 0,
+          idUser : []
         },
         {
+          id: 2,
           titre: 'Deuxième post',
-          message: 'voir pour test'
+          message: 'voir pour test',
+          compteur: 2,
+          idUser : []
         },
         {
+          id: 3,
           titre: 'Troisième post',
-          message: 'pour voir test'
+          message: 'pour voir test',
+          compteur: 1,
+          idUser : []
         }
       ]
   }

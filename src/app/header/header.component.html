@@ -15,12 +15,11 @@
     <div class="collapse navbar-collapse col-sm taille-text" id="navbarSupportedContent" [ngbCollapse]="navbarCollapsed">
       <ul class="navbar-nav ">
         <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link activerLink
-          " routerLink="accueil">Accueil </a>
+          <a class="nav-link activerLink" routerLink="accueil">Accueil </a>
         </li>
 
         <li routerLinkActive="active" ngbDropdown class="nav-item">
-          <a href (click)="false" class="nav-link" ngbDropdownToggle>Préstations</a>
+          <a href (click)="false" class="nav-link" ngbDropdownToggle>Prestations</a>
           <div ngbDropdownMenu>
             <button  routerLink="arriverBebe" ngbDropdownItem>Préparer l'arrivée de bébé</button>
             <button  routerLink="thalasso" ngbDropdownItem>Thalasso Bain bébé</button>
@@ -39,16 +38,19 @@
         <li routerLinkActive="active" class="nav-item ">
           <a routerLink="contact" class="nav-link" >Contact / Avis </a>
         </li>
-        <li routerLinkActive="active" class="nav-item" *ngIf="authService.isAuth" >
+        <li routerLinkActive="active" class="nav-item" *ngIf="authService.isAdmin" >
           <a routerLink="formulaireEvenement" class="nav-link" >Créer un évènement </a>
         </li>
-        <li routerLinkActive="active" class="nav-item " *ngIf="!authService.isAuth">
+        <li routerLinkActive="active" style="cursor: pointer;" class="nav-item " *ngIf="!authService.isAuth">
           <a (click)="open()" class="nav-link" >Connexion</a>
+        </li>
+        <li routerLinkActive="active" style="cursor: pointer;" class="nav-item " *ngIf="authService.isAuth">
+          <a (click)="authService.logout()" class="nav-link" >Deconnexion</a>
         </li>
       </ul>
 
       <div class="d-flex align-items-center ">
-        <span class="text-dark text-uppercase font-weight-bold" *ngIf="authService.isAuth" >ADMIN</span>
+        <span class="text-dark text-uppercase font-weight-bold" *ngIf="authService.isAdmin" >ADMIN</span>
       <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
       <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

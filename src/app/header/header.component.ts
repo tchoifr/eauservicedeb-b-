@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
       this.scrollNav = false;
     }
 
-
   }
   collapse(){
 
@@ -39,7 +38,8 @@ export class HeaderComponent implements OnInit {
     el.scrollIntoView();
 }
   open() {
-     this.modalService.open(LoginComponent);
+     const modalRef = this.modalService.open(LoginComponent);
+
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../service/post.service';
 import {AuthService} from "../service/auth.service";
+import {LoginComponent} from "../login/login.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-evenement',
@@ -9,7 +11,7 @@ import {AuthService} from "../service/auth.service";
 })
 export class EvenementComponent implements OnInit {
 
-  constructor(public postService: PostService, public authService: AuthService)  { }
+  constructor(public postService: PostService, public authService: AuthService, private modalService: NgbModal)  { }
 
 
   ngOnInit(): void {
@@ -31,6 +33,11 @@ export class EvenementComponent implements OnInit {
 
   userParticipeDeja(index: number){
     return this.postService.tableauEvenement[index].idUser.includes(this.authService.user.id);
+  }
+
+  open() {
+    const modalRef = this.modalService.open(LoginComponent);
+    modalRef.componentInstance.titre = 'Veuillez vous connecter';
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {Router} from "@angular/router";
@@ -12,6 +12,8 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class LoginComponent implements OnInit {
   submitted: boolean = false;
   public form: FormGroup;
+
+  @Input() titre! : string;
 
   constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public activeModal: NgbActiveModal) {
     this.form = this.formBuilder.group({

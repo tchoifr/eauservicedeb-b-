@@ -9,7 +9,7 @@ export class AuthService {
   isAuth = false;
   isAdmin = false;
 
-  user : User;
+  user! : User;
 
   emailAdmin = 'admin@admin.com';
   mdpAdmin = 'azerty';
@@ -18,7 +18,7 @@ export class AuthService {
   mdpUser = 'azerty';
 
   constructor(private router: Router) {
-    this.user = new User(0);
+
     // this.user =
     //   {
     //   id : 1,

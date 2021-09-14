@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
 
   }
 
+  close(){
+    this.activeModal.close('Close click');
+  }
+
   submit(): void {
     this.submitted = true;
     this.erreurEmail = '';
@@ -40,7 +44,7 @@ export class LoginComponent implements OnInit {
       const loginOk = this.authService.login(this.form.value['email'], this.form.value['mdp'])
       if (loginOk.authentifier) {
         alert('connexion reussi');
-        this.activeModal.close('Close click')
+        this.close();
         // this.router.navigate(['accueil'])
       } else {
         console.log(loginOk)

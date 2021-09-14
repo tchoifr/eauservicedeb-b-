@@ -1,6 +1,15 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Connexion</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="titreModal">
+  {{titre}}
+</div>
 <form [formGroup]="form" class="col-6 offset-3" (ngSubmit)="submit()" novalidate>
   <div class="form-group flexFormulaire">
-    {{titre}}
+
     <label for="email">Email</label>
     <input formControlName="email" id="email" name="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" />
     <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">

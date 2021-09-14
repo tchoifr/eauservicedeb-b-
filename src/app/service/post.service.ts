@@ -16,26 +16,29 @@ tableauEvenement : Array<Post> = [];
           titre: 'Premier post',
           message: 'test pour voir ',
           compteur: 0,
-          idUser : []
+          idUser : [3]
         },
         {
           id: 2,
           titre: 'Deuxième post',
           message: 'voir pour test',
           compteur: 2,
-          idUser : []
+          idUser : [1,2]
         },
         {
           id: 3,
           titre: 'Troisième post',
           message: 'pour voir test',
           compteur: 1,
-          idUser : []
+          idUser : [1]
         }
       ]
   }
 
   evenement(){
+    this.tableauEvenement.forEach((evenement) => {
+      evenement.compteur = evenement.idUser.length;
+    })
     return this.tableauEvenement
   }
 

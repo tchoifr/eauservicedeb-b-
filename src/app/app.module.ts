@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthGuardService} from "./service/auth-guard.service";
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuardAdminService} from "./service/auth-guard-admin.service";
+import { DetailEvenementComponent } from './detail-evenement/detail-evenement.component';
 
 
 const appRoute: Routes = [
@@ -40,6 +41,7 @@ const appRoute: Routes = [
   { path: 'admin', canActivate: [AuthGuardAdminService], component: AdminComponent},
   { path: 'pack', component: LesPacksComponent},
   { path: 'evenement', component: EvenementComponent},
+  { path: 'evenement/:id', component: DetailEvenementComponent},
   { path: 'formulaireEvenement', canActivate: [AuthGuardService], component: FormulaireEvenementComponent},
   // { path: 'list-personnage', component: ListPersonnageComponent },
   // { path: 'list-personnage/:id', component: SinglePersonnageComponent },
@@ -71,7 +73,8 @@ const appRoute: Routes = [
     EvenementComponent,
     FormulaireEvenementComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    DetailEvenementComponent
   ],
   imports: [
     BrowserModule,

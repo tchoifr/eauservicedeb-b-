@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="blocPrix">
+     <h2 class="titrebloc text-align-center">
+      {{detailEvenement.titre }}
+    </h2>
+    <p class=" paddingbloc textbebe text-align-center"><br>
+      {{detailEvenement.message }}
+    </p>
+    Nombre de participants :  {{detailEvenement.idUser.length}}
+  </div>
+  <div class="blocPrix" *ngIf="authService.isAdmin">
+    <h2 class="titrebloc text-align-center">
+      Participants
+    </h2>
+    <p class=" paddingbloc textbebe text-align-center" *ngFor="let participant of participants;"><br>
+        {{participant.email}}
+    </p>
+  </div>
+</section>

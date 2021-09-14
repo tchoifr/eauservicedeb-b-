@@ -11,10 +11,12 @@
 <!--           <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>-->
 <!--        </a>-->
 
-        Nombre de participants :  {{tab.compteur}}
-        <button *ngIf="authService.isAuth" (click)="participerEvenement(index)" class="btn btn-primary" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>
-        <button *ngIf="!authService.isAuth" (click)="open()" class="btn btn-primary">Je participe</button>
-
+        Nombre de participants :  {{tab.idUser.length}}
+      <div class="d-flex">
+        <button *ngIf="authService.isAuth" (click)="participerEvenement(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>
+        <button *ngIf="!authService.isAuth" (click)="open()" class="btn btn-primary mr-2">Je participe</button>
+        <button class="btn btn-primary" (click)="voirEvenement(index)">Voir l'évènement</button>
+      </div>
 
     </div>
 </section>

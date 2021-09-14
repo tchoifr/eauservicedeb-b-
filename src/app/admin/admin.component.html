@@ -3,6 +3,7 @@
 <div class="blocPrix">
   <h2 class="titrebloc">Liste utilisateur :</h2>
   <div *ngFor="let user of users" class="col">
+    Id : {{user.id}}<br>
    Email :  {{user.email}}<br>
     Mdp : {{user.mdp}}<br>
     Admin : {{user.admin}}<br>

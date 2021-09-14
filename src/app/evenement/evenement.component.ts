@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { PostService } from '../service/post.service';
 import {AuthService} from "../service/auth.service";
 import {LoginComponent} from "../login/login.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-evenement',
@@ -11,7 +12,8 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class EvenementComponent implements OnInit {
 
-  constructor(public postService: PostService, public authService: AuthService, private modalService: NgbModal)  { }
+
+  constructor(public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router)  { }
 
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class EvenementComponent implements OnInit {
 
   supprimerEvenement(index: number){
     this.postService.tableauEvenement.splice(index,1);
+  }
+
+  voirEvenement(index: number){
+    this.router.navigate(['evenement/'+index]);
   }
 
   participerEvenement(index: number){

@@ -12,6 +12,9 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class LoginComponent implements OnInit {
   submitted: boolean = false;
   public form: FormGroup;
+  erreur: boolean = false;
+  erreurEmail: string = '';
+  erreurMdp: string = '';
 
   @Input() titre! : string;
 
@@ -30,14 +33,25 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
     this.submitted = true;
+    this.erreurEmail = '';
+    this.erreurMdp = '';
 
     if (this.form.valid) {
-      if (this.authService.login(this.form.value['email'], this.form.value['mdp'])) {
+      const loginOk = this.authService.login(this.form.value['email'], this.form.value['mdp'])
+      if (loginOk.authentifier) {
         alert('connexion reussi');
+        this.activeModal.close('Close click')
         // this.router.navigate(['accueil'])
       } else {
-        alert('erreur');
+        console.log(loginOk)
+
+        if (!loginOk.email) { this.erreurEmail = "L'email n'existe pas" }
+        if (!loginOk.mdp) { this.erreurMdp = "Le mot de passe associé à ce compte n'est pas correct"  }
+
+        this.erreur = true
+        // alert('erreur');
       }
+
       console.log('form value: ', this.form.value);
       console.log('message: ', this.form.value['message']);
     } else {

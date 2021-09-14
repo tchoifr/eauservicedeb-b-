@@ -78,10 +78,15 @@ export class AuthService {
 
 
   login(email: string, mdp: string) {
+    let emailOk = false
+    let mdpOk = false
 
 
     this.users.forEach(
       (user) => {
+        let emailOk = false
+        let mdpOk = false
+
         if (email === user.email && mdp === user.mdp){
 
           if (user.admin === true) {
@@ -91,9 +96,22 @@ export class AuthService {
           this.user = user
           this.isAuth = true;
         }
+        if (email === user.email) {
+           emailOk = true;
+        }
+        if (mdp === user.mdp) {
+           mdpOk = true;
+        }
       }
     );
-    return this.isAuth;
+
+    let authentication = {
+      authentifier : this.isAuth,
+      email : emailOk,
+      mdp : mdpOk
+    };
+
+    return authentication
 
     // if (email === this.emailUser && mdp === this.mdpUser){
     //   this.isAuth = true;

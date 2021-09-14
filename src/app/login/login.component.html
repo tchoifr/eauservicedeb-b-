@@ -8,13 +8,17 @@
     </div> <br/>
 
     <label for="mdp">Mot de passe</label>
-    <input formControlName="mdp" name="mdp" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.mdp.errors }" />
+    <input formControlName="mdp" id="mdp" name="mdp" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.mdp.errors }" />
     <div *ngIf="submitted && form.controls.mdp.errors" class="invalid-feedback">
       Mot de passe requis
     </div> <br/>
 
+    <span class="text-danger erreur" *ngIf="erreur">{{erreurEmail}}</span>
+    <span class="text-danger erreur" *ngIf="erreur">{{erreurMdp}} </span>
 
 
-    <button class="btn btn-dark" (click)="activeModal.close('Close click')">Envoyer</button>
+
+
+    <button class="btn btn-dark">Envoyer</button>
   </div>
 </form>

@@ -2,7 +2,18 @@
   /*padding-top: 200px;*/
   display: flex;
   justify-content: center;
-  align-items: center;
+  /*align-items: center;*/
   flex-direction: column;
   height: 400px;
+}
+
+.erreur{
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.toastPerso {
+  position: fixed;
+  top: 0;
+  left: 0;
 }

@@ -20,6 +20,18 @@ export class EvenementComponent implements OnInit {
     this.postService.tableauEvenement.sort((a,b) => b.id - a.id);
   }
 
+  supprimerParticipation(index: number){
+    const userId = this.authService.user.id;
+    this.postService.tableauEvenement[index].idUser.forEach((id,i)=>{
+      if (id === userId) {
+        console.log(i);
+        this.postService.tableauEvenement[index].idUser.splice(i,1);
+      }
+    })
+    console.log(this.postService.tableauEvenement[index].idUser)
+
+  }
+
   supprimerEvenement(index: number){
     this.postService.tableauEvenement.splice(index,1);
   }

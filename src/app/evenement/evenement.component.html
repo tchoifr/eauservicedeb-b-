@@ -14,7 +14,8 @@
         Nombre de participants :  {{tab.idUser.length}}
       <div class="d-flex">
         <button *ngIf="authService.isAuth" (click)="participerEvenement(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>
-        <button *ngIf="!authService.isAuth" (click)="open()" class="btn btn-primary mr-2">Je participe</button>
+        <button *ngIf="!authService.isAuth" (click)="open()" class="btn btn-primary mr-2">Je veux participer</button>
+        <button *ngIf="authService.isAuth" (click)="supprimerParticipation(index)" class="btn btn-primary mr-2">Je ne veux pas participer</button>
         <button class="btn btn-primary" (click)="voirEvenement(index)">Voir l'évènement</button>
       </div>
 

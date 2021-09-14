@@ -26,6 +26,7 @@ import {AuthGuardService} from "./service/auth-guard.service";
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuardAdminService} from "./service/auth-guard-admin.service";
 import { DetailEvenementComponent } from './detail-evenement/detail-evenement.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 const appRoute: Routes = [
@@ -78,6 +79,7 @@ const appRoute: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     NgbModule

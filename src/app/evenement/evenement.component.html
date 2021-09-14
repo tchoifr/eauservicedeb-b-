@@ -1,6 +1,6 @@
 <section  class="section row" >
     <div id="prix" class="blocPrix " *ngFor="let tab of postService.tableauEvenement; let index = index" >
-
+      <i *ngIf="authService.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(index)"></i>
             <h2 class="titrebloc text-align-center">
                {{tab.titre }}
             </h2>

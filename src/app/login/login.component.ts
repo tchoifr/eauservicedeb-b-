@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       if (this.authService.login(this.form.value['email'], this.form.value['mdp'])) {
         alert('connexion reussi');
-        this.router.navigate(['accueil'])
+        // this.router.navigate(['accueil'])
       } else {
         alert('erreur');
       }

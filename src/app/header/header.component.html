@@ -50,7 +50,9 @@
       </ul>
 
       <div class="d-flex align-items-center ">
-        <span class="text-dark text-uppercase font-weight-bold" *ngIf="authService.isAdmin" >ADMIN</span>
+
+          <a *ngIf="authService.isAdmin" routerLink="admin" class="nav-link" >Admin</a>
+
       <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
       <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

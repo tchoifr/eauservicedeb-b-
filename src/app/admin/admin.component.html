@@ -1,0 +1,12 @@
+<section class="section flex-direction-column">
+  <a routerLink="/formulaireEvenement"><button class="btn btn-primary">Créer un évènement</button></a>
+<div class="blocPrix">
+  <h2 class="titrebloc">Liste utilisateur :</h2>
+  <div *ngFor="let user of users" class="col">
+   Email :  {{user.email}}<br>
+    Mdp : {{user.mdp}}<br>
+    Admin : {{user.admin}}<br>
+
+  </div>
+</div>
+</section>

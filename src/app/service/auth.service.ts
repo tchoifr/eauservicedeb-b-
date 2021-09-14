@@ -17,6 +17,47 @@ export class AuthService {
   emailUser = 'test@test.com';
   mdpUser = 'azerty';
 
+  userAdmin : User = {
+    id : 1,
+    email : 'admin@admin.com',
+    mdp : 'azerty',
+    admin : true
+  }
+
+  userTest : User = {
+    id : 2,
+    email : 'test@test.com',
+    mdp : 'azerty',
+    admin : false
+  }
+
+  users : User[] = [
+    {
+    id : 1,
+    email : 'admin@admin.com',
+    mdp : 'azerty',
+    admin : true
+  },
+    {
+      id : 2,
+      email : 'test@test.com',
+      mdp : 'azerty',
+      admin : false
+    },
+    {
+      id : 3,
+      email : 'blabla@bla.com',
+      mdp : 'azerty',
+      admin : false
+    },
+    {
+      id : 4,
+      email : 'test',
+      mdp : 'test',
+      admin : false
+    }
+  ]
+
   constructor(private router: Router) {
 
     // this.user =
@@ -30,49 +71,43 @@ export class AuthService {
 
   }
 
+  getAllUsers(){
+   return this.users
+  }
+
 
 
   login(email: string, mdp: string) {
 
 
-    // this.users.forEach(
-    //   (user) => {
-    //     if (email === user.email && mdp === user.mdp){
-    //
-    //       if (user.admin === true) {
-    //         this.isAdmin = true
-    //       }
-    //
-    //       this.isAuth = true;
-    //     }
-    //   }
-    // );
-    // return this.isAuth;
+    this.users.forEach(
+      (user) => {
+        if (email === user.email && mdp === user.mdp){
 
-    if (email === this.emailUser && mdp === this.mdpUser){
-      this.isAuth = true;
-      this.user = {
-        id : 1,
-        email : 'test@test.com',
-        mdp : 'azerty',
-        admin : false
+          if (user.admin === true) {
+
+            this.isAdmin = true
+          }
+          this.user = user
+          this.isAuth = true;
+        }
       }
-      return true
-    }
+    );
+    return this.isAuth;
 
-    if (email === this.emailAdmin && mdp === this.mdpAdmin){
-      this.isAuth = true;
-      this.isAdmin = true;
-      this.user = {
-        id : 2,
-        email : 'admin@admin.com',
-        mdp : 'azerty',
-        admin : true
-      }
-      return true
-    }
+    // if (email === this.emailUser && mdp === this.mdpUser){
+    //   this.isAuth = true;
+    //   this.user = this.userTest;
+    //   return true
+    // }
+    //
+    // if (email === this.emailAdmin && mdp === this.mdpAdmin){
+    //   this.isAuth = true;
+    //   this.isAdmin = true;
+    //   this.user = this.userAdmin;
+    //   return true
+    // }
 
-    return false
   }
 
   logout() {

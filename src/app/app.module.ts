@@ -23,6 +23,8 @@ import { EvenementComponent } from './evenement/evenement.component';
 import { FormulaireEvenementComponent } from './formulaire-evenement/formulaire-evenement.component';
 import { LoginComponent } from './login/login.component';
 import {AuthGuardService} from "./service/auth-guard.service";
+import { AdminComponent } from './admin/admin.component';
+import {AuthGuardAdminService} from "./service/auth-guard-admin.service";
 
 
 const appRoute: Routes = [
@@ -35,6 +37,7 @@ const appRoute: Routes = [
   { path: 'deuilPerinatal', component: DeuilPerinatalComponent },
   { path: 'contact', component: ContactComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'admin', canActivate: [AuthGuardAdminService], component: AdminComponent},
   { path: 'pack', component: LesPacksComponent},
   { path: 'evenement', component: EvenementComponent},
   { path: 'formulaireEvenement', canActivate: [AuthGuardService], component: FormulaireEvenementComponent},
@@ -67,7 +70,8 @@ const appRoute: Routes = [
     BlocpackinfoComponent,
     EvenementComponent,
     FormulaireEvenementComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

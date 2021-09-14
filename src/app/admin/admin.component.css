@@ -1,0 +1,12 @@
+.flex-direction-column{
+  flex-direction: column;
+}
+
+.section{
+  padding-top: 150px;
+  align-items: center;
+}
+
+.col{
+  margin-bottom: 1rem;
+}

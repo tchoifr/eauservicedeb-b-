@@ -29,6 +29,7 @@ import { DetailEvenementComponent } from './detail-evenement/detail-evenement.co
 import {HttpClientModule} from "@angular/common/http";
 import { CreerCompteComponent } from './creer-compte/creer-compte.component';
 import { ModifierUtilisateurComponent } from './modifier-utilisateur/modifier-utilisateur.component';
+import { ToastGlobalComponent } from './toast-global/toast-global.component';
 
 
 const appRoute: Routes = [
@@ -81,7 +82,8 @@ const appRoute: Routes = [
     AdminComponent,
     DetailEvenementComponent,
     CreerCompteComponent,
-    ModifierUtilisateurComponent
+    ModifierUtilisateurComponent,
+    ToastGlobalComponent
   ],
   imports: [
     BrowserModule,

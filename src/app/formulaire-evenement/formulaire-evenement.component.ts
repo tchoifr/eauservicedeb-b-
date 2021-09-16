@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../service/post.service';
 import {Router} from "@angular/router";
 import {Post} from "../../models/post";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-formulaire-evenement',
@@ -18,7 +19,7 @@ public form: FormGroup;
   erreur: string = '';
 
 
-  constructor( private formBuilder: FormBuilder,private postService: PostService, private router: Router) {
+  constructor( private formBuilder: FormBuilder,private postService: PostService, private router: Router, private toastService: ToastService) {
     this.form = this.formBuilder.group({
       titre: ['', Validators.required],
       description: ['', Validators.required],
@@ -68,6 +69,7 @@ console.log(this.form.controls);
 
           this.router.navigate(['evenement'])
           this.loading = false;
+          this.toastService.show('Evenement','Ajout evenement réussi !');
           console.log('Ajout evenement reussi !');
         }
       ).catch(

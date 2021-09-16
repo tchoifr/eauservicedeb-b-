@@ -6,6 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
 import {Post} from "../../models/post";
 import {UserService} from "../service/user.service";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-evenement',
@@ -16,7 +17,7 @@ export class EvenementComponent implements OnInit {
 
   loading: boolean = false
 
-  constructor(public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
+  constructor(private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
 
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ export class EvenementComponent implements OnInit {
         this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
           () => {
             this.loading = false;
+            this.toastService.show('Evenement','Suppression participation réussi !');
             console.log('Suppresion participation réussi');
           }
         ).catch(
@@ -75,6 +77,7 @@ export class EvenementComponent implements OnInit {
         this.postService.getAllEvenement().then(
           () => {
             this.loading = false;
+            this.toastService.show('Evenement','Suppression evenement réussi !');
             console.log('Suppression evenement reussi !')
           }
         ).catch(
@@ -113,6 +116,7 @@ export class EvenementComponent implements OnInit {
       this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
         () => {
           this.loading = false;
+          this.toastService.show('Evenement','Ajout participation réussi !');
           console.log('Modification Evenement réussi !')
         }
       ).catch(

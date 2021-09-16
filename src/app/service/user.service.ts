@@ -10,13 +10,14 @@ import {AuthService} from "./auth.service";
 export class UserService {
 
   users : User[] = new Array<User>()
+  baseUrl : string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   getAllUsers(){
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get('http://localhost:3000/api/auth')
+      this.httpClient.get(this.baseUrl+'/api/auth')
         .subscribe(
           (response: any) => {
             console.log('response getAllUser : ',response);
@@ -39,7 +40,7 @@ export class UserService {
   deleteUser(user: User){
 
     return new Promise((resolve, reject) => {
-      this.httpClient.delete('http://localhost:3000/api/auth/'+user._id)
+      this.httpClient.delete(this.baseUrl+'/api/auth/'+user._id)
         .subscribe(
           (response: any) => {
             console.log('supprimerUtilisateur response : ', response)
@@ -62,7 +63,7 @@ export class UserService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.put('http://localhost:3000/api/auth/'+user._id,{utilisateur : user}, header)
+      this.httpClient.put(this.baseUrl+'/api/auth/'+user._id,{utilisateur : user}, header)
         .subscribe(
           (response: any) => {
             resolve(response);

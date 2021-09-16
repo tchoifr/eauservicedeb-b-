@@ -11,6 +11,7 @@ export class PostService {
 
   tableauEvenement : Post[] = new Array<Post>();
   public evenement$ = new Subject<Post[]>();
+  baseUrl : string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {
   }
@@ -22,7 +23,7 @@ export class PostService {
   getAllEvenement(){
 
     return new Promise((resolve, reject) => {
-      this.httpClient.get('http://localhost:3000/api/event')
+      this.httpClient.get(this.baseUrl+'/api/event')
         .subscribe(
           (response: any) => {
 
@@ -56,7 +57,7 @@ export class PostService {
       const evenementData = new FormData();
       evenementData.append('evenement', JSON.stringify(evenement));
       evenementData.append('image', image, evenement.title);
-      this.httpClient.post('http://localhost:3000/api/event', evenementData, header)
+      this.httpClient.post(this.baseUrl+'/api/event', evenementData, header)
         .subscribe(
           (response: any) => {
             resolve(response);
@@ -79,7 +80,7 @@ export class PostService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.delete('http://localhost:3000/api/event/'+evenement._id, header)
+      this.httpClient.delete(this.baseUrl+'/api/event/'+evenement._id, header)
         .subscribe(
           (response: any) => {
             console.log('supprimerEvenement response : ', response)
@@ -102,7 +103,7 @@ export class PostService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.put('http://localhost:3000/api/event/'+evenement._id,{evenement : evenement}, header)
+      this.httpClient.put(this.baseUrl+'/api/event/'+evenement._id,{evenement : evenement}, header)
         .subscribe(
           (response: any) => {
             resolve(response);

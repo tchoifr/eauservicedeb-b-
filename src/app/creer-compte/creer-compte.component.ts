@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-creer-compte',
@@ -16,7 +17,7 @@ export class CreerCompteComponent implements OnInit {
   loading: boolean = false;
 
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private toastService: ToastService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: ['', Validators.required],
@@ -47,6 +48,7 @@ export class CreerCompteComponent implements OnInit {
        this.authService.creerUtilisateur(user).then(
          () => {
            this.loading = false;
+           this.toastService.show('Connexion','Connexion réussi !');
            console.log('Utilisateur creer ! : ', this.authService.user);
            this.router.navigate(['accueil'])
          }

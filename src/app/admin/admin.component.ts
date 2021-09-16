@@ -3,6 +3,7 @@ import {AuthService} from "../service/auth.service";
 import {UserService} from "../service/user.service";
 import {User} from "../../models/user";
 import {Router} from "@angular/router";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class AdminComponent implements OnInit {
   loading: boolean = false
 
-  constructor(public authService: AuthService, public userService: UserService, private router: Router) { }
+  constructor(public authService: AuthService, public userService: UserService, private router: Router, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -41,6 +42,7 @@ export class AdminComponent implements OnInit {
         this.userService.getAllUsers().then(
           () => {
             this.loading = false;
+            this.toastService.show('Admin','Utilisateur supprimé !');
             console.log('Utilisateur supprimé !')
           }
         ).catch(

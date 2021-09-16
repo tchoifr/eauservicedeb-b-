@@ -4,6 +4,7 @@ import {AuthService} from "../service/auth.service";
 import {Router} from "@angular/router";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {User} from "../../models/user";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   @Input() titre! : string;
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public activeModal: NgbActiveModal) {
+  constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public activeModal: NgbActiveModal, private toastService: ToastService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       password: ['', Validators.required],
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
   close(){
     this.activeModal.close('Close click');
   }
+  
 
   submit(): void {
 
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
       }
       this.authService.login(user).then(
         () => {
+          this.toastService.show('Connexion','Connexion réussi !');
           this.loading = false;
           this.close();
           console.log('Connexion réussi ! user : ', this.authService.user)

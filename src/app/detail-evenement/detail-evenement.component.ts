@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth.service";
 import {User} from "../../models/user";
 import {UserService} from "../service/user.service";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-detail-evenement',
@@ -16,7 +17,7 @@ export class DetailEvenementComponent implements OnInit {
   participants : User[] = new Array<User>()
   loading: boolean = false;
 
-  constructor(public postService: PostService, private route: ActivatedRoute, public authService: AuthService, public userService: UserService, private router: Router ) { }
+  constructor(private toastService: ToastService, public postService: PostService, private route: ActivatedRoute, public authService: AuthService, public userService: UserService, private router: Router ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -60,7 +61,7 @@ export class DetailEvenementComponent implements OnInit {
       () => {
          this.postService.getAllEvenement().then(
            () => {
-
+             this.toastService.show('Evenement','Suppression evenement réussi !');
              console.log('Suppression evenement reussi !')
              this.router.navigate(['evenement']);
              this.loading = false;

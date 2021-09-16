@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../service/user.service";
 import {User} from "../../models/user";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-modifier-utilisateur',
@@ -17,13 +18,13 @@ export class ModifierUtilisateurComponent implements OnInit {
   loading: boolean = false;
   utilisateur!: User;
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private toastService: ToastService, private route: ActivatedRoute, private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit(): void {
     const index = this.route.snapshot.params['id'];
- 
+
 
 
     this.userService.users.forEach((user) => {
@@ -62,8 +63,10 @@ export class ModifierUtilisateurComponent implements OnInit {
 
       this.userService.modifierUser(user).then(
         ()=> {
-          this.router.navigate(['admin']);
+
           this.loading = false;
+          this.router.navigate(['admin']);
+          this.toastService.show('Admin','Modification utilisateur réussi !');
           console.log('Modification utilisateur réussi !')
         }
       ).catch(

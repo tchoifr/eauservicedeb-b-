@@ -1,0 +1,30 @@
+.flexFormulaire{
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*height: 400px;*/
+}
+
+.section{
+  align-items: center;
+  flex-direction: column;
+}
+
+.erreur{
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.toastPerso {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.titreModal{
+  display: flex;
+  justify-content: center;
+}
+

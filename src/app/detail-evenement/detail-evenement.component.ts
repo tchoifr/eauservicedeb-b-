@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from "../../models/post";
 import {PostService} from "../service/post.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../service/auth.service";
 import {User} from "../../models/user";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-detail-evenement',
@@ -11,24 +12,73 @@ import {User} from "../../models/user";
   styleUrls: ['./detail-evenement.component.css']
 })
 export class DetailEvenementComponent implements OnInit {
-  detailEvenement!: Post;
-  participants!: User[];
+  detailEvenement: Post = new Post('','','',[],new Date(),0);
+  participants : User[] = new Array<User>()
+  loading: boolean = false;
 
-  constructor(public postService: PostService, private route: ActivatedRoute, public authService: AuthService ) { }
+  constructor(public postService: PostService, private route: ActivatedRoute, public authService: AuthService, public userService: UserService, private router: Router ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.userService.getAllUsers().then(
+      () => {
+        this.loading = false;
+        console.log('getAllUsers reussi')
+      }
+    ).catch(
+      (error) => {
+        this.loading = false;
+        console.log(error)
+      }
+    )
+    ;
+
     this.participants = [];
     const index = this.route.snapshot.params['id'];
-    this.detailEvenement = this.postService.tableauEvenement[index];
 
-    this.authService.users.forEach((user)=>{
-      if (this.detailEvenement.idUser.includes(user.id)){
-        this.participants.push(user);
+    this.postService.tableauEvenement.forEach((evenement) => {
+      if (evenement._id === index) {
+        this.detailEvenement = evenement;
       }
-    })
+    });
 
+    // if (this.authService.user.isAdmin){
+
+    // this.userService.users.forEach((user)=>{
+    //   if (this.detailEvenement.users.includes(user)){
+    //     this.participants.push(user);
+    //   }
+    // })
+    // }
     console.log(this.participants);
     console.log(this.detailEvenement);
+  }
+
+   supprimerEvenement(evenement: Post){
+     this.loading = true;
+    this.postService.supprimerEvenement(evenement).then(
+      () => {
+         this.postService.getAllEvenement().then(
+           () => {
+
+             console.log('Suppression evenement reussi !')
+             this.router.navigate(['evenement']);
+             this.loading = false;
+           }
+         ).catch(
+           (error) => {
+             this.loading = false;
+             console.log(error);
+           }
+         )
+         ;
+      }
+    ).catch(
+      (error) => {
+        console.log('Erreur suppresion evenement component : ', error)
+      }
+    )
+
   }
 
 }

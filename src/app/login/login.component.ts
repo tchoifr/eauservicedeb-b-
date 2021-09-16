@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {Router} from "@angular/router";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,14 @@ export class LoginComponent implements OnInit {
   erreur: boolean = false;
   erreurEmail: string = '';
   erreurMdp: string = '';
+  loading: boolean = false;
 
   @Input() titre! : string;
 
   constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public activeModal: NgbActiveModal) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      mdp: ['', Validators.required],
+      password: ['', Validators.required],
     })
   }
 
@@ -36,28 +38,48 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
+
     this.submitted = true;
     this.erreurEmail = '';
     this.erreurMdp = '';
 
     if (this.form.valid) {
-      const loginOk = this.authService.login(this.form.value['email'], this.form.value['mdp'])
-      if (loginOk.authentifier) {
-        alert('connexion reussi');
-        this.close();
-        // this.router.navigate(['accueil'])
-      } else {
-        console.log(loginOk)
+      this.loading = true;
+      let user: User = {
+        _id:'',
+        email: this.form.value['email'],
+        password: this.form.value['password']
 
-        if (!loginOk.email) { this.erreurEmail = "L'email n'existe pas" }
-        if (!loginOk.mdp) { this.erreurMdp = "Le mot de passe associé à ce compte n'est pas correct"  }
-
-        this.erreur = true
-        // alert('erreur');
       }
+      this.authService.login(user).then(
+        () => {
+          this.loading = false;
+          this.close();
+          console.log('Connexion réussi ! user : ', this.authService.user)
+        }
+      ).catch(
+        (error) => {
+          this.loading = false;
+          console.log('error login component ', error)
+        }
+      )
+      // if (loginOk.authentifier) {
+      //   alert('connexion reussi');
+      //   this.close();
+      //   // this.router.navigate(['accueil'])
+      // } else {
+      //   console.log(loginOk)
+      //
+      //   if (!loginOk.email) { this.erreurEmail = "L'email n'existe pas" }
+      //   if (!loginOk.mdp) { this.erreurMdp = "Le mot de passe associé à ce compte n'est pas correct"  }
+      //
+      //   this.erreur = true
+      //   // alert('erreur');
+      // }
 
       console.log('form value: ', this.form.value);
       console.log('message: ', this.form.value['message']);
+
     } else {
       console.log('Error: Form invalid');
     }

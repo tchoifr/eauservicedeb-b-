@@ -1,5 +1,20 @@
+<div *ngIf="this.loading" class="loader d-flex justify-content-center">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<h2 class="titrebloc text-align-center">Creer un compte</h2>
 <form [formGroup]="form" class="col-10 offset-1" (ngSubmit)="submit()" novalidate>
     <div class="form-group flexFormulaire">
+
+      <button class="btn btn-success" type="button" (click)="filePicker.click()" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }">Ajouter image</button>
+      <input name="image" type="file" #filePicker (change)="onImagePick($event)">
+      <div *ngIf="submitted && form.controls.image.errors" class="invalid-feedback">
+        Image requis
+      </div> <br/>
+      <div class="image-preview" *ngIf="imagePreview">
+        <img width="300" [src]="imagePreview" alt="">
+      </div>
 
         <label for="titre">Titre de l'évènement</label>
     <input formControlName="titre" id="titre" name="titre" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" />
@@ -7,14 +22,25 @@
         titre requis
     </div> <br/>
 
-    <label for="message">Message</label>
-    <textarea formControlName="message" id="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea>
-    <div *ngIf="submitted && form.controls.message.errors" class="invalid-feedback">
-        Message vide
+    <label for="description">Description</label>
+    <textarea formControlName="description" id="description" name="description" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }"></textarea>
+    <div *ngIf="submitted && form.controls.description.errors" class="invalid-feedback">
+        Description vide
      </div> <br/>
+
+      <div class="form-group">
+        <label for="nbreMaxParticipant">Nombre maximal de participant</label>
+        <input formControlName="nbreMaxParticipant" name="nbreMaxParticipant" id="nbreMaxParticipant" type="number" class="form-control" id="formControlRange" [ngClass]="{ 'is-invalid': submitted && form.controls.nbreMaxParticipant.errors }">
+      </div>
+      <div *ngIf="submitted && form.controls.nbreMaxParticipant.errors" class="invalid-feedback">
+        Nombre maximal de participant vide
+      </div> <br/>
 
 
 
     <button class="btn btn-dark">Envoyer</button>
+      <div class="erreur">
+        {{erreur}}
+      </div>
 </div>
   </form>

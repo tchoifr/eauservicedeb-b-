@@ -1,3 +1,8 @@
+<div *ngIf="this.loading" class="loader d-flex justify-content-center">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Connexion</h4>
   <button type="button" class="close" aria-label="Close" (click)="close()">
@@ -16,9 +21,9 @@
       Email requis
     </div> <br/>
 
-    <label for="mdp">Mot de passe</label>
-    <input formControlName="mdp" id="mdp" name="mdp" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.mdp.errors }" />
-    <div *ngIf="submitted && form.controls.mdp.errors" class="invalid-feedback">
+    <label for="password">Mot de passe</label>
+    <input formControlName="password" id="password" name="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }" />
+    <div *ngIf="submitted && form.controls.password.errors" class="invalid-feedback">
       Mot de passe requis
     </div> <br/>
 
@@ -29,5 +34,6 @@
 
 
     <button class="btn btn-dark">Envoyer</button>
+    <a routerLink="creerCompte" (click)="close()">Creer un compte</a>
   </div>
 </form>

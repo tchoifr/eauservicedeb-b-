@@ -27,6 +27,8 @@ import { AdminComponent } from './admin/admin.component';
 import {AuthGuardAdminService} from "./service/auth-guard-admin.service";
 import { DetailEvenementComponent } from './detail-evenement/detail-evenement.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CreerCompteComponent } from './creer-compte/creer-compte.component';
+import { ModifierUtilisateurComponent } from './modifier-utilisateur/modifier-utilisateur.component';
 
 
 const appRoute: Routes = [
@@ -39,10 +41,12 @@ const appRoute: Routes = [
   { path: 'deuilPerinatal', component: DeuilPerinatalComponent },
   { path: 'contact', component: ContactComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'creerCompte', component: CreerCompteComponent},
   { path: 'admin', canActivate: [AuthGuardAdminService], component: AdminComponent},
+  { path: 'modifUtilisateur/:id', canActivate: [AuthGuardAdminService], component: ModifierUtilisateurComponent},
   { path: 'pack', component: LesPacksComponent},
   { path: 'evenement', component: EvenementComponent},
-  { path: 'evenement/:id', component: DetailEvenementComponent},
+  { path: 'evenement/:id', canActivate: [AuthGuardService], component: DetailEvenementComponent},
   { path: 'formulaireEvenement', canActivate: [AuthGuardService], component: FormulaireEvenementComponent},
   // { path: 'list-personnage', component: ListPersonnageComponent },
   // { path: 'list-personnage/:id', component: SinglePersonnageComponent },
@@ -75,7 +79,9 @@ const appRoute: Routes = [
     FormulaireEvenementComponent,
     LoginComponent,
     AdminComponent,
-    DetailEvenementComponent
+    DetailEvenementComponent,
+    CreerCompteComponent,
+    ModifierUtilisateurComponent
   ],
   imports: [
     BrowserModule,

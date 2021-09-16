@@ -1,12 +1,22 @@
+<div *ngIf="this.loading" class="loader d-flex justify-content-center">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
 <section class="section flex-direction-column">
   <a routerLink="/formulaireEvenement"><button class="btn btn-primary">Créer un évènement</button></a>
 <div class="blocPrix">
   <h2 class="titrebloc">Liste utilisateur :</h2>
-  <div *ngFor="let user of users" class="col">
-    Id : {{user.id}}<br>
+  <div *ngFor="let user of userService.users" class="col">
+    Id : {{user._id}}<br>
    Email :  {{user.email}}<br>
-    Mdp : {{user.mdp}}<br>
-    Admin : {{user.admin}}<br>
+    Nom :  {{user.nom}}<br>
+    Prenom :  {{user.prenom}}<br>
+    Adresse : {{user.adresse}}<br>
+    Admin : {{user.isAdmin}}<br>
+    <button *ngIf="!user.isAdmin" class="btn btn-danger" (click)="supprimerUtilisateur(user)">Supprimer l'utilisateur</button>
+    <button *ngIf="!user.isAdmin" class="btn btn-primary" (click)="modifUser(user)">Modifier l'utilisateur</button><br>
 
   </div>
 </div>

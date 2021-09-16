@@ -1,136 +1,75 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isAuth = false;
-  isAdmin = false;
+  // isAuth = false;
+  // isAdmin = false;
 
-  user! : User;
+  token: string = '';
 
-  emailAdmin = 'admin@admin.com';
-  mdpAdmin = 'azerty';
+  user : User = new User('');
 
-  emailUser = 'test@test.com';
-  mdpUser = 'azerty';
 
-  userAdmin : User = {
-    id : 1,
-    email : 'admin@admin.com',
-    mdp : 'azerty',
-    admin : true
+
+  constructor(private router: Router, private httpClient: HttpClient) {
   }
 
-  userTest : User = {
-    id : 2,
-    email : 'test@test.com',
-    mdp : 'azerty',
-    admin : false
-  }
+  creerUtilisateur(user: User) {
 
-  users : User[] = [
-    {
-    id : 1,
-    email : 'admin@admin.com',
-    mdp : 'azerty',
-    admin : true
-  },
-    {
-      id : 2,
-      email : 'test@test.com',
-      mdp : 'azerty',
-      admin : false
-    },
-    {
-      id : 3,
-      email : 'blabla@bla.com',
-      mdp : 'azerty',
-      admin : false
-    },
-    {
-      id : 4,
-      email : 'test',
-      mdp : 'test',
-      admin : false
-    }
-  ]
-
-  constructor(private router: Router) {
-
-    // this.user =
-    //   {
-    //   id : 1,
-    //   email : 'test@test.com',
-    //   mdp : 'azerty',
-    //   admin : false
-    // }
-
-
-  }
-
-  getAllUsers(){
-   return this.users
-  }
-
-
-
-  login(email: string, mdp: string) {
-    let emailOk = false
-    let mdpOk = false
-
-
-    this.users.forEach(
-      (user) => {
-        let emailOk = false
-        let mdpOk = false
-
-        if (email === user.email && mdp === user.mdp){
-
-          if (user.admin === true) {
-
-            this.isAdmin = true
+    return new Promise((resolve, reject) => {
+      this.httpClient.post('http://localhost:3000/api/auth/signup',{utilisateur: user}    )
+        .subscribe(
+          (response) => {
+            this.login(user).then(
+              (response) => {
+                resolve(response);
+              }
+            ).catch(
+              (error) => {
+                reject(error);
+              }
+            )
+          },
+          (error) => {
+            reject(error);
           }
-          this.user = user
-          this.isAuth = true;
-        }
-        if (email === user.email) {
-           emailOk = true;
-        }
-        if (mdp === user.mdp) {
-           mdpOk = true;
-        }
-      }
-    );
+        );
+    })
 
-    let authentication = {
-      authentifier : this.isAuth,
-      email : emailOk,
-      mdp : mdpOk
-    };
+  }
 
-    return authentication
 
-    // if (email === this.emailUser && mdp === this.mdpUser){
-    //   this.isAuth = true;
-    //   this.user = this.userTest;
-    //   return true
-    // }
-    //
-    // if (email === this.emailAdmin && mdp === this.mdpAdmin){
-    //   this.isAuth = true;
-    //   this.isAdmin = true;
-    //   this.user = this.userAdmin;
-    //   return true
-    // }
+
+  login(user: User) {
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.post(
+        'http://localhost:3000/api/auth/login', {utilisateur: user})
+        .subscribe(
+          (response:any) => {
+            console.log('response login : ', response);
+            this.user = response.user;
+            this.token = response.token
+            // this.isAuth = true;
+            console.log('user : ',this.user);
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    })
 
   }
 
   logout() {
-    this.isAuth = false;
-    this.isAdmin = false;
+    this.user = new User('');
+    this.token = '';
     alert('Deconnexion réussi')
     this.router.navigate(['accueil'])
   }

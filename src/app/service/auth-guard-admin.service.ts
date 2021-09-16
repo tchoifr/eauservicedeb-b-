@@ -11,7 +11,7 @@ export class AuthGuardAdminService implements CanActivate {
   constructor(private router: Router, private authService: AuthService) { }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.authService.isAdmin) {
+    if(this.authService.user.isAdmin) {
       return true;
     } else {
       this.router.navigate(['/auth']);

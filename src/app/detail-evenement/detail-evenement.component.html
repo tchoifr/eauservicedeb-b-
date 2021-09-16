@@ -1,19 +1,28 @@
+<div *ngIf="this.loading" class="loader d-flex justify-content-center">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 <section class="section">
   <div class="blocPrix">
+    <div class="d-flex col justify-content-end">
+      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>
+    </div>
+    <img width="300" height="300" src="{{detailEvenement.imageUrl}}">
      <h2 class="titrebloc text-align-center">
-      {{detailEvenement.titre }}
+      {{detailEvenement.title }}
     </h2>
     <p class=" paddingbloc textbebe text-align-center"><br>
-      {{detailEvenement.message }}
+      {{detailEvenement.description }}
     </p>
-    Nombre de participants :  {{detailEvenement.idUser.length}}
+    Nombre de participants :  {{detailEvenement.users.length}}
   </div>
-  <div class="blocPrix" *ngIf="authService.isAdmin">
+  <div class="blocPrix" *ngIf="authService.user.isAdmin">
     <h2 class="titrebloc text-align-center">
       Participants
     </h2>
-    <p class=" paddingbloc textbebe text-align-center" *ngFor="let participant of participants;"><br>
-        {{participant.email}}
+    <p class=" paddingbloc textbebe text-align-center" *ngFor="let user of detailEvenement.users;"><br>
+        {{user.nom}} {{user.prenom}} / {{user.email}}
     </p>
   </div>
 </section>

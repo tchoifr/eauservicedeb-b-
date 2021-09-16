@@ -1,8 +1,11 @@
 export class User {
 
-  constructor(public id: number,
+  constructor(public _id: string,
               public email?: string,
-              public mdp?: string,
-              public admin?: boolean
+              public password?: string,
+              public nom?: string,
+              public prenom?: string,
+              public adresse?: string,
+              public isAdmin?: boolean,
   ) {  }
 }

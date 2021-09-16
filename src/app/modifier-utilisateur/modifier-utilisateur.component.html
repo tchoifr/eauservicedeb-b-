@@ -1,0 +1,48 @@
+<div *ngIf="this.loading" class="loader d-flex justify-content-center">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<section class="section">
+  <h2 class="titrebloc text-align-center">Modifier utilisateur : {{utilisateur.nom}} {{utilisateur.prenom}}</h2>
+  <form [formGroup]="form" class="col-6" (ngSubmit)="submit()" novalidate>
+    <div class="form-group flexFormulaire">
+
+      <label for="email">Email</label>
+      <input formControlName="email" id="email" name="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" />
+      <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">
+        Email requis
+      </div> <br/>
+
+      <label for="nom">Nom</label>
+      <input formControlName="nom" id="nom" name="nom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" />
+      <div *ngIf="submitted && form.controls.nom.errors" class="invalid-feedback">
+        Nom requis
+      </div> <br/>
+
+      <label for="prenom">Prenom</label>
+      <input formControlName="prenom" id="prenom" name="prenom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }" />
+      <div *ngIf="submitted && form.controls.prenom.errors" class="invalid-feedback">
+        Prenom requis
+      </div> <br/>
+
+      <label for="adresse">Adresse</label>
+      <input formControlName="adresse" id="adresse" name="adresse" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }" />
+      <div *ngIf="submitted && form.controls.adresse.errors" class="invalid-feedback">
+        Adresse requis
+      </div> <br/>
+
+      <label for="admin">Admin</label>
+      <div class="input-group-text">
+        <input formControlName="admin" type="checkbox" id="admin" aria-label="Checkbox for following text input">
+      </div>
+
+
+
+      <button class="btn btn-dark">Envoyer</button>
+      <div class="erreur">
+        {{erreur}}
+      </div>
+    </div>
+  </form>
+</section>

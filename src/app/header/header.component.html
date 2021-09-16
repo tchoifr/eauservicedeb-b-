@@ -38,20 +38,20 @@
         <li class="nav-item ">
           <a routerLinkActive="activerLink" routerLink="contact" class="nav-link" >Contact / Avis </a>
         </li>
-        <li class="nav-item" *ngIf="authService.isAdmin" >
+        <li class="nav-item" *ngIf="authService.user.isAdmin" >
           <a routerLinkActive="activerLink" routerLink="formulaireEvenement" class="nav-link" >Créer un évènement </a>
         </li>
-        <li style="cursor: pointer;" class="nav-item " *ngIf="!authService.isAuth">
+        <li style="cursor: pointer;" class="nav-item " *ngIf="!authService.token">
           <a (click)="open()" class="nav-link" >Connexion</a>
         </li>
-        <li style="cursor: pointer;" class="nav-item " *ngIf="authService.isAuth">
+        <li style="cursor: pointer;" class="nav-item " *ngIf="authService.token">
           <a (click)="authService.logout()" class="nav-link" >Deconnexion</a>
         </li>
       </ul>
 
       <div class="d-flex align-items-center ">
 
-          <a *ngIf="authService.isAdmin" routerLink="admin" class="nav-link" >Admin</a>
+          <a routerLinkActive="activerLink" *ngIf="authService.user.isAdmin" routerLink="admin" class="nav-link" >Admin</a>
 
       <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
       <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

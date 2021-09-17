@@ -27,13 +27,13 @@
       </div>
     </ng-template>
   </ngb-carousel> -->
-  
 
-  <div class="titrebloc text-align-center" *ngIf="titre">
+
+  <div class="row titrebloc text-align-center" *ngIf="titre">
     Vos Avis
   </div>
-  <ngb-carousel *ngIf="images && pack == false" class="section">
-    
+  <ngb-carousel *ngIf="images && pack == false" class="section row">
+
     <ng-template ngbSlide *ngFor="let image of images">
       <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
         <img [src]="image" alt="Random first slide" class="imageCarousel">
@@ -48,12 +48,12 @@
 
 
 
-  <ngb-carousel *ngIf="pack" class="section">
-    
+  <ngb-carousel *ngIf="pack" class="section row">
+
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
         <div id="prix" class="blocPrix margin100">
-     
+
           <h2 class="titrebloc padding0 text-align-center">
             Pack Merveille
           </h2>
@@ -65,8 +65,8 @@
             Une séance de Naturopédiatrie<br>
             - 265 € -<br>
           </p>
-      
-      
+
+
       </div>
       </div>
     </ng-template>
@@ -74,7 +74,7 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
         <div id="prix" class="blocPrix margin100">
-     
+
           <h2 class="titrebloc padding0 text-align-center">
             Pack Tendresse
           </h2>
@@ -84,8 +84,8 @@
             Thalasso bain bébé<br>
             - 125 € -<br>
           </p>
-          
-      
+
+
       </div>
       </div>
     </ng-template>
@@ -93,7 +93,7 @@
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper" style="display: flex; justify-content: center;">
         <div id="prix" class="blocPrix margin100">
-     
+
           <h2 class="titrebloc padding0 text-align-center">
             Pack Douceur
           </h2>
@@ -102,7 +102,7 @@
             Atelier Massage bébé<br>
             - 140 € -<br>
           </p>
-          
+
       </div>
       </div>
     </ng-template>

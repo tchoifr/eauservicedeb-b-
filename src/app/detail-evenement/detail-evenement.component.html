@@ -3,26 +3,97 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<section class="section">
-  <div class="blocPrix">
+
+<section class="section row">
+  <!-- Jumbotron -->
+  <div class="jumbotron text-center col-6 margin100">
     <div class="d-flex col justify-content-end">
       <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>
     </div>
-    <img width="300" height="300" src="{{detailEvenement.imageUrl}}">
-     <h2 class="titrebloc text-align-center">
-      {{detailEvenement.title }}
-    </h2>
-    <p class=" paddingbloc textbebe text-align-center"><br>
-      {{detailEvenement.description }}
-    </p>
-    Nombre de participants :  {{detailEvenement.users.length}}
-  </div>
-  <div class="blocPrix" *ngIf="authService.user.isAdmin">
-    <h2 class="titrebloc text-align-center">
-      Participants
-    </h2>
-    <p class=" paddingbloc textbebe text-align-center" *ngFor="let user of detailEvenement.users;"><br>
-        {{user.nom}} {{user.prenom}} / {{user.email}}
-    </p>
+
+    <!-- Title -->
+    <h4 class="card-title h4 pb-2"><strong>{{detailEvenement.title }}</strong></h4>
+
+    <!-- Card image -->
+    <div class="view overlay my-4 waves-light d-flex justify-content-center" mdbWavesEffect>
+      <img src="{{detailEvenement.imageUrl}}" class="img-fluid" alt="">
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <h5 class="indigo-text h5 mb-4">Nombre de participants :  {{detailEvenement.users.length}} / {{detailEvenement.nbreMaxParticipant}}</h5>
+
+    <p class="card-text">{{detailEvenement.description }}</p>
+
+    <div class="row">
+      <div class="col-6">
+        <button mdbBtn *ngIf="authService.token && detailEvenement.nbreMaxParticipant != detailEvenement.users.length && !userParticipeDeja(authService.user._id, detailEvenement)" (click)="participerEvenement(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(authService.user._id, detailEvenement)}" mdbWavesEffect>Je participe</button>
+        <button mdbBtn *ngIf="authService.token && userParticipeDeja(authService.user._id, detailEvenement)" (click)="supprimerParticipation(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(authService.user._id, detailEvenement)}" mdbWavesEffect>Je ne veux plus participer</button>
+      </div>
+      <div class="col-6">
+        <button mdbBtn *ngIf="authService.user.isAdmin" class="text-white ripe-malinka-gradient z-depth-1a waves-light"  mdbWavesEffect>Voir les participants</button>
+      </div>
+    </div>
+      </div>
+  <!-- Jumbotron -->
+
+<!--  <div class="jumbotron text-center" *ngIf="authService.user.isAdmin">-->
+
+<!--    &lt;!&ndash; Title &ndash;&gt;-->
+<!--    <h4 class="card-title h4 pb-2"><strong>Liste des participants</strong></h4>-->
+
+<!--    <p class="card-text text-align-center" *ngFor="let user of detailEvenement.users;"><br>-->
+<!--      {{user.nom}} {{user.prenom}} / {{user.email}}-->
+<!--    </p>-->
+
+<!--  </div>-->
+  <div class="col-4 ml-3 margin100" *ngIf="authService.user.isAdmin">
+  <h2 class="titrebloc">
+    Liste des participants
+  </h2>
+  <table mdbTable>
+    <thead>
+    <tr>
+      <th scope="col"> # </th>
+      <th scope="col">Nom </th>
+      <th scope="col">Prenom </th>
+      <th scope="col">Email </th>
+    </tr>
+    </thead>
+    <tbody class="table-striped" >
+    <tr mdbTableCol *ngFor="let user of detailEvenement.users">
+      <th scope="row">{{user._id}}</th>
+      <td>{{user.nom}}</td>
+      <td>{{user.prenom}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+    </tbody>
+  </table>
   </div>
 </section>
+
+
+<!--<section class="section">-->
+<!--  <div class="blocPrix">-->
+<!--    <div class="d-flex col justify-content-end">-->
+<!--      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>-->
+<!--    </div>-->
+<!--    <img width="300" height="300" src="{{detailEvenement.imageUrl}}">-->
+<!--     <h2 class="titrebloc text-align-center">-->
+<!--      {{detailEvenement.title }}-->
+<!--    </h2>-->
+<!--    <p class=" paddingbloc textbebe text-align-center"><br>-->
+<!--      {{detailEvenement.description }}-->
+<!--    </p>-->
+<!--    Nombre de participants :  {{detailEvenement.users.length}}-->
+<!--  </div>-->
+<!--  <div class="blocPrix" *ngIf="authService.user.isAdmin">-->
+<!--    <h2 class="titrebloc text-align-center">-->
+<!--      Participants-->
+<!--    </h2>-->
+<!--    <p class=" paddingbloc textbebe text-align-center" *ngFor="let user of detailEvenement.users;"><br>-->
+<!--        {{user.nom}} {{user.prenom}} / {{user.email}}-->
+<!--    </p>-->
+<!--  </div>-->
+<!--</section>-->

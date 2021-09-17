@@ -1,5 +1,7 @@
+<div class="row">
 <img class="img" src="../../../assets/imgFondThalasso.jpg" alt="">
-<div class="textArriverBebe">
+</div>
+<div class="textArriverBebe row">
     <h1 class="titre">Thalasso Bain Bébé</h1>
     <p class="textbebe">Ce n’est pas un bain « d’hygiène », c’est un «<span class="gras">bain soin </span> ». </p>
 
@@ -14,38 +16,39 @@
     pour tous les autres bébés.</p> <br>
     <p class="textbebe gras"> Le Thalasso Bain peut être offert à de futurs/jeunes parents sous
         forme de bon cadeau, ou encore <br> être ajouté à une liste de naissance.</p>
-  
-   
+
+
     <button class="buttonbebe" (click)="scroll(prix)"><i class="fas fa-caret-down"></i></button>
 </div>
-<div class="video section">
+<div class="video section row">
 <iframe class="video"  width="730" height="615" src="https://www.youtube.com/embed/HAtNWL2ADzE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <iframe class="video" style="margin-top: 100px;" width="730" height="615" src="https://www.youtube.com/embed/OrDb-5Sz6AI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <app-ngb-carousel [images]="images" [titre]='false'></app-ngb-carousel>
 
-<section #prix class="section">
+<section #prix class="section row">
+  <div class="col-12 d-flex justify-content-center align-items-center">
     <div id="prix" class="blocPrix">
-     
+
             <h2 class="titrebloc text-align-center">
-                Thalasso bain bébé à domicile 
+                Thalasso bain bébé à domicile
             </h2>
             <p class=" textbebe text-align-center"><br>Aix-Marseille et alentours<br> <br>
                 - Moins de 30 km 100 €<br>
                 - 30 à 40 km 130 € <br>
                 - 40 à 50 km 160 € <br>
             </p>
-            
+
                 <h2 class="titrebloc text-align-center">
                     Nouveau:
                 </h2>
                 <p class=" paddingbloc textbebe text-align-center"><br>Thalasso bain bébé avec montage photos/vidéo de la séance : <br>
                     -170€<br> <br>
-                    
+
                     Pour plus d'informations me contacter<br>
                 </p>
-                
-        
-  
+
+
+    </div>
     </div>
 </section>

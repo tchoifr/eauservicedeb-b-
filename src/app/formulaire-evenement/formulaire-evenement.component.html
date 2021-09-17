@@ -3,44 +3,102 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<h2 class="titrebloc text-align-center">Creer un compte</h2>
-<form [formGroup]="form" class="col-10 offset-1" (ngSubmit)="submit()" novalidate>
-    <div class="form-group flexFormulaire">
 
-      <button class="btn btn-success" type="button" (click)="filePicker.click()" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }">Ajouter image</button>
-      <input name="image" type="file" #filePicker (change)="onImagePick($event)">
-      <div *ngIf="submitted && form.controls.image.errors" class="invalid-feedback">
-        Image requis
-      </div> <br/>
-      <div class="image-preview" *ngIf="imagePreview">
-        <img width="300" [src]="imagePreview" alt="">
-      </div>
+<section class="section row">
 
-        <label for="titre">Titre de l'évènement</label>
-    <input formControlName="titre" id="titre" name="titre" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" />
-    <div *ngIf="submitted && form.controls.titre.errors" class="invalid-feedback">
-        titre requis
-    </div> <br/>
-
-    <label for="description">Description</label>
-    <textarea formControlName="description" id="description" name="description" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }"></textarea>
-    <div *ngIf="submitted && form.controls.description.errors" class="invalid-feedback">
-        Description vide
-     </div> <br/>
-
-      <div class="form-group">
-        <label for="nbreMaxParticipant">Nombre maximal de participant</label>
-        <input formControlName="nbreMaxParticipant" name="nbreMaxParticipant" id="nbreMaxParticipant" type="number" class="form-control" id="formControlRange" [ngClass]="{ 'is-invalid': submitted && form.controls.nbreMaxParticipant.errors }">
-      </div>
-      <div *ngIf="submitted && form.controls.nbreMaxParticipant.errors" class="invalid-feedback">
-        Nombre maximal de participant vide
-      </div> <br/>
+  <mdb-card class="col-6">
+    <mdb-card-body>
+      <!-- Material form register -->
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <p class="h4 text-center py-4">Creer un évènement</p>
 
 
+        <button mdbBtn color="cyan" gradient="pink" class="waves-light" type="button" (click)="filePicker.click()" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }">Ajouter image</button>
+        <input name="image" type="file" #filePicker (change)="onImagePick($event)" class="form-control" mdbInput>
+        <div class="image-preview d-flex justify-content-center" *ngIf="imagePreview">
+          <img width="300" [src]="imagePreview" alt="">
+        </div>
 
-    <button class="btn btn-dark">Envoyer</button>
-      <div class="erreur">
-        {{erreur}}
-      </div>
-</div>
-  </form>
+        <!-- Material input email -->
+        <div class="md-form">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="titre" formControlName="titre" class="form-control" mdbInput>
+          <label for="titre" class="font-weight-light">Titre</label>
+        </div>
+
+        <!-- Material input text -->
+        <div class="md-form">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="description" formControlName="description" class="form-control" mdbInput>
+          <label for="description" class="font-weight-light">Description</label>
+        </div>
+
+        <!-- Material input number -->
+        <div class="md-form">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="number" id="nbreMaxParticipant" formControlName="nbreMaxParticipant" class="form-control" mdbInput>
+          <label for="nbreMaxParticipant" class="font-weight-light">Nombre de participant maximal</label>
+        </div>
+
+
+
+
+
+        <div class="text-center py-4 mt-3">
+          <button mdbBtn class="text-white ripe-malinka-gradient waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
+        </div>
+        <div class="erreur">
+          {{erreur}}
+        </div>
+      </form>
+      <!-- Material form register -->
+    </mdb-card-body>
+  </mdb-card>
+</section>
+
+<!--<section class="section">-->
+<!--  <div class="blocPrix">-->
+
+<!--<h2 class="titrebloc text-align-center">Creer un évènement</h2>-->
+<!--<form [formGroup]="form" class="col-10 offset-1" (ngSubmit)="submit()" novalidate>-->
+<!--    <div class="form-group flexFormulaire">-->
+
+<!--      <button class="btn btn-success" type="button" (click)="filePicker.click()" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }">Ajouter image</button>-->
+<!--      <input name="image" type="file" #filePicker (change)="onImagePick($event)">-->
+<!--      <div *ngIf="submitted && form.controls.image.errors" class="invalid-feedback">-->
+<!--        Image requis-->
+<!--      </div> <br/>-->
+<!--      <div class="image-preview" *ngIf="imagePreview">-->
+<!--        <img width="300" [src]="imagePreview" alt="">-->
+<!--      </div>-->
+
+<!--        <label for="titre">Titre de l'évènement</label>-->
+<!--    <input formControlName="titre" id="titre" name="titre" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.titre.errors" class="invalid-feedback">-->
+<!--        titre requis-->
+<!--    </div> <br/>-->
+
+<!--    <label for="description">Description</label>-->
+<!--    <textarea formControlName="description" id="description" name="description" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }"></textarea>-->
+<!--    <div *ngIf="submitted && form.controls.description.errors" class="invalid-feedback">-->
+<!--        Description vide-->
+<!--     </div> <br/>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="nbreMaxParticipant">Nombre maximal de participant</label>-->
+<!--        <input formControlName="nbreMaxParticipant" name="nbreMaxParticipant" id="nbreMaxParticipant" type="number" class="form-control" id="formControlRange" [ngClass]="{ 'is-invalid': submitted && form.controls.nbreMaxParticipant.errors }">-->
+<!--      </div>-->
+<!--      <div *ngIf="submitted && form.controls.nbreMaxParticipant.errors" class="invalid-feedback">-->
+<!--        Nombre maximal de participant vide-->
+<!--      </div> <br/>-->
+
+
+
+<!--    <button class="btn btn-dark">Envoyer</button>-->
+<!--      <div class="erreur">-->
+<!--        {{erreur}}-->
+<!--      </div>-->
+<!--</div>-->
+<!--  </form>-->
+<!--  </div>-->
+<!--</section>-->

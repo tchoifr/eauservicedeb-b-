@@ -4,31 +4,73 @@
   </div>
 </div>
 
-<section class="section row" >
-    <div id="prix" class="blocPrix col-4" *ngFor="let tab of postService.tableauEvenement; let index = index" >
-      <div class="d-flex col justify-content-end">
-      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(tab)"></i>
-      </div>
-      <img width="300" height="300" src="{{tab.imageUrl}}">
-            <h2 class="titrebloc text-align-center">
-               {{tab.title }}
-            </h2>
-            <p class=" paddingbloc textbebe text-align-center"><br>
-               {{tab.description }}
-
-            </p>
-<!--           <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>-->
-<!--        </a>-->
-
-        Nombre de participants :  {{tab.users.length}} / {{tab.nbreMaxParticipant}}
-      <div class="d-flex">
-        <button *ngIf="!authService.token" (click)="open()" class="btn btn-primary mr-2">Je veux participer</button>
-
-        <button *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && !userParticipeDeja(index)" (click)="participerEvenement(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>
-        <button *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && userParticipeDeja(index)" (click)="supprimerParticipation(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : !userParticipeDeja(index)}">Je ne veux plus participer</button>
-
-        <button *ngIf="authService.token" class="btn btn-primary" (click)="voirEvenement(postService.tableauEvenement[index])">Voir l'évènement</button>
-      </div>
-
+<section class="section row ">
+  <!-- Card -->
+  <mdb-card class="col-lg-3 col ml-lg-5" *ngFor="let tab of postService.tableauEvenement; let index = index">
+    <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+      <!-- Card img -->
+      <mdb-card-img src="{{tab.imageUrl}}" alt="Card image cap"></mdb-card-img>
+      <a>
+        <div class="mask"></div>
+      </a>
     </div>
+    <div class="d-flex col justify-content-end">
+      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(tab)"></i>
+    </div>
+    <!--Card content-->
+    <mdb-card-body>
+      <!--Title-->
+      <mdb-card-title>
+        <h4>{{tab.title }}</h4>
+      </mdb-card-title>
+
+      <!--Text-->
+      <mdb-card-text>
+        {{tab.description }}
+      </mdb-card-text>
+      Nombre de participants :  {{tab.users.length}} / {{tab.nbreMaxParticipant}}
+
+<div class="row">
+      <div class="col-6">
+      <button mdbBtn *ngIf="!authService.token" (click)="open()" class="text-white ripe-malinka-gradient z-depth-1a waves-light" mdbWavesEffect>Je veux participer</button>
+
+      <button mdbBtn *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && !userParticipeDeja(index)" (click)="participerEvenement(index)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(index)}" mdbWavesEffect>Je participe</button>
+      <button mdbBtn *ngIf="authService.token  && userParticipeDeja(index)" (click)="supprimerParticipation(index)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(index)}" mdbWavesEffect>Je ne veux plus participer</button>
+      </div>
+      <div class="col-6">
+      <button mdbBtn *ngIf="authService.token" class="text-white ripe-malinka-gradient z-depth-1a waves-light" (click)="voirEvenement(postService.tableauEvenement[index])" mdbWavesEffect>Voir l'évènement</button>
+      </div>
+</div>
+    </mdb-card-body>
+  </mdb-card>
+  <!-- Card -->
 </section>
+
+<!--<section class="section row" >-->
+<!--    <div id="prix" class="blocPrix col-4" *ngFor="let tab of postService.tableauEvenement; let index = index" >-->
+<!--      <div class="d-flex col justify-content-end">-->
+<!--      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(tab)"></i>-->
+<!--      </div>-->
+<!--      <img width="300" height="300" src="{{tab.imageUrl}}">-->
+<!--            <h2 class="titrebloc text-align-center">-->
+<!--               {{tab.title }}-->
+<!--            </h2>-->
+<!--            <p class=" paddingbloc textbebe text-align-center"><br>-->
+<!--               {{tab.description }}-->
+
+<!--            </p>-->
+<!--&lt;!&ndash;           <a routerLink='/formulaireEvenement' > <button  class="btn btn-primary">Participer</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+
+<!--        Nombre de participants :  {{tab.users.length}} / {{tab.nbreMaxParticipant}}-->
+<!--      <div class="d-flex">-->
+<!--        <button *ngIf="!authService.token" (click)="open()" class="btn btn-primary mr-2">Je veux participer</button>-->
+
+<!--        <button *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && !userParticipeDeja(index)" (click)="participerEvenement(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : userParticipeDeja(index)}">Je participe</button>-->
+<!--        <button *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && userParticipeDeja(index)" (click)="supprimerParticipation(index)" class="btn btn-primary mr-2" [ngClass]="{'disabled' : !userParticipeDeja(index)}">Je ne veux plus participer</button>-->
+
+<!--        <button *ngIf="authService.token" class="btn btn-primary" (click)="voirEvenement(postService.tableauEvenement[index])">Voir l'évènement</button>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--</section>-->

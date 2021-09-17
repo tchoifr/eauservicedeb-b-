@@ -42,12 +42,13 @@ export class AdminComponent implements OnInit {
         this.userService.getAllUsers().then(
           () => {
             this.loading = false;
-            this.toastService.show('Admin','Utilisateur supprimé !');
+            this.toastService.show('Admin','Utilisateur supprimé !', 'toast-success');
             console.log('Utilisateur supprimé !')
           }
         ).catch(
           (error) => {
             this.loading = false;
+            this.toastService.show('Admin','Erreur !', 'toast-danger');
             console.log(error)
           }
         )

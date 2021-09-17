@@ -27,6 +27,19 @@
   outline: none;
 }
 
+input:focus {
+  box-shadow: none!important;
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill
+{
+  -webkit-background-clip: text;
+}
+
+.close{
+  outline: none;
+}
+
 .loader{
   position: fixed;
   width: 100%;

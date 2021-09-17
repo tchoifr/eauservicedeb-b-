@@ -66,12 +66,13 @@ export class ModifierUtilisateurComponent implements OnInit {
 
           this.loading = false;
           this.router.navigate(['admin']);
-          this.toastService.show('Admin','Modification utilisateur réussi !');
+          this.toastService.show('Admin','Modification utilisateur réussi !', 'toast-success');
           console.log('Modification utilisateur réussi !')
         }
       ).catch(
         (error) => {
           this.loading = false;
+          this.toastService.show('Admin','Erreur !', 'toast-danger');
           this.erreur = error.error.error;
           console.log('erreur modif user : ', error)
         }

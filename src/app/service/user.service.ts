@@ -39,8 +39,13 @@ export class UserService {
 
   deleteUser(user: User){
 
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${this.authService.token}`)
+    }
+
     return new Promise((resolve, reject) => {
-      this.httpClient.delete(this.baseUrl+'/api/auth/'+user._id)
+      this.httpClient.delete(this.baseUrl+'/api/auth/'+user._id, header)
         .subscribe(
           (response: any) => {
             console.log('supprimerUtilisateur response : ', response)

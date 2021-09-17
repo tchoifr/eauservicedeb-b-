@@ -18,12 +18,13 @@ export class LoginComponent implements OnInit {
   erreurEmail: string = '';
   erreurMdp: string = '';
   loading: boolean = false;
+  roundedTrue: string = 'true';
 
   @Input() titre! : string;
 
   constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router, public activeModal: NgbActiveModal, private toastService: ToastService) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      email: ['', [Validators.required,Validators.email]],
       password: ['', Validators.required],
     })
   }
@@ -34,10 +35,13 @@ export class LoginComponent implements OnInit {
 
   }
 
+  get input() { return this.form.get('email'); }
+
+
   close(){
     this.activeModal.close('Close click');
   }
-  
+
 
   submit(): void {
 
@@ -55,7 +59,7 @@ export class LoginComponent implements OnInit {
       }
       this.authService.login(user).then(
         () => {
-          this.toastService.show('Connexion','Connexion réussi !');
+          this.toastService.show('Connexion','Connexion réussi !', 'toast-success');
           this.loading = false;
           this.close();
           console.log('Connexion réussi ! user : ', this.authService.user)
@@ -63,6 +67,7 @@ export class LoginComponent implements OnInit {
       ).catch(
         (error) => {
           this.loading = false;
+          this.toastService.show('Connexion','Erreur !', 'toast-danger');
           console.log('error login component ', error)
         }
       )

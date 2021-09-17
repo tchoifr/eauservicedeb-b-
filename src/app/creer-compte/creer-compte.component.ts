@@ -48,13 +48,14 @@ export class CreerCompteComponent implements OnInit {
        this.authService.creerUtilisateur(user).then(
          () => {
            this.loading = false;
-           this.toastService.show('Connexion','Connexion réussi !');
+           this.toastService.show('Connexion','Connexion réussi !', 'toast-success');
            console.log('Utilisateur creer ! : ', this.authService.user);
            this.router.navigate(['accueil'])
          }
        ).catch(
          (error) => {
            this.loading = false;
+           this.toastService.show('Connexion','Erreur !', 'toast-danger');
            this.erreur = error.error.error.message;
            console.log(this.erreur);
            console.log(error);

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -89,6 +91,7 @@ const appRoute: Routes = [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MDBBootstrapModule.forRoot(),
     RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     NgbModule
   ],

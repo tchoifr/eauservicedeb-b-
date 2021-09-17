@@ -3,46 +3,122 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<section class="section">
-  <h2 class="titrebloc text-align-center">Modifier utilisateur : {{utilisateur.nom}} {{utilisateur.prenom}}</h2>
-  <form [formGroup]="form" class="col-6" (ngSubmit)="submit()" novalidate>
-    <div class="form-group flexFormulaire">
 
-      <label for="email">Email</label>
-      <input formControlName="email" id="email" name="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" />
-      <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">
-        Email requis
-      </div> <br/>
+<section class="section row">
 
-      <label for="nom">Nom</label>
-      <input formControlName="nom" id="nom" name="nom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" />
-      <div *ngIf="submitted && form.controls.nom.errors" class="invalid-feedback">
-        Nom requis
-      </div> <br/>
-
-      <label for="prenom">Prenom</label>
-      <input formControlName="prenom" id="prenom" name="prenom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }" />
-      <div *ngIf="submitted && form.controls.prenom.errors" class="invalid-feedback">
-        Prenom requis
-      </div> <br/>
-
-      <label for="adresse">Adresse</label>
-      <input formControlName="adresse" id="adresse" name="adresse" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }" />
-      <div *ngIf="submitted && form.controls.adresse.errors" class="invalid-feedback">
-        Adresse requis
-      </div> <br/>
-
-      <label for="admin">Admin</label>
-      <div class="input-group-text">
-        <input formControlName="admin" type="checkbox" id="admin" aria-label="Checkbox for following text input">
-      </div>
+  <mdb-card class="col-6">
+    <mdb-card-body>
+      <!-- Material form register -->
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <p class="h4 text-center py-4">Modifier</p>
 
 
+        <!-- Material input email -->
+        <div class="md-form">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="email" id="email" formControlName="email" class="form-control" mdbInput>
+          <label for="email" class="font-weight-light">Votre email</label>
+        </div>
 
-      <button class="btn btn-dark">Envoyer</button>
-      <div class="erreur">
-        {{erreur}}
-      </div>
-    </div>
-  </form>
+        <!--      &lt;!&ndash; Material input email &ndash;&gt;-->
+        <!--      <div class="md-form">-->
+        <!--        <mdb-icon fas icon="exclamation-triangle" class="prefix grey-text"></mdb-icon>-->
+        <!--        <input type="email" id="email2" formControlName="email" class="form-control" mdbInput>-->
+        <!--        <label for="email2" class="font-weight-light">Confirmez votre email</label>-->
+        <!--      </div>-->
+
+
+        <!-- Material input text -->
+        <div class="md-form">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="nom" formControlName="nom" class="form-control" mdbInput>
+          <label for="nom" class="font-weight-light">Votre nom</label>
+        </div>
+
+        <!-- Material input text -->
+        <div class="md-form">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="prenom" formControlName="prenom" class="form-control"
+                 mdbInput>
+          <label for="prenom" class="font-weight-light">Votre prenom</label>
+        </div>
+
+
+
+        <!-- Material input text -->
+        <div class="md-form">
+          <mdb-icon fas icon="address-card" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="adresse" formControlName="adresse" class="form-control"
+                 mdbInput>
+          <label for="adresse" class="font-weight-light">Votre adresse</label>
+        </div>
+
+<!--        <label for="admin">Admin</label>-->
+<!--        <div class="input-group-text">-->
+<!--          <input formControlName="admin" type="checkbox" id="admin" aria-label="Checkbox for following text input">-->
+<!--        </div>-->
+        <!-- Material input text -->
+        <div class="md-form">
+          <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+          <input type="checkbox" id="admin" formControlName="admin" class="form-control"
+                 mdbInput>
+          <label for="admin" class="font-weight-light">Admin</label>
+        </div>
+
+
+
+        <div class="text-center py-4 mt-3">
+          <button mdbBtn class="text-white ripe-malinka-gradient waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
+        </div>
+        <div class="erreur">
+          {{erreur}}
+        </div>
+      </form>
+      <!-- Material form register -->
+    </mdb-card-body>
+  </mdb-card>
 </section>
+<!--<section class="section">-->
+<!--  <h2 class="titrebloc text-align-center">Creer un compte</h2>-->
+<!--<form [formGroup]="form" class="col-6" (ngSubmit)="submit()" novalidate>-->
+<!--  <div class="form-group flexFormulaire">-->
+
+<!--    <label for="email">Email</label>-->
+<!--    <input formControlName="email" id="email" name="email" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">-->
+<!--      Email requis-->
+<!--    </div> <br/>-->
+
+<!--    <label for="password">Mot de passe</label>-->
+<!--    <input formControlName="password" id="password" name="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.password.errors" class="invalid-feedback">-->
+<!--      Mot de passe requis-->
+<!--    </div> <br/>-->
+
+<!--    <label for="nom">Nom</label>-->
+<!--    <input formControlName="nom" id="nom" name="nom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.nom.errors" class="invalid-feedback">-->
+<!--      Nom requis-->
+<!--    </div> <br/>-->
+
+<!--    <label for="prenom">Prenom</label>-->
+<!--    <input formControlName="prenom" id="prenom" name="prenom" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.prenom.errors" class="invalid-feedback">-->
+<!--      Prenom requis-->
+<!--    </div> <br/>-->
+
+<!--    <label for="adresse">Adresse</label>-->
+<!--    <input formControlName="adresse" id="adresse" name="adresse" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }" />-->
+<!--    <div *ngIf="submitted && form.controls.adresse.errors" class="invalid-feedback">-->
+<!--      Adresse requis-->
+<!--    </div> <br/>-->
+
+
+
+<!--    <button class="btn btn-dark">Envoyer</button>-->
+<!--    <div class="erreur">-->
+<!--      {{erreur}}-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+<!--</section>-->

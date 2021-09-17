@@ -5,7 +5,7 @@
     border-radius: 27px;
     height: 50px;
     /*width: 144px;*/
-    background: white;
+    /*background: white;*/
     color: black;
     background-color: transparent;
     border-color: black;
@@ -14,6 +14,16 @@
     justify-content: center;
     margin-top: 40px;
    margin-bottom: 1rem;
+}
+
+.card{
+  margin-top: 100px;
+}
+
+
+.col-lg-3{
+  padding-left: 0!important;
+  padding-right: 0 !important;
 }
 
 .btn:hover{

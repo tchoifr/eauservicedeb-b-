@@ -33,16 +33,22 @@ export class EvenementComponent implements OnInit {
         console.log(error)
       }
     );
-    this.userService.getAllUsers().then(
-      () => {
-        console.log('getAllUsers reussi')
-      }
-    ).catch(
-      (error) => {
 
-        console.log(error)
-      }
-    );
+    if (this.authService.token){
+
+      this.userService.getAllUsers().then(
+        () => {
+          console.log('getAllUsers reussi')
+        }
+      ).catch(
+        (error) => {
+
+          console.log(error)
+        }
+      );
+
+    }
+
   }
 
   supprimerParticipation(index: number){
@@ -55,12 +61,13 @@ export class EvenementComponent implements OnInit {
         this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
           () => {
             this.loading = false;
-            this.toastService.show('Evenement','Suppression participation réussi !');
+            this.toastService.show('Evenement','Suppression participation réussi !', 'toast-success');
             console.log('Suppresion participation réussi');
           }
         ).catch(
           (error) => {
             this.loading = false;
+            this.toastService.show('Evenement','Erreur !', 'toast-danger');
             console.log('erreur suppression participation component : ', error)
           }
         )
@@ -77,13 +84,14 @@ export class EvenementComponent implements OnInit {
         this.postService.getAllEvenement().then(
           () => {
             this.loading = false;
-            this.toastService.show('Evenement','Suppression evenement réussi !');
+            this.toastService.show('Evenement','Suppression evenement réussi !', 'toast-success');
             console.log('Suppression evenement reussi !')
           }
         ).catch(
           (error) => {
             this.loading = false;
-            console.log(error);
+            this.toastService.show('Evenement','Erreur !', 'toast-danger');
+            console.log('Suppression evenement erreur : ',error);
           }
         );
       }
@@ -116,12 +124,13 @@ export class EvenementComponent implements OnInit {
       this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
         () => {
           this.loading = false;
-          this.toastService.show('Evenement','Ajout participation réussi !');
+          this.toastService.show('Evenement','Ajout participation réussi !', 'toast-success');
           console.log('Modification Evenement réussi !')
         }
       ).catch(
         (error) => {
           this.loading = false;
+          this.toastService.show('Evenement','Erreur !', 'toast-danger');
           console.log('Erreur modification evenement : ', error)
         }
       )

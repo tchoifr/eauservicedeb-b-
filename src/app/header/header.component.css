@@ -16,11 +16,13 @@ nav{
     font-family: EB Garamond,serif;
     position: fixed;
     width: 100%;
-    z-index: 50;    
+    z-index: 50;
+    top: 0;
+    left: 0;
 }
 
 .nav-link{
-    
+
     color: white!important;
     margin: 20px;
 
@@ -46,7 +48,7 @@ a{
 .navbar{
     -webkit-transition :all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-  
+
 }
 
 .color-change{
@@ -56,9 +58,9 @@ a{
   /* transform: scaleY(40px);
   transform-origin: top;
   transition: transform 1s ease-in-out; */
-    
-    
-    
+
+
+
  transform: translate(0, -20px);
 
 }
@@ -77,5 +79,5 @@ a{
     .taille-text{
         font-size: 22px;
      }
-      
+
 }

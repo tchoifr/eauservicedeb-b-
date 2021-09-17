@@ -69,12 +69,13 @@ console.log(this.form.controls);
 
           this.router.navigate(['evenement'])
           this.loading = false;
-          this.toastService.show('Evenement','Ajout evenement réussi !');
+          this.toastService.show('Evenement','Ajout evenement réussi !', 'toast-success');
           console.log('Ajout evenement reussi !');
         }
       ).catch(
         (error) => {
           this.loading = false;
+          this.toastService.show('Evenement','Erreur !', 'toast-danger');
           console.log('Erreur ajout evenement : ', error)
 
 

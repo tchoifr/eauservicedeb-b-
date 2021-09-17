@@ -4,20 +4,49 @@
   </div>
 </div>
 
-<section class="section flex-direction-column">
-  <a routerLink="/formulaireEvenement"><button class="btn btn-primary">Créer un évènement</button></a>
-<div class="blocPrix">
+<section class="section row flex-direction-column">
+  <div class="col-10">
   <h2 class="titrebloc">Liste utilisateur :</h2>
-  <div *ngFor="let user of userService.users" class="col">
-    Id : {{user._id}}<br>
-   Email :  {{user.email}}<br>
-    Nom :  {{user.nom}}<br>
-    Prenom :  {{user.prenom}}<br>
-    Adresse : {{user.adresse}}<br>
-    Admin : {{user.isAdmin}}<br>
-    <button *ngIf="!user.isAdmin" class="btn btn-danger" (click)="supprimerUtilisateur(user)">Supprimer l'utilisateur</button>
-    <button *ngIf="!user.isAdmin" class="btn btn-primary" (click)="modifUser(user)">Modifier l'utilisateur</button><br>
-
+  <table mdbTable class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"> Id </th>
+      <th scope="col">Email </th>
+      <th scope="col">Nom </th>
+      <th scope="col">Prenom </th>
+      <th scope="col">Adresse </th>
+      <th scope="col">Admin </th>
+      <th scope="col">Modifier </th>
+      <th scope="col">Supprimer </th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr mdbTableCol *ngFor="let user of userService.users">
+      <th scope="row">{{user._id}}</th>
+      <td>{{user.email}}</td>
+      <td>{{user.nom}}</td>
+      <td>{{user.prenom}}</td>
+      <td>{{user.adresse}}</td>
+      <td>{{user.isAdmin}}</td>
+      <td><a *ngIf="!user.isAdmin" (click)="modifUser(user)"><mdb-icon fas icon="wrench"></mdb-icon></a></td>
+      <td><a *ngIf="!user.isAdmin" (click)="supprimerUtilisateur(user)"><mdb-icon fas icon="trash-alt"></mdb-icon></a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a routerLink="/formulaireEvenement"><button class="btn btn-primary">Créer un évènement</button></a>
   </div>
-</div>
+<!--<div class="blocPrix">-->
+<!--  <h2 class="titrebloc">Liste utilisateur :</h2>-->
+<!--  <div *ngFor="let user of userService.users" class="col">-->
+<!--    Id : {{user._id}}<br>-->
+<!--   Email :  {{user.email}}<br>-->
+<!--    Nom :  {{user.nom}}<br>-->
+<!--    Prenom :  {{user.prenom}}<br>-->
+<!--    Adresse : {{user.adresse}}<br>-->
+<!--    Admin : {{user.isAdmin}}<br>-->
+<!--    <button *ngIf="!user.isAdmin" class="btn btn-danger" (click)="supprimerUtilisateur(user)">Supprimer l'utilisateur</button>-->
+<!--    <button *ngIf="!user.isAdmin" class="btn btn-primary" (click)="modifUser(user)">Modifier l'utilisateur</button><br>-->
+
+<!--  </div>-->
+<!--</div>-->
 </section>

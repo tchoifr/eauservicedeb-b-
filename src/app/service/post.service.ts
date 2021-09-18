@@ -11,7 +11,7 @@ export class PostService {
 
   tableauEvenement : Post[] = new Array<Post>();
   public evenement$ = new Subject<Post[]>();
-  baseUrl : string = 'http://localhost:3000';
+  baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) {
   }

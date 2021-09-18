@@ -66,9 +66,12 @@ export class AuthService {
   }
 
   logout() {
+
+    if (confirm('Etes vous sur de vouloir vous deconnecter ?')){
     this.user = new User('');
     this.token = '';
     alert('Deconnexion réussi')
     this.router.navigate(['accueil'])
+    }
   }
 }

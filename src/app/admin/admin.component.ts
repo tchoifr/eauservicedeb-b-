@@ -35,30 +35,33 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['modifUtilisateur/'+user._id]);
   }
 
-  supprimerUtilisateur(user: User){
-    this.loading = true;
-    this.userService.deleteUser(user).then(
-      () => {
-        this.userService.getAllUsers().then(
-          () => {
-            this.loading = false;
-            this.toastService.show('Admin','Utilisateur supprimé !', 'toast-success');
-            console.log('Utilisateur supprimé !')
-          }
-        ).catch(
-          (error) => {
-            this.loading = false;
-            this.toastService.show('Admin','Erreur !', 'toast-danger');
-            console.log(error)
-          }
-        )
+  supprimerUtilisateur(user: User) {
+    if (confirm('Etes-vous sur de vouloir supprimé l\'utilisateur ?')) {
 
-      }
-    ).catch(
-      (error) => {
-        console.log(error)
-      }
-    )
+      this.loading = true;
+      this.userService.deleteUser(user).then(
+        () => {
+          this.userService.getAllUsers().then(
+            () => {
+              this.loading = false;
+              this.toastService.show('Admin', 'Utilisateur supprimé !', 'toast-success');
+              console.log('Utilisateur supprimé !')
+            }
+          ).catch(
+            (error) => {
+              this.loading = false;
+              this.toastService.show('Admin', 'Erreur !', 'toast-danger');
+              console.log(error)
+            }
+          )
+
+        }
+      ).catch(
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
   }
 
 }

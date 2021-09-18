@@ -10,3 +10,7 @@
 .col{
   margin-bottom: 1rem;
 }
+
+.tableResponsiveAuto{
+  overflow-x: auto;
+}

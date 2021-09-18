@@ -31,6 +31,10 @@
                 <a href="#" class="blue-text ml-1">Mot de passe oublié ?</a>
               </p>
             </div>
+            <div *ngIf="erreur.length > 1" class="alert alert-danger" role="alert">
+              {{erreur}}
+            </div>
+
             <div class="text-center mb-3">
               <button  mdbBtn class="text-white ripe-malinka-gradient z-depth-1a waves-light btn-block" mdbWavesEffect>Se connecter</button>
             </div>

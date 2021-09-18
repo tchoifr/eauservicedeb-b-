@@ -77,29 +77,32 @@ export class EvenementComponent implements OnInit {
 
   }
 
-  supprimerEvenement(evenement: Post){
-    this.loading = true;
-    this.postService.supprimerEvenement(evenement).then(
-      () => {
-        this.postService.getAllEvenement().then(
-          () => {
-            this.loading = false;
-            this.toastService.show('Evenement','Suppression evenement réussi !', 'toast-success');
-            console.log('Suppression evenement reussi !')
-          }
-        ).catch(
-          (error) => {
-            this.loading = false;
-            this.toastService.show('Evenement','Erreur !', 'toast-danger');
-            console.log('Suppression evenement erreur : ',error);
-          }
-        );
-      }
-    ).catch(
-      (error) => {
-        console.log('Erreur suppresion evenement component : ', error)
-      }
-    )
+  supprimerEvenement(evenement: Post) {
+    if (confirm('Etes-vous sur de vouloir supprimé le post ?')) {
+
+      this.loading = true;
+      this.postService.supprimerEvenement(evenement).then(
+        () => {
+          this.postService.getAllEvenement().then(
+            () => {
+              this.loading = false;
+              this.toastService.show('Evenement', 'Suppression evenement réussi !', 'toast-success');
+              console.log('Suppression evenement reussi !')
+            }
+          ).catch(
+            (error) => {
+              this.loading = false;
+              this.toastService.show('Evenement', 'Erreur !', 'toast-danger');
+              console.log('Suppression evenement erreur : ', error);
+            }
+          );
+        }
+      ).catch(
+        (error) => {
+          console.log('Erreur suppresion evenement component : ', error)
+        }
+      )
+    }
   }
 
   voirEvenement(evenement: Post){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../service/post.service';
 import {Router} from "@angular/router";
@@ -13,24 +13,64 @@ import {ToastService} from "../service/toast.service";
 export class FormulaireEvenementComponent implements OnInit {
 
   submitted: boolean = false;
-public form: FormGroup;
+public form!: FormGroup;
   public imagePreview: any = '';
   loading: boolean = false;
   erreur: string = '';
+  @Input() event!: Post;
 
 
   constructor( private formBuilder: FormBuilder,private postService: PostService, private router: Router, private toastService: ToastService) {
-    this.form = this.formBuilder.group({
-      titre: ['', Validators.required],
-      description: ['', Validators.required],
-      compteur: 0,
-      idUser: [[]],
-      image: [null, Validators.required],
-      nbreMaxParticipant: ['', Validators.required]
-    })
+
+    // if (!this.event) {
+    //   console.log('cree event ', this.event)
+    //   this.form = this.formBuilder.group({
+    //     titre: ['', Validators.required],
+    //     description: ['', Validators.required],
+    //     compteur: 0,
+    //     idUser: [[]],
+    //     image: [null, Validators.required],
+    //     nbreMaxParticipant: ['', Validators.required]
+    //   })
+    // }
+    // else {
+    //   console.log('modif event ', this.event)
+    //   this.form = this.formBuilder.group({
+    //     titre: [this.event.title, Validators.required],
+    //     description: [this.event.description, Validators.required],
+    //     compteur: 0,
+    //     idUser: [this.event.users],
+    //     image: [this.event.imageUrl, Validators.required],
+    //     nbreMaxParticipant: [this.event.nbreMaxParticipant, Validators.required]
+    //   })
+    // }
+
    }
 
   ngOnInit(): void {
+    if (!this.event) {
+      console.log('cree event ', this.event)
+      this.form = this.formBuilder.group({
+        titre: ['', Validators.required],
+        description: ['', Validators.required],
+        compteur: 0,
+        idUser: [[]],
+        image: [null, Validators.required],
+        nbreMaxParticipant: ['', Validators.required]
+      })
+    }
+    else {
+      console.log('modif event ', this.event)
+      this.form = this.formBuilder.group({
+        titre: [this.event.title, Validators.required],
+        description: [this.event.description, Validators.required],
+        compteur: 0,
+        idUser: [this.event.users],
+        image: [this.event.imageUrl, Validators.required],
+        nbreMaxParticipant: [this.event.nbreMaxParticipant, Validators.required]
+      })
+    }
+
 
   }
 
@@ -57,9 +97,10 @@ public form: FormGroup;
 
   submit(): void {
     this.submitted = true;
+    this.erreur = '';
 console.log(this.form.controls);
 
-    if (this.form.valid) {
+    if (this.form.valid && !this.event) {
       this.loading = true;
       let evenement = new Post('',this.form.value['titre'], this.form.value['description'],[], new Date(),this.form.value['nbreMaxParticipant'])
      // this.tableauEvenement.push(this.form.value);
@@ -85,7 +126,38 @@ console.log(this.form.controls);
      console.log(this.postService.tableauEvenement)
         console.log('form : ', this.form);
         // this.router.navigate(['evenement']);
-    } else {
+    } else if (this.form.valid && this.event) {
+      this.loading = true;
+
+      if (this.form.value['nbreMaxParticipant'] < this.event.users.length)
+      {
+        this.erreur = 'Vous ne pouvez pas réduire le nombre de participant maximal en dessous du nombre actuel de participant'
+        console.log('erreur nbremaxparticipant plus petit que le nombre actuel de participant')
+        this.loading = false;
+      }
+      else {
+
+
+      let evenement = new Post (this.event._id, this.form.value['titre'], this.form.value['description'],this.event.users, this.event.date,this.form.value['nbreMaxParticipant'] )
+
+      this.postService.modifierEvenement(evenement).then(
+        () => {
+          this.router.navigate(['evenement'])
+          this.loading = false;
+          this.toastService.show('Evenement','Modif evenement réussi !', 'toast-success');
+          console.log('Modif evenement reussi !');
+        }
+      ).catch (
+        (error) => {
+          this.loading = false;
+          this.toastService.show('Evenement','Erreur !', 'toast-danger');
+          console.log('Erreur modif evenement : ', error)
+        }
+      )
+    }
+
+    }
+    else {
         console.log('Error: Form invalid', this.form);
     }
   }

@@ -14,11 +14,8 @@ import {ToastService} from "../service/toast.service";
 export class LoginComponent implements OnInit {
   submitted: boolean = false;
   public form: FormGroup;
-  erreur: boolean = false;
-  erreurEmail: string = '';
-  erreurMdp: string = '';
+  erreur: string = '';
   loading: boolean = false;
-  roundedTrue: string = 'true';
 
   @Input() titre! : string;
 
@@ -45,9 +42,8 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
 
+    this.erreur = '';
     this.submitted = true;
-    this.erreurEmail = '';
-    this.erreurMdp = '';
 
     if (this.form.valid) {
       this.loading = true;
@@ -68,6 +64,7 @@ export class LoginComponent implements OnInit {
         (error) => {
           this.loading = false;
           this.toastService.show('Connexion','Erreur !', 'toast-danger');
+          this.erreur = error.error.error;
           console.log('error login component ', error)
         }
       )

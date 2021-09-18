@@ -31,13 +31,13 @@
       Nombre de participants :  {{tab.users.length}} / {{tab.nbreMaxParticipant}}
 
 <div class="row">
-      <div class="col-6">
+      <div class="col-lg-6 col">
       <button mdbBtn *ngIf="!authService.token" (click)="open()" class="text-white ripe-malinka-gradient z-depth-1a waves-light" mdbWavesEffect>Je veux participer</button>
 
       <button mdbBtn *ngIf="authService.token && tab.nbreMaxParticipant != tab.users.length && !userParticipeDeja(index)" (click)="participerEvenement(index)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(index)}" mdbWavesEffect>Je participe</button>
       <button mdbBtn *ngIf="authService.token  && userParticipeDeja(index)" (click)="supprimerParticipation(index)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(index)}" mdbWavesEffect>Je ne veux plus participer</button>
       </div>
-      <div class="col-6">
+      <div class="col-lg-6 col">
       <button mdbBtn *ngIf="authService.token" class="text-white ripe-malinka-gradient z-depth-1a waves-light" (click)="voirEvenement(postService.tableauEvenement[index])" mdbWavesEffect>Voir l'évènement</button>
       </div>
 </div>

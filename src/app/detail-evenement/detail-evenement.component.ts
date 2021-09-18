@@ -13,10 +13,11 @@ import {ToastService} from "../service/toast.service";
   styleUrls: ['./detail-evenement.component.css']
 })
 export class DetailEvenementComponent implements OnInit {
-  detailEvenement: Post = new Post('','','',[],new Date(),0);
+  detailEvenement!: Post;
   participants : User[] = new Array<User>()
   loading: boolean = false;
-  boolVoirPariticipant: boolean = false;
+  modifEvent: boolean = false;
+  voirParticipant: boolean = false;
 
   constructor(private toastService: ToastService, public postService: PostService, private route: ActivatedRoute, public authService: AuthService, public userService: UserService, private router: Router ) { }
 
@@ -56,7 +57,12 @@ export class DetailEvenementComponent implements OnInit {
     console.log(this.detailEvenement);
   }
 
+
+
    supprimerEvenement(evenement: Post){
+    if (confirm('Etes-vous sur de vouloir supprimé le post ?')){
+
+
      this.loading = true;
     this.postService.supprimerEvenement(evenement).then(
       () => {
@@ -81,7 +87,7 @@ export class DetailEvenementComponent implements OnInit {
         console.log('Erreur suppresion evenement component : ', error)
       }
     )
-
+    }
   }
   participerEvenement(evenement: Post){
     this.loading = true;
@@ -135,30 +141,59 @@ export class DetailEvenementComponent implements OnInit {
 
   }
 
+  modifierEvenement(evenement: Post){
+    this.modifEvent = true;
+  }
+
+  voirLesParticipants(){
+
+    this.voirParticipant = !this.voirParticipant;
+
+  }
+
   userParticipeDeja(id: string, evenement: Post){
 
     let participeDeja = false;
 
 
-
-
       evenement.users.forEach((user) => {
         if (user._id === id) {
-          console.log(this.detailEvenement)
+          //console.log(this.detailEvenement)
           participeDeja = true
+        }
+      })
+
+    return participeDeja
+
+  }
+
+  supprimerUtilisateurListe(user: User) {
+    if (confirm('Etes-vous sur de vouloir supprimé l\'utilisateur de la liste ?')) {
+
+      this.loading = true;
+
+      this.detailEvenement.users.forEach((userTab, i) => {
+        if (userTab._id === user._id) {
+          this.detailEvenement.users.splice(i, 1)
+          this.postService.modifierEvenement(this.detailEvenement).then(
+            () => {
+              this.loading = false;
+              this.toastService.show('Evenement','Suppression utilisateur de la liste réussi !', 'toast-success');
+              console.log('Suppresion participation réussi');
+            }
+          ).catch(
+            (error) => {
+              this.loading = false;
+              this.toastService.show('Evenement','Erreur !', 'toast-danger');
+              console.log('erreur suppression utilisateur liste : ', error)
+            }
+          )
         }
       })
 
 
 
-    // evenement.users.forEach((user) => {
-    //   if (user._id === this.authService.user._id){
-    //     participeDeja = true;
-    //   }
-    // })
-
-    return participeDeja
-
+    }
   }
 
 

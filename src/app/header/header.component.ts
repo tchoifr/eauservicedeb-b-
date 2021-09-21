@@ -30,6 +30,15 @@ export class HeaderComponent implements OnInit {
     }
 
   }
+
+//   @HostListener('click', ['$event.target'])
+//   clickHeader(){
+//     console.log('liiik');
+//     if (this.navbarCollapsed){
+//       this.navbarCollapsed = false;
+//     }
+//
+// }
   collapse(){
 
     return this.navbarCollapsed = !this.navbarCollapsed

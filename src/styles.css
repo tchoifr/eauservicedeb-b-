@@ -3,6 +3,10 @@
 
 /* TEST GREG */
 
+a, a:hover{
+  transition: none;
+}
+
 /* FIN TEST GREG */
 
 
@@ -26,6 +30,7 @@ input:-webkit-autofill
     border-bottom: 2px solid;
 }
 html { scroll-behavior: smooth; }
+
 
 .form-elegant .font-small {
   font-size: 0.8rem;

@@ -7,41 +7,41 @@
     <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button> -->
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" (click)="this.collapse()" [attr.aria-expanded]="!navbarCollapsed"
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" (click)="this.collapse()" [attr.aria-expanded]="false"
    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarSupportedContent">
    <span class="navbar-toggler-icon"></span>
  </button>
 
-    <div class="collapse navbar-collapse col-sm taille-text" id="navbarSupportedContent" (click)="navbarCollapsed = false" [ngbCollapse]="!navbarCollapsed">
+    <div class="collapse navbar-collapse col-sm taille-text" id="navbarSupportedContent" [ngbCollapse]="!navbarCollapsed">
       <ul class="navbar-nav ">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="activerLink" routerLink="accueil">Accueil </a>
+          <a class="nav-link" routerLinkActive="activerLink" routerLink="accueil" (click)="navbarCollapsed = false" >Accueil </a>
         </li>
 
         <li ngbDropdown class="nav-item">
-          <a href (click)="false" class="nav-link" ngbDropdownToggle>Prestations</a>
+          <a  class="nav-link" ngbDropdownToggle>Prestations</a>
           <div ngbDropdownMenu>
-            <button routerLinkActive="activerLink" routerLink="arriverBebe" ngbDropdownItem>Préparer l'arrivée de bébé</button>
-            <button routerLinkActive="activerLink" routerLink="thalasso" ngbDropdownItem>Thalasso Bain bébé</button>
-            <button routerLinkActive="activerLink" routerLink="allaitement" ngbDropdownItem>Allaitement</button>
-            <button routerLinkActive="activerLink" routerLink="massageBebe" ngbDropdownItem>Massage bébé/ Jeune enfant</button>
-            <button routerLinkActive="activerLink" routerLink="naturopediatrie" ngbDropdownItem>Naturopédiatrie</button>
-            <button routerLinkActive="activerLink" routerLink="deuilPerinatal" ngbDropdownItem>Deuil périnatal</button>
+            <button routerLinkActive="activerLink" routerLink="arriverBebe" ngbDropdownItem (click)="navbarCollapsed = false" >Préparer l'arrivée de bébé</button>
+            <button routerLinkActive="activerLink" routerLink="thalasso" ngbDropdownItem (click)="navbarCollapsed = false" >Thalasso Bain bébé</button>
+            <button routerLinkActive="activerLink" routerLink="allaitement" ngbDropdownItem (click)="navbarCollapsed = false" >Allaitement</button>
+            <button routerLinkActive="activerLink" routerLink="massageBebe" ngbDropdownItem (click)="navbarCollapsed = false" >Massage bébé/ Jeune enfant</button>
+            <button routerLinkActive="activerLink" routerLink="naturopediatrie" ngbDropdownItem (click)="navbarCollapsed = false" >Naturopédiatrie</button>
+            <button routerLinkActive="activerLink" routerLink="deuilPerinatal" ngbDropdownItem (click)="navbarCollapsed = false" >Deuil périnatal</button>
           </div>
         </li>
         <li class="nav-item ">
-          <a routerLinkActive="activerLink" routerLink="pack" class="nav-link" >Les Packs </a>
+          <a routerLinkActive="activerLink" routerLink="pack" class="nav-link" (click)="navbarCollapsed = false">Les Packs </a>
         </li>
         <li class="nav-item ">
-          <a routerLinkActive="activerLink" routerLink="evenement" class="nav-link" >Ateliers / Évènements</a>
+          <a routerLinkActive="activerLink" routerLink="evenement" class="nav-link" (click)="navbarCollapsed = false"  >Ateliers / Évènements</a>
         </li>
         <li class="nav-item ">
-          <a routerLinkActive="activerLink" routerLink="contact" class="nav-link" >Contact / Avis </a>
+          <a routerLinkActive="activerLink" routerLink="contact" class="nav-link" (click)="navbarCollapsed = false"  >Contact / Avis </a>
         </li>
         <li class="nav-item" *ngIf="authService.user.isAdmin" >
-          <a routerLinkActive="activerLink" routerLink="formulaireEvenement" class="nav-link" >Créer un évènement </a>
+          <a routerLinkActive="activerLink" routerLink="formulaireEvenement" class="nav-link" (click)="navbarCollapsed = false"  >Créer un évènement </a>
         </li>
-        <li style="cursor: pointer;" class="nav-item " *ngIf="!authService.token">
+        <li style="cursor: pointer;" class="nav-item " *ngIf="!authService.token" (click)="navbarCollapsed = false" >
           <a (click)="open()" class="nav-link" >Connexion</a>
         </li>
         <li style="cursor: pointer;" class="nav-item " *ngIf="authService.token">
@@ -51,7 +51,7 @@
 
       <div class="d-flex align-items-center ">
 
-          <a routerLinkActive="activerLink" *ngIf="authService.user.isAdmin" routerLink="admin" class="nav-link" >Admin</a>
+          <a routerLinkActive="activerLink" *ngIf="authService.user.isAdmin" routerLink="admin" class="nav-link" (click)="navbarCollapsed = false"  >Admin</a>
 
       <a href="https://www.facebook.com/eauservicedebebe/" target="_blank" class="SNFAK css-gpurr0">
       <svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

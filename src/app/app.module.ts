@@ -32,7 +32,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CreerCompteComponent } from './creer-compte/creer-compte.component';
 import { ModifierUtilisateurComponent } from './modifier-utilisateur/modifier-utilisateur.component';
 import { ToastGlobalComponent } from './toast-global/toast-global.component';
-
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 const appRoute: Routes = [
   { path: 'accueil', component: AccueilComponent },
@@ -92,6 +92,7 @@ const appRoute: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
+    NgxGoogleAnalyticsModule.forRoot('G-9MG2RKCVL6'),
     RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     NgbModule
   ],

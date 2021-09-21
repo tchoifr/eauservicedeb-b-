@@ -10,7 +10,7 @@ import {LoginComponent} from "../login/login.component";
 })
 export class HeaderComponent implements OnInit {
 
-  navbarCollapsed = true;
+  navbarCollapsed = false;
   scrollNav = false;
   classColapse = '';
   constructor(public authService: AuthService, private modalService: NgbModal) { }

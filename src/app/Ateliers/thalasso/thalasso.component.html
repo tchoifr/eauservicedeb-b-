@@ -20,10 +20,16 @@
 
     <button class="buttonbebe" (click)="scroll(prix)"><i class="fas fa-caret-down"></i></button>
 </div>
-<div class="video section row">
-<iframe class="video"  width="730" height="615" src="https://www.youtube.com/embed/HAtNWL2ADzE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <iframe class="video" style="margin-top: 100px;" width="730" height="615" src="https://www.youtube.com/embed/OrDb-5Sz6AI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<div class="video section row flex-column align-items-center">
+  <div class="col-lg-6 col d-flex justify-content-center">
+    <iframe class="video"  width="730" height="615" src="https://www.youtube.com/embed/HAtNWL2ADzE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  </div>
+  <div class="col-lg-6 col d-flex justify-content-center">
+    <iframe class="video" style="margin-top: 100px;" width="730" height="615" src="https://www.youtube.com/embed/OrDb-5Sz6AI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  </div>
+  </div>
 <app-ngb-carousel [images]="images" [titre]='false'></app-ngb-carousel>
 
 <section #prix class="section row">

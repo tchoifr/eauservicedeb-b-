@@ -41,6 +41,7 @@ export class ModifierUtilisateurComponent implements OnInit {
       prenom: [this.utilisateur.prenom, Validators.required],
       adresse: [this.utilisateur.adresse, Validators.required],
       admin: [this.utilisateur.isAdmin],
+      numero: [this.utilisateur.numero, Validators.pattern('[0-9]{10}')]
     })
   }
 
@@ -58,7 +59,8 @@ export class ModifierUtilisateurComponent implements OnInit {
         nom: this.form.value['nom'],
         prenom: this.form.value['prenom'],
         adresse: this.form.value['adresse'],
-        isAdmin: this.form.value['admin']
+        isAdmin: this.form.value['admin'],
+        numero: this.form.value['numero']
       }
 
       this.userService.modifierUser(user).then(
@@ -82,6 +84,7 @@ export class ModifierUtilisateurComponent implements OnInit {
 
       console.log('form value: ', this.form.value);
     } else {
+      this.loading = false;
       console.log('Error: Form invalid');
     }
   }

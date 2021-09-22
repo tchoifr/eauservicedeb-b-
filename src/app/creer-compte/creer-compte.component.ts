@@ -24,6 +24,7 @@ export class CreerCompteComponent implements OnInit {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       adresse: ['', Validators.required],
+      numero: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
     })
   }
 
@@ -44,6 +45,7 @@ export class CreerCompteComponent implements OnInit {
         nom: this.form.value['nom'],
         prenom: this.form.value['prenom'],
         adresse: this.form.value['adresse'],
+        numero: this.form.value['numero']
       }
        this.authService.creerUtilisateur(user).then(
          () => {
@@ -72,6 +74,8 @@ export class CreerCompteComponent implements OnInit {
 
       console.log('form value: ', this.form.value);
     } else {
+      console.log(this.form)
+      this.loading = false;
       console.log('Error: Form invalid');
     }
   }

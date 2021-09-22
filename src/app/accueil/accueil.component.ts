@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-accueil',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) { }
 
   ngOnInit(): void {
+    this.meta.updateTag({ name: 'desciption', content: 'accueil' });
   }
 
 }

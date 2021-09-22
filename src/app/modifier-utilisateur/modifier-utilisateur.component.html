@@ -16,7 +16,7 @@
         <!-- Material input email -->
         <div class="md-form">
           <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="email" id="email" formControlName="email" class="form-control" mdbInput>
+          <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" mdbInput>
           <label for="email" class="font-weight-light">Votre email</label>
         </div>
 
@@ -31,14 +31,14 @@
         <!-- Material input text -->
         <div class="md-form">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="nom" formControlName="nom" class="form-control" mdbInput>
+          <input type="text" id="nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" mdbInput>
           <label for="nom" class="font-weight-light">Votre nom</label>
         </div>
 
         <!-- Material input text -->
         <div class="md-form">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="prenom" formControlName="prenom" class="form-control"
+          <input type="text" id="prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }"
                  mdbInput>
           <label for="prenom" class="font-weight-light">Votre prenom</label>
         </div>
@@ -48,9 +48,17 @@
         <!-- Material input text -->
         <div class="md-form">
           <mdb-icon fas icon="address-card" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="adresse" formControlName="adresse" class="form-control"
+          <input type="text" id="adresse" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }"
                  mdbInput>
           <label for="adresse" class="font-weight-light">Votre adresse</label>
+        </div>
+
+        <!-- Material input number -->
+        <div class="md-form">
+          <mdb-icon fas icon="mobile-alt" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="numero" formControlName="numero" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.numero.errors }"
+                 mdbInput>
+          <label for="numero" class="font-weight-light">Votre numéro de téléphone</label>
         </div>
 
 <!--        <label for="admin">Admin</label>-->

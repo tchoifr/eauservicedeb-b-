@@ -15,6 +15,7 @@
       <th scope="col">Nom </th>
       <th scope="col">Prenom </th>
       <th scope="col">Adresse </th>
+      <th scope="col">Téléphone </th>
       <th scope="col">Admin </th>
       <th scope="col">Modifier </th>
       <th scope="col">Supprimer </th>
@@ -27,6 +28,7 @@
       <td>{{user.nom}}</td>
       <td>{{user.prenom}}</td>
       <td>{{user.adresse}}</td>
+      <td>{{user.numero}}</td>
       <td>{{user.isAdmin}}</td>
       <td><a *ngIf="!user.isAdmin" (click)="modifUser(user)"><mdb-icon fas icon="wrench"></mdb-icon></a></td>
       <td><a *ngIf="!user.isAdmin" (click)="supprimerUtilisateur(user)"><mdb-icon fas icon="trash-alt"></mdb-icon></a></td>

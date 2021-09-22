@@ -18,14 +18,14 @@
 
           <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
             <div class="md-form">
-              <input mdbInput type="text" id="email" class="form-control" formControlName="email" id="email" name="email" >
+              <input mdbInput type="text" id="email" class="form-control" formControlName="email" id="email" name="email" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" >
               <label for="email">Votre email</label>
               <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Invalide</mdb-error>
               <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Valide</mdb-success>
             </div>
 
             <div class="md-form pb-3">
-              <input type="password" formControlName="password" id="password" name="password" class="form-control" mdbInput>
+              <input type="password" formControlName="password" id="password" name="password" class="form-control" mdbInput [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }">
               <label for="password">Mot de passe</label>
               <p class="font-small blue-text d-flex justify-content-end">
                 <a href="#" class="blue-text ml-1">Mot de passe oublié ?</a>

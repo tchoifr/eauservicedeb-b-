@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {Post} from "../../models/post";
 import {UserService} from "../service/user.service";
 import {ToastService} from "../service/toast.service";
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-evenement',
@@ -17,10 +18,11 @@ export class EvenementComponent implements OnInit {
 
   loading: boolean = false
 
-  constructor(private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
+  constructor(private meta: Meta,private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
 
 
   ngOnInit(): void {
+    this.meta.updateTag({ name: 'desciption', content: 'la' });
     this.loading = true;
     this.postService.getAllEvenement().then(
       () => {

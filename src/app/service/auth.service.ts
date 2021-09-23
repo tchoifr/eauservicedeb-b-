@@ -49,6 +49,7 @@ export class AuthService {
       this.httpClient.post(this.baseUrl+'/api/send-mail',{to: to, subject: subject, text: text, copie: copie}    )
         .subscribe(
           (response) => {
+            // console.log(response);
             resolve(response);
           },
           (error) => {

@@ -11,6 +11,7 @@ import {ToastService} from "../service/toast.service";
 export class ContactComponent implements OnInit {
 
   formSubmit : boolean = false;
+  emailEnvoyer: string = 'En attente';
 
   images = [
     "../../../assets/avis/avis1.png",
@@ -49,7 +50,7 @@ public form: FormGroup;
     this.submitted = true;
 
     if (this.form.valid) {
-
+      this.formSubmit = true;
       let from = this.form.value['email'];
       let to = 'traineart.13@gmail.com';
       let subject = 'Formulaire Contact Eau service de bebe envoyé par : ' + this.form.value['email'];
@@ -58,8 +59,9 @@ public form: FormGroup;
 
 
       this.authService.envoieMail(to, subject, text, copie).then(
-        () => {
-          this.formSubmit = true;
+        (response: any) => {
+          console.log(response)
+          this.emailEnvoyer = response.message;
           this.toastService.show('Email','Envoie email réussi !', 'toast-success');
         }
       ).catch(

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {AuthService} from "../service/auth.service";
+import {ToastService} from "../service/toast.service";
 
 @Component({
   selector: 'app-contact',
@@ -8,6 +10,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class ContactComponent implements OnInit {
 
+  formSubmit : boolean = false;
+
   images = [
     "../../../assets/avis/avis1.png",
     "../../../assets/avis/avis2.png",
@@ -15,14 +19,14 @@ export class ContactComponent implements OnInit {
     "../../../assets/avis/avis4.png",
     "../../../assets/avis/avis5.png",
     "../../../assets/avis/avis6.png",
-    
+
 ];
 
 submitted: boolean = false;
 
 public form: FormGroup;
 
-  constructor( private formBuilder: FormBuilder) { 
+  constructor(private toastService: ToastService, private authService: AuthService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       nom: ['', Validators.required],
       email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
@@ -36,7 +40,7 @@ public form: FormGroup;
 
   ngOnInit(): void {
 
-    
+
 
   }
 
@@ -44,8 +48,26 @@ public form: FormGroup;
     this.submitted = true;
 
     if (this.form.valid) {
+
+      let to = 'traineart.13@gmail.com';
+      let subject = 'Formulaire Contact Eau service de bebe envoyé par : ' + this.form.value['email'];
+      let text = `Nom : ` + this.form.value['nom'] + `<br> Email : ` + this.form.value['email'] + `<br> Numéro de téléphone : ` + this.form.value['tel'] + `<br> Message : ` + this.form.value['message'];
+
+
+      this.authService.envoieMail(to, subject, text).then(
+        () => {
+          this.formSubmit = true;
+          this.toastService.show('Email','Envoie email réussi !', 'toast-success');
+        }
+      ).catch(
+        (error) => {
+          console.log('erreur envoie mail : ', error)
+        }
+      )
+
+
         console.log('form value: ', this.form.value);
-        console.log('message: ', this.form.value['message']);
+        // console.log('message: ', this.form.value['message']);
     } else {
         console.log('Error: Form invalid');
     }

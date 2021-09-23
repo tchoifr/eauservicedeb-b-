@@ -42,6 +42,22 @@ export class AuthService {
 
   }
 
+  envoieMail(to: string, subject: string, text: string){
+
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.post(this.baseUrl+'/api/send-mail',{to: to, subject: subject, text: text}    )
+        .subscribe(
+          (response) => {
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    })
+  }
+
 
 
   login(user: User) {

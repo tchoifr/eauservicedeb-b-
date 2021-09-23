@@ -4,7 +4,7 @@
 <div class="row justify-content-center centreForm">
 
     <h2 class="titrebloc">Eau service de bébé</h2>
-<form [formGroup]="form" class="col-9" (ngSubmit)="submit()" novalidate>
+<form [formGroup]="form" class="col-9" (ngSubmit)="submit()" *ngIf="formSubmit === false" novalidate>
     <div class="form-group">
 
         <label for="nom">Nom</label>
@@ -14,9 +14,9 @@
     </div> <br/>
 
     <label for="email">Email</label>
-    <input formControlName="email" name="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }"/> 
+    <input formControlName="email" id="email" name="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }"/>
     <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">
-        Email requis 
+        Email requis
      </div>
      <div *ngIf="submitted && form.controls.email.errors?.pattern" class="invalid-feedback">
         Mauvais format email (exemple@exemple.com)
@@ -24,7 +24,7 @@
      <br/>
 
     <label for="tel">Téléphone</label>
-    <input formControlName="tel" name="tel" type="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.tel.errors }"/> 
+    <input formControlName="tel" id="tel" name="tel" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.tel.errors }"/>
     <div *ngIf="submitted && form.controls.tel.errors" class="invalid-feedback">
         Téléphone requis
      </div>
@@ -34,7 +34,7 @@
      <br/>
 
     <label for="message">Message</label>
-    <textarea formControlName="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea> 
+    <textarea formControlName="message" id="message" name="message" type="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea>
     <div *ngIf="submitted && form.controls.message.errors" class="invalid-feedback">
         Message vide
      </div> <br/>
@@ -48,5 +48,9 @@
     <button class="btn btn-dark">Envoyer</button>
 </div>
   </form>
+
+  <div class="col-9" *ngIf="formSubmit">
+    Email envoyé
+  </div>
 
 </div>

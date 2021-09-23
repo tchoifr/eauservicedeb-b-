@@ -11,7 +11,7 @@
 <!--      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>-->
       <a *ngIf="authService.user.isAdmin" (click)="supprimerEvenement(detailEvenement)"><mdb-icon fas icon="trash-alt" class="prefix grey-text"></mdb-icon></a>
 <!--      <i  *ngIf="authService.user.isAdmin" class="fa fa-wrench" style="cursor: pointer" (click)="modifEvent = !modifEvent"></i>-->
-      <a  *ngIf="authService.user.isAdmin" (click)="modifEvent = !modifEvent"><mdb-icon fas icon="wrench" class="prefix grey-text"></mdb-icon></a>
+      <a  *ngIf="authService.user.isAdmin" (click)="modifEvent = !modifEvent"><mdb-icon fas icon="wrench" class="prefix grey-text ml-5"></mdb-icon></a>
 
     </div>
 

@@ -45,6 +45,11 @@
         <div *ngIf="submitted && form.controls.acceptTerms.errors" class="invalid-feedback">Accepter la politique de confidentialité requis</div>
     </div>
 
+      <div class="form-group form-check">
+        <input type="checkbox" formControlName="copieEmail" id="copieEmail" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && form.controls.copieEmail.errors }" />
+        <label for="copieEmail" class="form-check-label">M'envoyer une copie du mail</label>
+      </div>
+
     <button class="btn btn-dark">Envoyer</button>
 </div>
   </form>

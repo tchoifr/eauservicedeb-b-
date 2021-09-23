@@ -33,6 +33,7 @@ public form: FormGroup;
       tel: ['', [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       message: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
+      copieEmail: [false],
 
     })
 
@@ -49,21 +50,37 @@ public form: FormGroup;
 
     if (this.form.valid) {
 
+      let from = this.form.value['email'];
       let to = 'traineart.13@gmail.com';
       let subject = 'Formulaire Contact Eau service de bebe envoyé par : ' + this.form.value['email'];
       let text = `Nom : ` + this.form.value['nom'] + `<br> Email : ` + this.form.value['email'] + `<br> Numéro de téléphone : ` + this.form.value['tel'] + `<br> Message : ` + this.form.value['message'];
+      let copie = this.form.value['copieEmail'];
 
 
-      this.authService.envoieMail(to, subject, text).then(
+      this.authService.envoieMail(to, subject, text, copie).then(
         () => {
           this.formSubmit = true;
           this.toastService.show('Email','Envoie email réussi !', 'toast-success');
         }
       ).catch(
         (error) => {
+          this.toastService.show('Email','Erreur envoie du mail !', 'toast-danger');
           console.log('erreur envoie mail : ', error)
         }
       )
+
+      if (copie){
+        this.authService.envoieMail(from, subject, text, copie).then(
+          () => {
+            // this.formSubmit = true;
+            // this.toastService.show('Email','Envoie email réussi !', 'toast-success');
+          }
+        ).catch(
+          (error) => {
+            console.log('erreur envoie mail copie : ', error)
+          }
+        )
+      }
 
 
         console.log('form value: ', this.form.value);

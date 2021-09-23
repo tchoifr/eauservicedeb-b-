@@ -42,11 +42,11 @@ export class AuthService {
 
   }
 
-  envoieMail(to: string, subject: string, text: string){
+  envoieMail(to: string, subject: string, text: string, copie: boolean){
 
 
     return new Promise((resolve, reject) => {
-      this.httpClient.post(this.baseUrl+'/api/send-mail',{to: to, subject: subject, text: text}    )
+      this.httpClient.post(this.baseUrl+'/api/send-mail',{to: to, subject: subject, text: text, copie: copie}    )
         .subscribe(
           (response) => {
             resolve(response);

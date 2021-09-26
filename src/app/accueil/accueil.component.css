@@ -73,6 +73,13 @@ a{
     width: 100% !important;
     padding-top: 100px;
 }
+.card-body{
+    display: flex;
+    justify-content: end !important;
+}
+.box-img{
+    box-shadow: 1px 1px 12px 1px;
+}
 
 @media screen and (min-width: 0px) and (max-width: 440px){
 .img1{

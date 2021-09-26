@@ -2,6 +2,9 @@
     height: 374px !important;
     width: 50% !important;
 }
+.titrebloc{
+    text-align: center;
+}
 
 @media screen and (min-width: 320px) and (max-width: 780px){
     .textbebe{

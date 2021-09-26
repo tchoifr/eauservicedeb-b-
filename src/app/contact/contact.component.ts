@@ -55,7 +55,7 @@ public form: FormGroup;
     if (this.form.valid) {
       this.formSubmit = true;
       let from = this.form.value['email'];
-      let to = 'traineart.13@gmail.com';
+      let to = 'Eauservicedebebe@gmail.com';
       let subject = 'Formulaire Contact Eau service de bebe envoyé par : ' + this.form.value['email'];
       let text = `Nom : ` + this.form.value['nom'] + `<br> Email : ` + this.form.value['email'] + `<br> Numéro de téléphone : ` + this.form.value['tel'] + `<br> Message : ` + this.form.value['message'];
       let copie = this.form.value['copieEmail'];

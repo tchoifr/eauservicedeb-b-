@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-naturopediatrie',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaturopediatrieComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta:Meta, private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Naturopediatrie");
+    this.meta.updateTag({ name: 'description', content: 'Naturopediatrie' });
+    this.meta.updateTag({ name: 'keywords', content: 'Naturopediatrie gardanne,Naturopediatrie marseille' });
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();

@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 import {Post} from "../../models/post";
 import {UserService} from "../service/user.service";
 import {ToastService} from "../service/toast.service";
-import {Meta} from "@angular/platform-browser";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-evenement',
@@ -18,11 +18,19 @@ export class EvenementComponent implements OnInit {
 
   loading: boolean = false
 
-  constructor(private meta: Meta,private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
+  constructor(private titleService:Title, private meta: Meta,private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
+ 
+  
+  
+  
+  
+  
 
 
   ngOnInit(): void {
-    this.meta.updateTag({ name: 'desciption', content: 'la' });
+    this.titleService.setTitle("Evènement");
+    this.meta.updateTag({ name: 'description', content: 'Tous les évènements de EauServiceDeBébé' });
+    this.meta.updateTag({ name: 'keywords', content: 'évènement Préparer l\'arrivée de bébé,évènement thalasso bain bébé,évènement allaitement,évènement Massage bébé Jeune enfant,évènement Naturopédiatrie,évènement Deuil périnatal  ' });
     this.loading = true;
     this.postService.getAllEvenement().then(
       () => {

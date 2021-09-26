@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import {AuthService} from "../service/auth.service";
 import {ToastService} from "../service/toast.service";
 
@@ -27,7 +28,7 @@ submitted: boolean = false;
 
 public form: FormGroup;
 
-  constructor(private toastService: ToastService, private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private meta:Meta, private titleService:Title, private toastService: ToastService, private authService: AuthService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       nom: ['', Validators.required],
       email: ['', [Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
@@ -42,7 +43,9 @@ public form: FormGroup;
 
   ngOnInit(): void {
 
-
+    this.titleService.setTitle("Contact EauServiceDeBébé");
+    this.meta.updateTag({ name: 'description', content: 'Page contact eauservicedebébé' });
+    this.meta.updateTag({ name: 'keywords', content: 'page contact eauservicedebébé' });
 
   }
 

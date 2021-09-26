@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-thalasso',
@@ -31,9 +32,12 @@ export class ThalassoComponent implements OnInit {
     "../../../assets/carousel/photocarousel21.jpg",
 ];
 
-  constructor() { }
+  constructor(private meta:Meta, private titleService:Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Thalasso bébé");
+    this.meta.updateTag({ name: 'description', content: 'Thalasso bébé a domicile' });
+    this.meta.updateTag({ name: 'keywords', content: ' bain bébé, Thalasso bain bébé Marseille,Thalasso bain bébé Gardanne' });
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();

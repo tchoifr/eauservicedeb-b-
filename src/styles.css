@@ -7,6 +7,7 @@ a, a:hover{
   transition: none;
 }
 
+
 /* FIN TEST GREG */
 
 
@@ -72,10 +73,17 @@ html { scroll-behavior: smooth; }
   margin-left: -15px;
 }
 
-/*.carousel-control-next-icon,*/
-/*.carousel-control-prev-icon {*/
-/*  filter: invert(1);*/
-/*}*/
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+ filter: invert(1);
+ width: 50px;
+ height: 50px;
+}
+
+.policeEauServiceBebe{
+  font-family: EB Garamond,serif;
+  line-height: 1.6;
+}
 
 .img{
     z-index: -1;

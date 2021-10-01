@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 @ViewChild('navbar',{static:false}) public navbar: ElementRef | undefined
+
   @HostListener('window:scroll',[])
   onWindowScroll(){
     // console.log(window.scrollY);

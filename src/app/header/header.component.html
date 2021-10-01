@@ -18,7 +18,7 @@
           <a class="nav-link" routerLinkActive="activerLink" routerLink="accueil" (click)="navbarCollapsed = false" >Accueil </a>
         </li>
 
-        <li ngbDropdown class="nav-item">
+        <li #test ngbDropdown class="nav-item">
           <a  class="nav-link" ngbDropdownToggle>Prestations</a>
           <div ngbDropdownMenu>
             <button routerLinkActive="activerLink" routerLink="arriverBebe" ngbDropdownItem (click)="navbarCollapsed = false" >Préparer l'arrivée de bébé</button>

@@ -15,6 +15,7 @@
 a{
     margin: 20px;
     color: black;
+    text-decoration: revert !important;
 }
 .navbar-brand{
     margin-left: 80px;

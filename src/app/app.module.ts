@@ -33,6 +33,8 @@ import { CreerCompteComponent } from './creer-compte/creer-compte.component';
 import { ModifierUtilisateurComponent } from './modifier-utilisateur/modifier-utilisateur.component';
 import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MentionLegalComponent } from './mention-legal/mention-legal.component';
+import { PolitiqueDeConfidentialiteComponent } from './politique-de-confidentialite/politique-de-confidentialite.component';
 
 const appRoute: Routes = [
   { path: 'accueil', component: AccueilComponent },
@@ -43,6 +45,8 @@ const appRoute: Routes = [
   { path: 'naturopediatrie', component: NaturopediatrieComponent },
   { path: 'deuilPerinatal', component: DeuilPerinatalComponent },
   { path: 'contact', component: ContactComponent},
+  { path: 'mentionLegal', component: MentionLegalComponent},
+  { path: 'politiqueDeConfidentialite', component: PolitiqueDeConfidentialiteComponent},
   { path: 'login', component: LoginComponent},
   { path: 'creerCompte', component: CreerCompteComponent},
   { path: 'admin', canActivate: [AuthGuardAdminService], component: AdminComponent},
@@ -85,7 +89,9 @@ const appRoute: Routes = [
     DetailEvenementComponent,
     CreerCompteComponent,
     ModifierUtilisateurComponent,
-    ToastGlobalComponent
+    ToastGlobalComponent,
+    MentionLegalComponent,
+    PolitiqueDeConfidentialiteComponent
   ],
   imports: [
     BrowserModule,

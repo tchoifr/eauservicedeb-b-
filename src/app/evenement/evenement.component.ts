@@ -19,12 +19,12 @@ export class EvenementComponent implements OnInit {
   loading: boolean = false
 
   constructor(private titleService:Title, private meta: Meta,private toastService: ToastService, public postService: PostService, public authService: AuthService, private modalService: NgbModal, private router: Router, private userService: UserService)  { }
- 
-  
-  
-  
-  
-  
+
+
+
+
+
+
 
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class EvenementComponent implements OnInit {
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
     this.meta.updateTag({ name: 'google-site-verification', content: 'a definir' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    
+
 
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:title', content: 'Evenement | Eauservicedebebe' });
@@ -43,12 +43,12 @@ export class EvenementComponent implements OnInit {
     this.meta.updateTag({ property: 'og:image', content: 'https://jimdo-storage.freetls.fastly.net/image/89585226/7ec9ff80-449d-47d5-96a2-3610b01d7a61.jpg?format=pjpg&quality=80&auto=webp&disable=upscale&width=1200&height=630&crop=1:0.525' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
-    
+
     this.loading = true;
     this.postService.getAllEvenement().then(
-      () => {
+      (response) => {
         this.loading = false;
-        console.log('getAllEvenement reussi')
+        console.log('getAllEvenement reussi : ', response)
       }
     ).catch(
       (error) => {
@@ -60,8 +60,8 @@ export class EvenementComponent implements OnInit {
     if (this.authService.token){
 
       this.userService.getAllUsers().then(
-        () => {
-          console.log('getAllUsers reussi')
+        (response) => {
+          console.log('getAllUsers reussi', response)
         }
       ).catch(
         (error) => {
@@ -76,12 +76,12 @@ export class EvenementComponent implements OnInit {
 
   supprimerParticipation(index: number){
     this.loading = true;
-    const userId = this.authService.user._id;
+    const userId = this.authService.user.id;
     this.postService.tableauEvenement[index].users.forEach((id, i)=>{
-      if (id._id === userId) {
+      if (id.id === userId) {
         console.log(i);
         this.postService.tableauEvenement[index].users.splice(i,1);
-        this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
+        this.postService.supprimerParticipation(this.postService.tableauEvenement[index].id, this.authService.user.id).then(
           () => {
             this.loading = false;
             this.toastService.show('Evenement','Suppression participation réussi !', 'toast-success');
@@ -96,6 +96,7 @@ export class EvenementComponent implements OnInit {
         )
       }
     })
+    this.loading = false;
     console.log(this.postService.tableauEvenement[index].users)
 
   }
@@ -129,25 +130,29 @@ export class EvenementComponent implements OnInit {
   }
 
   voirEvenement(evenement: Post){
-    this.router.navigate(['evenement/'+evenement._id]);
+    this.router.navigate(['evenement/'+evenement.id]);
   }
 
   participerEvenement(index: number){
     this.loading = true;
-  console.log('user id : ',this.authService.user._id);
-    console.log('tab evenement : ',this.postService.tableauEvenement);
+  console.log('user id : ',this.authService.user.id);
+    console.log('tab evenement : ',this.postService.tableauEvenement[index].id);
     if (this.userParticipeDeja(index)){
+      // this.loading = false;
+      console.log('userParticipeDeja')
       return false
     }
     else if ( this.postService.tableauEvenement[index].nbreMaxParticipant === this.postService.tableauEvenement[index].users.length ){
+      // this.loading = false;
+      console.log('nbreMax')
       return false
     }
     else {
-
+    console.log('else')
       this.postService.tableauEvenement[index].users.push(this.authService.user)
-      console.log(this.postService.tableauEvenement);
+      // console.log(this.postService.tableauEvenement);
 
-      this.postService.modifierEvenement(this.postService.tableauEvenement[index]).then(
+      this.postService.participationEvenement(this.postService.tableauEvenement[index].id, this.authService.user.id).then(
         () => {
           this.loading = false;
           this.toastService.show('Evenement','Ajout participation réussi !', 'toast-success');
@@ -160,6 +165,7 @@ export class EvenementComponent implements OnInit {
           console.log('Erreur modification evenement : ', error)
         }
       )
+      // this.loading = false;
       return true
     }
   }
@@ -170,7 +176,7 @@ export class EvenementComponent implements OnInit {
 
       this.postService.tableauEvenement[index].users.forEach((user) => {
 
-        if (user._id === this.authService.user._id){
+        if (user.id === this.authService.user.id){
           participeDeja = true;
         }
       })

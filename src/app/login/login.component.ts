@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.loading = true;
       let user: User = {
-        _id:'',
+        id:'',
         email: this.form.value['email'],
         password: this.form.value['password']
 

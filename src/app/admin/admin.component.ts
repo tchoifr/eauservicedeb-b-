@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
   }
 
   modifUser(user: User){
-    this.router.navigate(['modifUtilisateur/'+user._id]);
+    this.router.navigate(['modifUtilisateur/'+user.id]);
   }
 
   supprimerUtilisateur(user: User) {

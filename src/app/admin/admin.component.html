@@ -23,7 +23,7 @@
     </thead>
     <tbody >
     <tr mdbTableCol *ngFor="let user of userService.users">
-      <th scope="row">{{user._id}}</th>
+      <th scope="row">{{user.id}}</th>
       <td>{{user.email}}</td>
       <td>{{user.nom}}</td>
       <td>{{user.prenom}}</td>

@@ -138,7 +138,7 @@ console.log(this.form.controls);
       else {
 
 
-      let evenement = new Post (this.event._id, this.form.value['titre'], this.form.value['description'],this.event.users, this.event.date,this.form.value['nbreMaxParticipant'] )
+      let evenement = new Post (this.event.id, this.form.value['titre'], this.form.value['description'],this.event.users, this.event.date,this.form.value['nbreMaxParticipant'] )
 
       this.postService.modifierEvenement(evenement).then(
         () => {

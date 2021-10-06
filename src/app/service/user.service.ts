@@ -11,6 +11,7 @@ export class UserService {
 
   users : User[] = new Array<User>()
   baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
+  // baseUrl : string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
@@ -37,6 +38,26 @@ export class UserService {
 
   }
 
+  getUserByID(id: string){
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(this.baseUrl+'/api/auth/'+id)
+        .subscribe(
+          (response: any) => {
+            console.log('response getUserByID : ',response);
+            resolve(response);
+
+          },
+          (error) => {
+            console.log('error getUserByID : ', error.error.error.message)
+            reject(error)
+          }
+        );
+    })
+
+
+  }
+
   deleteUser(user: User){
 
     const header = {
@@ -45,7 +66,7 @@ export class UserService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.delete(this.baseUrl+'/api/auth/'+user._id, header)
+      this.httpClient.delete(this.baseUrl+'/api/auth/'+user.id, header)
         .subscribe(
           (response: any) => {
             console.log('supprimerUtilisateur response : ', response)
@@ -68,7 +89,7 @@ export class UserService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.put(this.baseUrl+'/api/auth/'+user._id,{utilisateur : user}, header)
+      this.httpClient.put(this.baseUrl+'/api/auth/'+user.id,{utilisateur : user}, header)
         .subscribe(
           (response: any) => {
             resolve(response);

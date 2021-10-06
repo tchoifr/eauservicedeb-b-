@@ -1,74 +1,74 @@
 <div *ngIf="this.loading" class="loader d-flex justify-content-center">
-  <div class="spinner-grow" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+    <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 <div class="row">
-  <div class="col mx-auto">
-    <section class="form-elegant">
-      <mdb-card>
-        <mdb-card-body class="mx-4">
-          <!--Header-->
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Connexion</h4>
-            <button type="button" class="close" aria-label="Close" (click)="close()">
+    <div class="col mx-auto">
+        <section class="form-elegant">
+            <mdb-card>
+                <mdb-card-body class="mx-4">
+                    <!--Header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Connexion</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="close()">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+                    </div>
 
-          <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-            <div class="md-form">
-              <input mdbInput type="text" id="email" class="form-control" formControlName="email" id="email" name="email" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" >
-              <label for="email">Votre email</label>
-              <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Invalide</mdb-error>
-              <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Valide</mdb-success>
-            </div>
+                    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                        <div class="md-form">
+                            <input mdbInput type="text" id="email" class="form-control" formControlName="email" id="email" name="email" [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }">
+                            <label for="email">Votre email</label>
+                            <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)">Invalide</mdb-error>
+                            <mdb-success *ngIf="input.valid && (input.dirty || input.touched)">Valide</mdb-success>
+                        </div>
 
-            <div class="md-form pb-3">
-              <input type="password" formControlName="password" id="password" name="password" class="form-control" mdbInput [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }">
-              <label for="password">Mot de passe</label>
-              <p class="font-small blue-text d-flex justify-content-end">
-                <a href="#" class="blue-text ml-1">Mot de passe oublié ?</a>
-              </p>
-            </div>
-            <div *ngIf="erreur.length > 1" class="alert alert-danger" role="alert">
-              {{erreur}}
-            </div>
+                        <div class="md-form pb-3">
+                            <input type="password" formControlName="password" id="password" name="password" class="form-control" mdbInput [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }">
+                            <label for="password">Mot de passe</label>
+                            <p class="font-small blue-text d-flex justify-content-end">
+                                <a href="#" class="blue-text ml-1">Mot de passe oublié ?</a>
+                            </p>
+                        </div>
+                        <div *ngIf="erreur.length > 1" class="alert alert-danger" role="alert">
+                            {{erreur}}
+                        </div>
 
-            <div class="text-center mb-3">
-              <button  mdbBtn class="text-white ripe-malinka-gradient z-depth-1a waves-light btn-block" mdbWavesEffect>Se connecter</button>
-            </div>
-          </form>
-          <!--Body-->
+                        <div class="text-center mb-3">
+                            <button mdbBtn class="text-white z-depth-1a waves-light btn-block" gradient="blue" mdbWavesEffect>Se connecter</button>
+                        </div>
+                    </form>
+                    <!--Body-->
 
 
-          <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> ou se connecter avec :</p>
+                    <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2 "> ou se connecter avec :</p>
 
-          <div class="row my-3 d-flex justify-content-center">
-            <!--Facebook-->
-            <button type="button" mdbBtn color="white" class="mr-md-3 z-depth-1a waves-light btn-rounded" mdbWavesEffect>
-              <mdb-icon fab icon="facebook" class="pink-text text-center"></mdb-icon>
+                    <div class="row my-3 d-flex justify-content-center">
+                        <!--Facebook-->
+                        <button type="button" mdbBtn color="white" class="mr-md-3 z-depth-1a waves-light btn-rounded" mdbWavesEffect>
+              <mdb-icon fab icon="facebook" class="blue-text text-center"></mdb-icon>
             </button>
-            <!--Twitter-->
-            <button type="button" mdbBtn color="white" class="mr-md-3 z-depth-1a waves-light btn-rounded" mdbWavesEffect>
-              <mdb-icon fab icon="twitter" class="pink-text"></mdb-icon>
+                        <!--Twitter-->
+                        <button type="button" mdbBtn color="white" class="mr-md-3 z-depth-1a waves-light btn-rounded" mdbWavesEffect>
+              <mdb-icon fab icon="twitter" class="blue-text"></mdb-icon>
             </button>
-            <!--Google +-->
-            <button type="button" mdbBtn color="white"  class="z-depth-1a waves-light btn-rounded" mdbWavesEffect>
-              <mdb-icon fab fab icon="google-plus" class="pink-text"></mdb-icon>
+                        <!--Google +-->
+                        <button type="button" mdbBtn color="white" class="z-depth-1a waves-light btn-rounded" mdbWavesEffect>
+              <mdb-icon fab fab icon="google-plus" class="blue-text"></mdb-icon>
             </button>
-          </div>
-        </mdb-card-body>
-        <!--Footer-->
-        <div class="modal-footer mx-5 pt-3 mb-1">
-          <p class="font-small grey-text d-flex justify-content-end">Pas encore inscrit ?
-            <a (click)="close()" routerLink="creerCompte" class="blue-text ml-1"> S'inscrire</a>
-          </p>
-        </div>
-      </mdb-card>
+                    </div>
+                </mdb-card-body>
+                <!--Footer-->
+                <div class="modal-footer mx-5 pt-3 mb-1">
+                    <p class="font-small grey-text d-flex justify-content-end">Pas encore inscrit ?
+                        <a (click)="close()" routerLink="creerCompte" class="blue-text ml-1"> S'inscrire</a>
+                    </p>
+                </div>
+            </mdb-card>
 
-    </section>
-  </div>
+        </section>
+    </div>
 </div>
 
 <!--<form [formGroup]="form" class="col-6 offset-3" (ngSubmit)="submit()" novalidate>-->

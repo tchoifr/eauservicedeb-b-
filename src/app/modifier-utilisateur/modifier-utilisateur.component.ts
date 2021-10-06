@@ -18,21 +18,25 @@ export class ModifierUtilisateurComponent implements OnInit {
   loading: boolean = false;
   utilisateur!: User;
 
+  index: number = this.route.snapshot.params['id'];
+
   constructor(private toastService: ToastService, private route: ActivatedRoute, private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
 
   }
 
-  ngOnInit(): void {
-    const index = this.route.snapshot.params['id'];
+ ngOnInit(): void {
 
 
+ // this.getOneUserByID(this.index);
 
     this.userService.users.forEach((user) => {
-      if (user._id === index) {
+
+      if (Number(user.id) === Number(this.index)) {
+
         this.utilisateur = user;
       }
     })
-
+console.log(this.utilisateur)
 
 
     this.form = this.formBuilder.group({
@@ -45,6 +49,26 @@ export class ModifierUtilisateurComponent implements OnInit {
     })
   }
 
+  getOneUserByID(id: string){
+    this.loading = true;
+    this.userService.getUserByID(id).then(
+      (response: any)=> {
+        this.utilisateur = response;
+
+        this.loading = false;
+        console.log('getOneUserByID : ', response)
+      }
+    ).catch(
+      (error) => {
+        this.loading = false;
+        this.toastService.show('Admin','Erreur !', 'toast-danger');
+        this.erreur = error.error.error;
+        console.log('erreur getOneUserByID : ', error)
+      }
+
+    )
+  }
+
   submit(): void {
     this.erreur = '';
     this.loading = true;
@@ -54,7 +78,7 @@ export class ModifierUtilisateurComponent implements OnInit {
 
     if (this.form.valid) {
       let user : User = {
-        _id:this.utilisateur._id,
+        id:this.utilisateur.id,
         email: this.form.value['email'],
         nom: this.form.value['nom'],
         prenom: this.form.value['prenom'],

@@ -11,8 +11,8 @@ export class PostService {
 
   tableauEvenement : Post[] = new Array<Post>();
   public evenement$ = new Subject<Post[]>();
-  baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
-
+  baseUrl : string = 'http://api.eauservicedebebe.fr';
+  // baseUrl : string = 'http://localhost:3000';
   constructor(private httpClient: HttpClient, private authService: AuthService) {
   }
 
@@ -27,9 +27,9 @@ export class PostService {
         .subscribe(
           (response: any) => {
 
-            console.log('getAll response : ', response)
+            // console.log('getAll response : ', response)
             this.tableauEvenement = response;
-            console.log('getAll tableauEvenement : ', this.tableauEvenement)
+            // console.log('getAll tableauEvenement : ', this.tableauEvenement)
             // this.tableauEvenement.sort((a,b) => b.date - a.date);
             resolve(response);
             this.emitStuff();
@@ -37,7 +37,7 @@ export class PostService {
           },
           (error) => {
             reject(error);
-            console.log('error getAllUser : ', error.error.error.message)
+            // console.log('error getAllEvenement : ', error)
           }
         )
     })
@@ -80,7 +80,7 @@ export class PostService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.delete(this.baseUrl+'/api/event/'+evenement._id, header)
+      this.httpClient.delete(this.baseUrl+'/api/event/'+evenement.id, header)
         .subscribe(
           (response: any) => {
             console.log('supprimerEvenement response : ', response)
@@ -103,7 +103,7 @@ export class PostService {
     }
 
     return new Promise((resolve, reject) => {
-      this.httpClient.put(this.baseUrl+'/api/event/'+evenement._id,{evenement : evenement}, header)
+      this.httpClient.put(this.baseUrl+'/api/event/'+evenement.id,{evenement : evenement}, header)
         .subscribe(
           (response: any) => {
             resolve(response);
@@ -114,6 +114,53 @@ export class PostService {
           (error) => {
             reject(error)
             console.log('error modifierEvenement : ', error.error.error.message)
+          }
+        )
+    })
+  }
+
+  participationEvenement(evenementID: string, userID: string){
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${this.authService.token}`)
+    }
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.put(this.baseUrl+'/api/event/'+evenementID+'/ajout',{eventID : evenementID, userID: userID}, header)
+        .subscribe(
+          (response: any) => {
+            resolve(response);
+            console.log('participationEvenement response : ', response)
+
+
+          },
+          (error) => {
+            reject(error)
+            console.log('error participationEvenement : ', error)
+          }
+        )
+    })
+  }
+
+  supprimerParticipation(evenementID: string, userID: string){
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${this.authService.token}`)
+    }
+
+    return new Promise((resolve, reject) => {
+      this.httpClient.put(this.baseUrl+'/api/event/'+evenementID+'/delete',{eventID : evenementID, userID: userID}, header)
+        .subscribe(
+          (response: any) => {
+            console.log('supprimerParticipation response : ', response)
+            resolve(response);
+
+          },
+          (error) => {
+            console.log('error supprimerParticipation : ', error)
+            reject(error);
           }
         )
     })

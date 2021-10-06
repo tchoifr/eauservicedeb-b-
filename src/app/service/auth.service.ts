@@ -10,7 +10,8 @@ export class AuthService {
 
   token: string = '';
   user : User = new User('');
-  baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
+  // baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
+  baseUrl : string = 'http://localhost:3000';
 
 
 

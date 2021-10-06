@@ -32,8 +32,8 @@
 
     <div class="row">
       <div class="col-lg-6 col">
-        <button mdbBtn *ngIf="authService.token && detailEvenement.nbreMaxParticipant != detailEvenement.users.length && !userParticipeDeja(authService.user._id, detailEvenement)" (click)="participerEvenement(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(authService.user._id, detailEvenement)}" mdbWavesEffect>Je participe</button>
-        <button mdbBtn *ngIf="authService.token && userParticipeDeja(authService.user._id, detailEvenement)" (click)="supprimerParticipation(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(authService.user._id, detailEvenement)}" mdbWavesEffect>Je ne veux plus participer</button>
+        <button mdbBtn *ngIf="authService.token && detailEvenement.nbreMaxParticipant != detailEvenement.users.length && !userParticipeDeja(authService.user.id, detailEvenement)" (click)="participerEvenement(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(authService.user.id, detailEvenement)}" mdbWavesEffect>Je participe</button>
+        <button mdbBtn *ngIf="authService.token && userParticipeDeja(authService.user.id, detailEvenement)" (click)="supprimerParticipation(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(authService.user.id, detailEvenement)}" mdbWavesEffect>Je ne veux plus participer</button>
       </div>
       <div class="col-lg-6 col">
         <button mdbBtn *ngIf="authService.user.isAdmin" (click)="voirLesParticipants()" class="text-white ripe-malinka-gradient z-depth-1a waves-light"  mdbWavesEffect>Voir les participants</button>
@@ -76,7 +76,7 @@
     </thead>
     <tbody>
     <tr mdbTableCol *ngFor="let user of detailEvenement.users">
-      <th scope="row">{{user._id}}</th>
+      <th scope="row">{{user.id}}</th>
       <td>{{user.nom}}</td>
       <td>{{user.prenom}}</td>
       <td>{{user.email}}</td>

@@ -1,85 +1,81 @@
 <div *ngIf="this.loading" class="loader d-flex justify-content-center">
-  <div class="spinner-grow" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+    <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 
 <section class="section row">
 
-<mdb-card class="col-6">
-  <mdb-card-body>
-    <!-- Material form register -->
-    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-      <p class="h4 text-center py-4">S'inscrire</p>
+    <mdb-card class="col-6">
+        <mdb-card-body>
+            <!-- Material form register -->
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                <p class="h4 text-center py-4">S'inscrire</p>
 
 
-      <!-- Material input email -->
-      <div class="md-form">
-        <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-        <input type="email" id="email" formControlName="email" class="form-control" mdbInput [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }">
-        <label for="email" class="font-weight-light">Votre email</label>
-      </div>
+                <!-- Material input email -->
+                <div class="md-form">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="email" id="email" formControlName="email" class="form-control" mdbInput [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }">
+                    <label for="email" class="font-weight-light">Votre email</label>
+                </div>
 
-<!--      &lt;!&ndash; Material input email &ndash;&gt;-->
-<!--      <div class="md-form">-->
-<!--        <mdb-icon fas icon="exclamation-triangle" class="prefix grey-text"></mdb-icon>-->
-<!--        <input type="email" id="email2" formControlName="email" class="form-control" mdbInput>-->
-<!--        <label for="email2" class="font-weight-light">Confirmez votre email</label>-->
-<!--      </div>-->
+                <!--      &lt;!&ndash; Material input email &ndash;&gt;-->
+                <!--      <div class="md-form">-->
+                <!--        <mdb-icon fas icon="exclamation-triangle" class="prefix grey-text"></mdb-icon>-->
+                <!--        <input type="email" id="email2" formControlName="email" class="form-control" mdbInput>-->
+                <!--        <label for="email2" class="font-weight-light">Confirmez votre email</label>-->
+                <!--      </div>-->
 
-      <!-- Material input password -->
-      <div class="md-form">
-        <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
-        <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }"
-               mdbInput>
-        <label for="password" class="font-weight-light">Votre mot de passe</label>
-      </div>
+                <!-- Material input password -->
+                <div class="md-form">
+                    <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon>
+                    <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.password.errors }" mdbInput>
+                    <label for="password" class="font-weight-light">Votre mot de passe</label>
+                </div>
 
-      <!-- Material input text -->
-      <div class="md-form">
-        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-        <input type="text" id="nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" mdbInput>
-        <label for="nom" class="font-weight-light">Votre nom</label>
-      </div>
+                <!-- Material input text -->
+                <div class="md-form">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.nom.errors }" mdbInput>
+                    <label for="nom" class="font-weight-light">Votre nom</label>
+                </div>
 
-      <!-- Material input text -->
-      <div class="md-form">
-        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-        <input type="text" id="prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }"
-               mdbInput>
-        <label for="prenom" class="font-weight-light">Votre prenom</label>
-      </div>
-
-
-
-      <!-- Material input text -->
-      <div class="md-form">
-        <mdb-icon fas icon="address-card" class="prefix grey-text"></mdb-icon>
-        <input type="text" id="adresse" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }"
-               mdbInput>
-        <label for="adresse" class="font-weight-light">Votre adresse</label>
-      </div>
-
-      <!-- Material input number -->
-      <div class="md-form">
-        <mdb-icon fas icon="mobile-alt" class="prefix grey-text"></mdb-icon>
-        <input type="text" id="numero" formControlName="numero" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.numero.errors }"
-               mdbInput>
-        <label for="numero" class="font-weight-light">Votre numéro de téléphone</label>
-      </div>
+                <!-- Material input text -->
+                <div class="md-form">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.prenom.errors }" mdbInput>
+                    <label for="prenom" class="font-weight-light">Votre prenom</label>
+                </div>
 
 
 
-      <div class="text-center py-4 mt-3">
-        <button mdbBtn class="text-white ripe-malinka-gradient waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
-      </div>
-      <div class="erreur">
-        {{erreur}}
-      </div>
-    </form>
-    <!-- Material form register -->
-  </mdb-card-body>
-</mdb-card>
+                <!-- Material input text -->
+                <div class="md-form">
+                    <mdb-icon fas icon="address-card" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="adresse" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.adresse.errors }" mdbInput>
+                    <label for="adresse" class="font-weight-light">Votre adresse</label>
+                </div>
+
+                <!-- Material input number -->
+                <div class="md-form">
+                    <mdb-icon fas icon="mobile-alt" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="numero" formControlName="numero" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.numero.errors }" mdbInput>
+                    <label for="numero" class="font-weight-light">Votre numéro de téléphone</label>
+                </div>
+
+
+
+                <div class="text-center py-4 mt-3">
+                    <button mdbBtn class="text-white winter-neva-gradient waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
+                </div>
+                <div class="erreur">
+                    {{erreur}}
+                </div>
+            </form>
+            <!-- Material form register -->
+        </mdb-card-body>
+    </mdb-card>
 </section>
 <!--<section class="section">-->
 <!--  <h2 class="titrebloc text-align-center">Creer un compte</h2>-->

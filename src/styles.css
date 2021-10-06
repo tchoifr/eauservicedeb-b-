@@ -19,6 +19,10 @@ input:focus {
     box-shadow: none!important;
 }
 
+.colorbleu {
+    color: #94c4cf;
+}
+
 
 /*Change text in autofill textbox*/
 

@@ -1,19 +1,21 @@
-.activerLink{
+.activerLink {
     border-bottom: 2px solid;
 }
 
-.imgNav{
-width: 4em;
--webkit-transition : all 0.3s ease-in-out ;
+.imgNav {
+    width: 4em;
+    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in;
 }
-svg{
+
+svg {
     margin: 25px;
 }
-nav{
-    background-color: rgb(207, 148, 177);
+
+nav {
+    background-color: #94c4cf;
     color: white!important;
-    font-family: EB Garamond,serif;
+    font-family: EB Garamond, serif;
     position: fixed;
     width: 100%;
     z-index: 50;
@@ -21,63 +23,57 @@ nav{
     left: 0;
 }
 
-.nav-link{
-
+.nav-link {
     color: white!important;
     margin: 20px;
-
 }
-a{
+
+a {
     color: white!important;
 }
 
-.none{
+.none {
     display: none;
 }
 
-.displayFlex{
+.displayFlex {
     display: flex;
 }
+
 
 /* .collapse:not(.show){
     display: none !important;
 } */
 
-
-
-.navbar{
-    -webkit-transition :all 0.3s ease-in-out;
+.navbar {
+    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-
 }
 
-.color-change{
-    -webkit-transition : all 0.3s ease-in-out ;
-  transition: all 0.3s ease-in-out ;
-  /* transform: scaleY(0.9); */
-  /* transform: scaleY(40px);
+.color-change {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    /* transform: scaleY(0.9); */
+    /* transform: scaleY(40px);
   transform-origin: top;
   transition: transform 1s ease-in-out; */
-
-
-
- transform: translate(0, -20px);
-
+    transform: translate(0, -20px);
 }
 
-.tailleImg{
-    -webkit-transition : all 0.3s ease-in-out ;
-    transition: all 0.3s ease-in-out ;
+.tailleImg {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     width: 2.2em;
 }
-@media screen and (min-width: 790px) and (max-width: 1030px){
-    .taille-text{
+
+@media screen and (min-width: 790px) and (max-width: 1030px) {
+    .taille-text {
         font-size: 12px;
     }
 }
-@media screen and (min-width: 2000px) and (max-width: 2600px){
-    .taille-text{
-        font-size: 22px;
-     }
 
+@media screen and (min-width: 2000px) and (max-width: 2600px) {
+    .taille-text {
+        font-size: 22px;
+    }
 }

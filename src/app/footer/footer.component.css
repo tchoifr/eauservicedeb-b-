@@ -1,41 +1,52 @@
-.blocFooter{
+.blocFooter {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #94c4cf;
 }
-.blocLogo{
+
+.colorFooder {
+    color: white;
+}
+
+.blocLogo {
     margin: 50px;
 }
-.blocLiens{
+
+.margeLeft {
+    margin-left: 50px;
+}
+
+.blocLiens {
     margin: 25px;
     display: flex;
     flex-direction: column;
-    
 }
-a{
+
+a {
     margin: 20px;
     color: black;
     text-decoration: revert !important;
 }
-.navbar-brand{
-    margin-left: 80px;
 
+.navbar-brand {
+    margin-left: 80px;
 }
-@media screen and (min-width: 320px) and (max-width: 780px){
-    .blocFooter{
+
+@media screen and (min-width: 320px) and (max-width: 780px) {
+    .blocFooter {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .imgNav{
+    .imgNav {
         width: 50%;
     }
-    .footer{
+    .footer {
         margin-left: 0px !important;
         display: flex;
         justify-content: center;
         width: 100%;
- 
     }
 }

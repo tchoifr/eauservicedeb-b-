@@ -15,7 +15,7 @@ export class DeuilPerinatalComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: '« Le bonheur, en partant , m’a dit qu’il reviendrait . ». Jacques pervert' });
     this.meta.updateTag({ name: 'keywords', content: 'deuil perinatal' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

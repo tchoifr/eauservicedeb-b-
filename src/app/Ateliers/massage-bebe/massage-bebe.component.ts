@@ -15,7 +15,7 @@ export class MassageBebeComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'Massage bébé. Le « toucher massage » met en éveil les sens de bébé et du parent qui réalise le massage. C’est un moment partagé qui permet de créer et ou renforcer les liens d’attachement avec votre bébé. Les massages bébé ont des bénéfices émotionnels et physique autant chez l’enfant que chez les parents. Un instant de partage, de plaisir, de douceur et de tendresse. Un lien de proximité est tiss' });
     this.meta.updateTag({ name: 'keywords', content: 'Massage bébé a domicile, massage bébé Gardanne,' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

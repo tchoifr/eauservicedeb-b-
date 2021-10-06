@@ -47,7 +47,7 @@ public form: FormGroup;
     this.meta.updateTag({ name: 'description', content: 'Vos avis' });
     this.meta.updateTag({ name: 'keywords', content: 'page contact eauservicedebébé' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'a definir' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

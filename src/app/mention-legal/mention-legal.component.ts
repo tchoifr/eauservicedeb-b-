@@ -15,7 +15,7 @@ export class MentionLegalComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'Mentions légales. La plupart des lois et réglementations mondiales en matière de télécommunications exigent que les sites Web qui n\'ont pas une utilité strictement privée ou de nature personnelle doivent avoir des mentions légales conformes. Ceci est valable également pour les sites contenant un blog ou des textes de nature journalistique. . Le nom de la personne responsable de la publication doit' });
     this.meta.updateTag({ name: 'keywords', content: 'mentions legales eauservicedebebe' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'a definir' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

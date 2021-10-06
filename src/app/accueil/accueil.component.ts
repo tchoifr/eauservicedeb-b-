@@ -16,8 +16,9 @@ export class AccueilComponent implements OnInit {
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
     this.meta.updateTag({ name: 'description', content: 'EauServiceDeBébé vous accompagne de la Naturopédiatrie au deuil périnatal.' });
     this.meta.updateTag({ name: 'keywords', content: 'Thalasso bain bébé, Massage bébé, Allaitement, aide Allaitement, Périnatalité, aide perinatal, Sommeil bébé, Massage postnatal, Grossesse, Bébé, bain bebe Gardanne' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+  
     
 
     this.meta.updateTag({ property: 'og:type', content: 'website' });

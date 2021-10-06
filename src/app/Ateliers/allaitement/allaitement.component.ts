@@ -17,8 +17,9 @@ export class AllaitementComponent implements OnInit {
     this.meta.updateTag({ name: 'keywords', content: 'suivi allaitement gardanne,aide a l\'allaitement marseille' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
     this.meta.updateTag({ name: 'description', content: 'Allaitement. Vous avez choisi d’allaiter votre/vos bébés. Je vous propose des ateliers pour préparer un futur allaitement ou bien un accompagnement personnalisé afin que celles-ci puissent répondre au mieux à vos attentes et vos besoins. Atelier d\'initiation à l\'allaitement maternel 1h : . Notion de base sur l\'allaitement, ce qu\'il faut savoir avant de démarrer un allaitement, matériel utile à l\'a' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+
     
 
     this.meta.updateTag({ property: 'og:type', content: 'website' });

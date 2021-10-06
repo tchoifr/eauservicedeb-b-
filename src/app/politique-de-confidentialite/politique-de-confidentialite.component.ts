@@ -15,7 +15,7 @@ export class PolitiqueDeConfidentialiteComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'Politique de confidentialité. Avis important sur le traitement des données en relation avec Google Analytics. Ce site utilise Google Analytics, un service d’analyse web fourni par Google Ireland Limited. Si l’organe responsable pour le traitement des données récoltées via ce site est basé hors de l’Espace économique européen et de la Suisse, alors le traitement des données associées à Google Analytics' });
     this.meta.updateTag({ name: 'keywords', content: 'Politique de confidentialiter eauservicedebebe' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'a definir' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

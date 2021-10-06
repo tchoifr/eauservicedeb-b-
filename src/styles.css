@@ -3,113 +3,118 @@
 
 /* TEST GREG */
 
-a, a:hover{
-  transition: none;
+a,
+a:hover {
+    transition: none;
 }
 
 
 /* FIN TEST GREG */
 
-
-:focus-visible{
-  outline: none;
+:focus-visible {
+    outline: none;
 }
 
 input:focus {
-  box-shadow: none!important;
+    box-shadow: none!important;
 }
+
+
 /*Change text in autofill textbox*/
-input:-webkit-autofill
-{
-  -webkit-background-clip: text;
+
+input:-webkit-autofill {
+    -webkit-background-clip: text;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     border-bottom: 2px solid;
 }
-.nav-link:active{
-    border-bottom: 2px solid;
-}
-html { scroll-behavior: smooth; }
 
+.nav-link:active {
+    border-bottom: 2px solid;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 .form-elegant .font-small {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .form-elegant .z-depth-1a {
-  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
-  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
 }
 
 .form-elegant .z-depth-1-half,
 .form-elegant .btn:hover {
-  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
-  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
 
-.md-form input:focus + label {
-  color : red;
+.md-form input:focus+label {
+    color: red;
 }
 
-.toast-success{
-  background-color: palevioletred;
-  color: white;
+.toast-success {
+    background-color: palevioletred;
+    color: white;
 }
 
-.toast-danger{
-  background-color: indianred;
-  color: white;
+.toast-danger {
+    background-color: indianred;
+    color: white;
 }
 
-.loader{
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background-color: black;
-  align-items: center;
-  opacity: 0.8;
-  margin-left: -15px;
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: black;
+    align-items: center;
+    opacity: 0.8;
+    margin-left: -15px;
 }
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
- filter: invert(1);
- width: 50px;
- height: 50px;
+    filter: invert(1);
+    width: 50px;
+    height: 50px;
 }
 
-.policeEauServiceBebe{
-  font-family: EB Garamond,serif;
-  line-height: 1.6;
+.policeEauServiceBebe {
+    font-family: EB Garamond, serif;
+    line-height: 1.6;
 }
 
-.img{
+.img {
     z-index: -1;
     opacity: 0.2;
     width: 100%;
     height: 55em;
 }
-.titre{
+
+.titre {
     font-size: 64px !important;
     font-weight: 400;
-    font-family: Dancing Script,cursive;
+    font-family: Dancing Script, cursive;
     padding-bottom: 50px;
 }
-.textbebe{
-    font-family: EB Garamond,serif;
+
+.textbebe {
+    font-family: EB Garamond, serif;
     font-size: 18px !important;
     line-height: 1.6;
     margin: 2px;
     /* display: flex; */
     justify-content: center;
     text-align: center;
-
-
-
 }
-.textArriverBebe{
+
+.textArriverBebe {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,20 +124,18 @@ html { scroll-behavior: smooth; }
     position: absolute;
     top: 170px;
     width: 100%;
-
 }
-.buttonbebe{
+
+.buttonbebe {
     background-color: transparent;
     box-shadow: transparent;
     border: transparent;
     position: absolute;
     bottom: -204px;
     font-size: 1.3em;
-
-
 }
 
-.blocPrix{
+.blocPrix {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,40 +143,37 @@ html { scroll-behavior: smooth; }
     box-shadow: 0px 0px 1px 4px;
     width: 40%;
     background-color: transparent;
-    height:auto;
+    height: auto;
     margin: 10px;
     padding-top: 25px;
     color: #323335;
 }
-.section{
-    background-color: rgb(231, 175, 203);
+
+.section {
+    background-color: white;
     display: flex;
     justify-content: center;
     padding-top: 100px;
     padding-bottom: 100px;
-
 }
-.titrebloc{
-    font-family: Dancing Script,cursive;
+
+.titrebloc {
+    font-family: Dancing Script, cursive;
     font-weight: 500;
     font-size: 36px !important;
 }
-.paddingbloc{
+
+.paddingbloc {
     padding-bottom: 45px;
 }
-.gras{
-    font-family: EB Garamond,serif;
+
+.gras {
+    font-family: EB Garamond, serif;
     font-size: 18px !important;
-font-weight: 900;
-
-
+    font-weight: 900;
 }
-.textp{
-    font-family: Dancing Script,cursive;
+
+.textp {
+    font-family: Dancing Script, cursive;
     font-size: 24px !important;
 }
-
-
-
-
-

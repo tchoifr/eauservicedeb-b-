@@ -1,40 +1,37 @@
-.imageCarousel{
+.imageCarousel {
     width: 500px;
     height: 500px;
     object-fit: contain;
-
 }
 
-.section{
+.section {
     align-items: center;
     flex-direction: column;
     padding-top: 80px;
 }
 
-.titrebloc{
+.titrebloc {
     padding-top: 150px;
-    background-color: rgb(231, 175, 203);
+    background-color: white;
     display: flex;
     justify-content: center;
 }
 
-.margin100{
+.margin100 {
     margin-top: 100px;
     height: 350px;
     width: 50%;
 }
 
-.padding0{
+.padding0 {
     padding: 0;
 }
 
-@media screen and (min-width: 310px) and (max-width: 790px){
-
-    .imageCarousel{
+@media screen and (min-width: 310px) and (max-width: 790px) {
+    .imageCarousel {
         width: 90% !important;
     }
-    .margin100{
+    .margin100 {
         width: 80% !important;
     }
-
-    }
+}

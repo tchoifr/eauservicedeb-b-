@@ -16,7 +16,7 @@ export class ArriverBebeComponent implements OnInit {
     this.meta.updateTag({ name: 'keywords', content: 'suivi arriver bébé,aide arriver bébé,préparation a l\'arriver de bebe' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
     this.meta.updateTag({ name: 'description', content: 'Préparer l\'arrivée de bébé. . Vous attendez un bébé et vous ne savez pas par où commencer ? Quelles démarches administratives effectuées ? Quand faire votre liste de naissance ? Que doit-elle contenir ? Quels produits allez-vous utiliser pour bébé, quelles marques de couches, quels sièges auto, quelles poussettes…? La valise de maternité ? Allaitement ou biberon ? Quel lait ? Les premiers soins de' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

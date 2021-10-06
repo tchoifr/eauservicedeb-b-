@@ -32,7 +32,7 @@ export class EvenementComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'Tous les évènements de EauServiceDeBébé' });
     this.meta.updateTag({ name: 'keywords', content: 'évènement Préparer l\'arrivée de bébé,évènement thalasso bain bébé,évènement allaitement,évènement Massage bébé Jeune enfant,évènement Naturopédiatrie,évènement Deuil périnatal  ' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'a definir' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

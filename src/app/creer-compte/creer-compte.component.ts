@@ -34,7 +34,7 @@ export class CreerCompteComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'Creer son compte sur eauservicedebebe' });
     this.meta.updateTag({ name: 'keywords', content: 'compte eauservicedebebe' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

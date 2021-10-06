@@ -39,7 +39,7 @@ export class ThalassoComponent implements OnInit {
     this.meta.updateTag({ name: 'keywords', content: ' bain bébé, Thalasso bain bébé Marseille,Thalasso bain bébé Gardanne' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow, archive' });
     this.meta.updateTag({ name: 'description', content: 'Thalasso Bain Bébé. . Ce n’est pas un bain « d’hygiène », c’est un « bain soin ». Un bain qui permet au bébé de relâcher ses tensions. Le nouveau-né retrouve ainsi des sensations et des positions qu’il avait dans le ventre de sa mère. Le Thalasso Bain est comme une transition entre la vie intra-utérine et le monde extérieur. Un moment de détente, de sérénité et de bien être pour bébé mais égalemen' });
-    this.meta.updateTag({ name: 'google-site-verification', content: 'U3tnE2D2DfyQyskqFYQRSYGAGT_1FPVXTg-u6cdVHbo' });
+    this.meta.updateTag({ name: 'google-site-verification', content: 'Zbq4vFbFiqG3IJoxGkaeVXOMKaNZZNvqM4aYWl1MLlk' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     
 

@@ -99,7 +99,7 @@ const appRoute: Routes = [
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot('G-9MG2RKCVL6'),
-    RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+    RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', useHash: true }),
     NgbModule
   ],
   providers: [],

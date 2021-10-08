@@ -102,6 +102,7 @@ const appRoute: Routes = [
     RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', useHash: true }),
     NgbModule
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

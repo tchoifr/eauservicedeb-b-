@@ -11,7 +11,7 @@ export class PostService {
 
   tableauEvenement : Post[] = new Array<Post>();
   public evenement$ = new Subject<Post[]>();
-  baseUrl : string = 'http://api.eauservicedebebe.fr';
+  baseUrl : string = 'https://api.eauservicedebebe.fr';
   // baseUrl : string = 'http://localhost:3000';
   constructor(private httpClient: HttpClient, private authService: AuthService) {
   }

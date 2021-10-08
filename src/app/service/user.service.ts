@@ -10,7 +10,7 @@ import {AuthService} from "./auth.service";
 export class UserService {
 
   users : User[] = new Array<User>()
-  baseUrl : string = 'https://eauservicedebebe-api.herokuapp.com';
+  baseUrl : string = 'https://api.eauservicedebebe.fr';
   // baseUrl : string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }

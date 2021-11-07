@@ -94,12 +94,12 @@ const appRoute: Routes = [
     PolitiqueDeConfidentialiteComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
     NgxGoogleAnalyticsModule.forRoot('G-9MG2RKCVL6'),
-    RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', useHash: true }),
+    RouterModule.forRoot(appRoute, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled', useHash: true, initialNavigation: 'enabled' }),
     NgbModule
   ],
   exports: [RouterModule],

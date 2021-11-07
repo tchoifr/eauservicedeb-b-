@@ -1,91 +1,101 @@
 <div *ngIf="this.loading" class="loader d-flex justify-content-center">
-  <div class="spinner-grow" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+    <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 
 <section class="section row">
-  <!-- Jumbotron -->
-  <div class="jumbotron text-center col-lg-6 col margin100">
-    <div class="d-flex col justify-content-end">
-<!--      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>-->
-      <a *ngIf="authService.user.isAdmin" (click)="supprimerEvenement(detailEvenement)"><mdb-icon fas icon="trash-alt" class="prefix grey-text"></mdb-icon></a>
-<!--      <i  *ngIf="authService.user.isAdmin" class="fa fa-wrench" style="cursor: pointer" (click)="modifEvent = !modifEvent"></i>-->
-      <a  *ngIf="authService.user.isAdmin" (click)="modifEvent = !modifEvent"><mdb-icon fas icon="wrench" class="prefix grey-text ml-5"></mdb-icon></a>
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center col-lg-6 col margin100">
+        <div class="d-flex col justify-content-end">
+            <!--      <i *ngIf="authService.user.isAdmin" class="far fa-trash-alt" style="cursor: pointer" (click)="supprimerEvenement(detailEvenement)"></i>-->
+            <a *ngIf="authService.user.isAdmin" (click)="supprimerEvenement(detailEvenement)">
+                <mdb-icon fas icon="trash-alt" class="prefix grey-text"></mdb-icon>
+            </a>
+            <!--      <i  *ngIf="authService.user.isAdmin" class="fa fa-wrench" style="cursor: pointer" (click)="modifEvent = !modifEvent"></i>-->
+            <a *ngIf="authService.user.isAdmin" (click)="modifEvent = !modifEvent">
+                <mdb-icon fas icon="wrench" class="prefix grey-text ml-5"></mdb-icon>
+            </a>
+
+        </div>
+
+        <!-- Title -->
+        <h4 class="card-title h4 pb-2"><strong>{{detailEvenement.title }}</strong></h4>
+
+        <!-- Card image -->
+        <div class="view overlay my-4 waves-light d-flex justify-content-center" mdbWavesEffect>
+            <img src="{{detailEvenement.imageUrl}}" class="img-fluid" alt="">
+            <a>
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+
+        <h5 class="indigo-text h5 mb-4">Nombre de participants : {{detailEvenement.users.length}} / {{detailEvenement.nbreMaxParticipant}}</h5>
+
+        <p class="card-text">{{detailEvenement.description }}</p>
+
+        <div class="row">
+            <div class="col-lg-6 col">
+                <button mdbBtn *ngIf="authService.token && detailEvenement.nbreMaxParticipant != detailEvenement.users.length && !userParticipeDeja(authService.user.id, detailEvenement)" (click)="participerEvenement(detailEvenement)" gradient="blue" class="text-white z-depth-1a waves-light"
+                    [ngClass]="{'disabled' : userParticipeDeja(authService.user.id, detailEvenement)}" mdbWavesEffect>Je participe</button>
+                <button mdbBtn *ngIf="authService.token && userParticipeDeja(authService.user.id, detailEvenement)" (click)="supprimerParticipation(detailEvenement)" gradient="blue" class="text-white z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(authService.user.id, detailEvenement)}"
+                    mdbWavesEffect>Je ne veux plus participer</button>
+            </div>
+            <div class="col-lg-6 col">
+                <button mdbBtn *ngIf="authService.user.isAdmin" (click)="voirLesParticipants()" gradient="blue" class="text-white z-depth-1a waves-light" mdbWavesEffect>Voir les participants</button>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+
+    <!--  <div class="jumbotron text-center" *ngIf="authService.user.isAdmin">-->
+
+    <!--    &lt;!&ndash; Title &ndash;&gt;-->
+    <!--    <h4 class="card-title h4 pb-2"><strong>Liste des participants</strong></h4>-->
+
+    <!--    <p class="card-text text-align-center" *ngFor="let user of detailEvenement.users;"><br>-->
+    <!--      {{user.nom}} {{user.prenom}} / {{user.email}}-->
+    <!--    </p>-->
+
+    <!--  </div>-->
+
+    <div *ngIf="modifEvent" class="col-lg-5 col">
+        <app-formulaire-evenement [event]='detailEvenement'></app-formulaire-evenement>
 
     </div>
 
-    <!-- Title -->
-    <h4 class="card-title h4 pb-2"><strong>{{detailEvenement.title }}</strong></h4>
 
-    <!-- Card image -->
-    <div class="view overlay my-4 waves-light d-flex justify-content-center" mdbWavesEffect>
-      <img src="{{detailEvenement.imageUrl}}" class="img-fluid" alt="">
-      <a>
-        <div class="mask rgba-white-slight"></div>
-      </a>
+    <div class="col-lg-5 margin100 table-responsive" *ngIf="authService.user.isAdmin && voirParticipant">
+        <h2 class="titrebloc">
+            Liste des participants
+        </h2>
+        <table class="table table-striped" mdbTable>
+            <thead>
+                <tr>
+                    <th scope="col"> # </th>
+                    <th scope="col">Nom </th>
+                    <th scope="col">Prenom </th>
+                    <th scope="col">Email </th>
+                    <th scope="col">Téléphone </th>
+                    <th scope="col">Supprimer de l'évènement </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr mdbTableCol *ngFor="let user of detailEvenement.users">
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.nom}}</td>
+                    <td>{{user.prenom}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.numero}}</td>
+                    <td>
+                        <a *ngIf="!user.isAdmin" (click)="supprimerUtilisateurListe(user)">
+                            <mdb-icon fas icon="trash-alt"></mdb-icon>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    <h5 class="indigo-text h5 mb-4">Nombre de participants :  {{detailEvenement.users.length}} / {{detailEvenement.nbreMaxParticipant}}</h5>
-
-    <p class="card-text">{{detailEvenement.description }}</p>
-
-    <div class="row">
-      <div class="col-lg-6 col">
-        <button mdbBtn *ngIf="authService.token && detailEvenement.nbreMaxParticipant != detailEvenement.users.length && !userParticipeDeja(authService.user.id, detailEvenement)" (click)="participerEvenement(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : userParticipeDeja(authService.user.id, detailEvenement)}" mdbWavesEffect>Je participe</button>
-        <button mdbBtn *ngIf="authService.token && userParticipeDeja(authService.user.id, detailEvenement)" (click)="supprimerParticipation(detailEvenement)" class="text-white ripe-malinka-gradient z-depth-1a waves-light" [ngClass]="{'disabled' : !userParticipeDeja(authService.user.id, detailEvenement)}" mdbWavesEffect>Je ne veux plus participer</button>
-      </div>
-      <div class="col-lg-6 col">
-        <button mdbBtn *ngIf="authService.user.isAdmin" (click)="voirLesParticipants()" class="text-white ripe-malinka-gradient z-depth-1a waves-light"  mdbWavesEffect>Voir les participants</button>
-      </div>
-    </div>
-      </div>
-  <!-- Jumbotron -->
-
-<!--  <div class="jumbotron text-center" *ngIf="authService.user.isAdmin">-->
-
-<!--    &lt;!&ndash; Title &ndash;&gt;-->
-<!--    <h4 class="card-title h4 pb-2"><strong>Liste des participants</strong></h4>-->
-
-<!--    <p class="card-text text-align-center" *ngFor="let user of detailEvenement.users;"><br>-->
-<!--      {{user.nom}} {{user.prenom}} / {{user.email}}-->
-<!--    </p>-->
-
-<!--  </div>-->
-
-  <div *ngIf="modifEvent" class="col-lg-5 col">
-    <app-formulaire-evenement [event]='detailEvenement'></app-formulaire-evenement>
-
-  </div>
-
-
-  <div class="col-lg-5 margin100 table-responsive" *ngIf="authService.user.isAdmin && voirParticipant">
-  <h2 class="titrebloc">
-    Liste des participants
-  </h2>
-  <table class="table table-striped" mdbTable>
-    <thead>
-    <tr>
-      <th scope="col"> # </th>
-      <th scope="col">Nom </th>
-      <th scope="col">Prenom </th>
-      <th scope="col">Email </th>
-      <th scope="col">Téléphone </th>
-      <th scope="col">Supprimer de l'évènement </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr mdbTableCol *ngFor="let user of detailEvenement.users">
-      <th scope="row">{{user.id}}</th>
-      <td>{{user.nom}}</td>
-      <td>{{user.prenom}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.numero}}</td>
-      <td><a *ngIf="!user.isAdmin" (click)="supprimerUtilisateurListe(user)"><mdb-icon fas icon="trash-alt"></mdb-icon></a></td>
-    </tr>
-    </tbody>
-  </table>
-  </div>
 
 
 </section>

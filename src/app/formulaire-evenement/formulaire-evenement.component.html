@@ -1,60 +1,60 @@
 <div *ngIf="this.loading" class="loader d-flex justify-content-center">
-  <div class="spinner-grow" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+    <div class="spinner-grow" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
 </div>
 
 <section class="section row">
 
-  <mdb-card class="col-lg-6 col">
-    <mdb-card-body>
-      <!-- Material form register -->
-      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
-        <p *ngIf="!event" class="h4 text-center py-4">Creer un évènement</p>
-        <p *ngIf="event" class="h4 text-center py-4">Modifier l'évènement</p>
+    <mdb-card class="col-lg-6 col">
+        <mdb-card-body>
+            <!-- Material form register -->
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                <p *ngIf="!event" class="h4 text-center py-4">Creer un évènement</p>
+                <p *ngIf="event" class="h4 text-center py-4">Modifier l'évènement</p>
 
 
-        <button *ngIf="!event" mdbBtn color="cyan" gradient="pink" class="waves-light" type="button" (click)="filePicker.click()" >Ajouter image</button>
-        <input name="image" type="file" #filePicker (change)="onImagePick($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }" mdbInput>
-        <div class="image-preview d-flex justify-content-center" *ngIf="imagePreview">
-          <img width="300" [src]="imagePreview" alt="">
-        </div>
+                <button *ngIf="!event" mdbBtn color="cyan" gradient="pink" class="waves-light" type="button" (click)="filePicker.click()">Ajouter image</button>
+                <input name="image" type="file" #filePicker (change)="onImagePick($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.image.errors }" mdbInput>
+                <div class="image-preview d-flex justify-content-center" *ngIf="imagePreview">
+                    <img width="300" [src]="imagePreview" alt="">
+                </div>
 
-        <!-- Material input email -->
-        <div class="md-form">
-          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="titre" formControlName="titre" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" mdbInput>
-          <label for="titre" class="font-weight-light">Titre</label>
-        </div>
+                <!-- Material input email -->
+                <div class="md-form">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="titre" formControlName="titre" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.titre.errors }" mdbInput>
+                    <label for="titre" class="font-weight-light">Titre</label>
+                </div>
 
-        <!-- Material input text -->
-        <div class="md-form">
-          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="description" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }" mdbInput>
-          <label for="description" class="font-weight-light">Description</label>
-        </div>
+                <!-- Material input text -->
+                <div class="md-form">
+                    <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                    <input type="text" id="description" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }" mdbInput>
+                    <label for="description" class="font-weight-light">Description</label>
+                </div>
 
-        <!-- Material input number -->
-        <div class="md-form">
-          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-          <input type="number" id="nbreMaxParticipant" formControlName="nbreMaxParticipant" [ngClass]="{ 'is-invalid': submitted && form.controls.nbreMaxParticipant.errors }" class="form-control" mdbInput>
-          <label for="nbreMaxParticipant" class="font-weight-light">Nombre de participant maximal</label>
-        </div>
-
-
-        <div *ngIf="erreur.length > 1" class="alert alert-danger" role="alert">
-          {{erreur}}
-        </div>
+                <!-- Material input number -->
+                <div class="md-form">
+                    <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+                    <input type="number" id="nbreMaxParticipant" formControlName="nbreMaxParticipant" [ngClass]="{ 'is-invalid': submitted && form.controls.nbreMaxParticipant.errors }" class="form-control" mdbInput>
+                    <label for="nbreMaxParticipant" class="font-weight-light">Nombre de participant maximal</label>
+                </div>
 
 
-        <div class="text-center py-4 mt-3">
-          <button mdbBtn class="text-white ripe-malinka-gradient waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
-        </div>
+                <div *ngIf="erreur.length > 1" class="alert alert-danger" role="alert">
+                    {{erreur}}
+                </div>
 
-      </form>
-      <!-- Material form register -->
-    </mdb-card-body>
-  </mdb-card>
+
+                <div class="text-center py-4 mt-3">
+                    <button mdbBtn gradient="blue" class="text-white waves-light btn-block" type="submit" mdbWavesEffect>Enregistrer</button>
+                </div>
+
+            </form>
+            <!-- Material form register -->
+        </mdb-card-body>
+    </mdb-card>
 </section>
 
 <!--<section class="section">-->

@@ -187,3 +187,12 @@ html {
         min-width: 25%;
     }
 }
+
+
+/* tablette marche */
+
+@media (min-width:430px) and ( max-width:1010px) {
+    .card {
+        margin: 30px !important;
+    }
+}

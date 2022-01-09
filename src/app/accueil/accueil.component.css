@@ -1,6 +1,6 @@
 .img1 {
     width: 46em;
-    box-shadow: 1px 1px 12px 5px #9c5150;
+    box-shadow: 0px 0px 12px 2px #000000;;
     margin-top: 150px;
 }
 
@@ -59,7 +59,7 @@ a {
 .card {
     margin: 45px;
     align-items: center;
-    box-shadow: 1px 1px 12px 5px #9c5150;
+    
 }
 
 .card-body {
@@ -84,7 +84,7 @@ a {
 }
 
 .box-img {
-    box-shadow: 1px 1px 12px 5px #9c5150;
+    box-shadow: 0px 0px 12px 2px #000000;;
 }
 
 @media screen and (min-width: 0px) and (max-width: 440px) {

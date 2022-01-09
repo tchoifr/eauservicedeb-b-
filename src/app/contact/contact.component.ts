@@ -15,12 +15,18 @@ export class ContactComponent implements OnInit {
   emailEnvoyer: string = 'En attente';
 
   images = [
-    "../../../assets/avis/avis1.png",
-    "../../../assets/avis/avis2.png",
-    "../../../assets/avis/avis3.png",
-    "../../../assets/avis/avis4.png",
-    "../../../assets/avis/avis5.png",
-    "../../../assets/avis/avis6.png",
+    "../../../assets/avis/avis1.jpg",
+    "../../../assets/avis/avis2.jpg",
+    "../../../assets/avis/avis3.jpg",
+    "../../../assets/avis/avis4.jpg",
+    "../../../assets/avis/avis5.jpg",
+    "../../../assets/avis/avis6.jpg",
+    "../../../assets/avis/avis7.jpg",
+    "../../../assets/avis/avis8.jpg",
+    "../../../assets/avis/avis9.jpg",
+    "../../../assets/avis/avis10.jpg",
+    "../../../assets/avis/avis11.jpg",
+
 
 ];
 

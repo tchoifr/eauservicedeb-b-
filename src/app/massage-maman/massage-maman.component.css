@@ -1,0 +1,23 @@
+.blocPrix{
+    height: 374px !important;
+    width: 50% !important;
+}
+.titrebloc{
+    text-align: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 780px){
+    .textbebe{
+        font-size: 16px !important;
+    }
+    .titre{
+    font-size: 60px !important;
+    padding-bottom: 10px;
+}
+}
+
+@media screen and (min-width: 310px) and (max-width: 430px){
+    .buttonbebe{
+        padding-bottom: 100px;
+    }
+}

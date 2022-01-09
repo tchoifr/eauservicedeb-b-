@@ -35,10 +35,16 @@ import { ToastGlobalComponent } from './toast-global/toast-global.component';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { MentionLegalComponent } from './mention-legal/mention-legal.component';
 import { PolitiqueDeConfidentialiteComponent } from './politique-de-confidentialite/politique-de-confidentialite.component';
+import { MassageMamanComponent } from './massage-maman/massage-maman.component';
+import { SommeilBebeComponent } from './sommeil-bebe/sommeil-bebe.component';
+import { PrestationComponent } from './prestation/prestation.component';
 
 const appRoute: Routes = [
   { path: 'accueil', component: AccueilComponent },
+  { path: 'prestation', component: PrestationComponent },
   { path: 'arriverBebe', component: ArriverBebeComponent },
+  { path: 'sommeilBebe', component: SommeilBebeComponent },
+  { path: 'massageMaman', component: MassageMamanComponent },
   { path: 'thalasso', component: ThalassoComponent },
   { path: 'allaitement', component: AllaitementComponent },
   { path: 'massageBebe', component: MassageBebeComponent },
@@ -91,7 +97,10 @@ const appRoute: Routes = [
     ModifierUtilisateurComponent,
     ToastGlobalComponent,
     MentionLegalComponent,
-    PolitiqueDeConfidentialiteComponent
+    PolitiqueDeConfidentialiteComponent,
+    MassageMamanComponent,
+    SommeilBebeComponent,
+    PrestationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

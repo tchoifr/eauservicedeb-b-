@@ -5,6 +5,10 @@
 .titrebloc{
     text-align: center;
 }
+.textIta{
+    font-family: 'Dancing Script';
+    font-size: 1.2em;
+}
 
 @media screen and (min-width: 320px) and (max-width: 780px){
     .textbebe{

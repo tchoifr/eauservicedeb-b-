@@ -1,5 +1,20 @@
 # Eauservicedebebe
 
+## LOCAL
+
+Pour le local, lancer dans le terminal de commande
+ng serve
+
+## Deploiement
+Pour le déploiement, lancer dans le terminal de commande
+ng build && ng run eauservicedebebe:server => qui génère le dist/eauservicedebebe/browser
+
+Puis pour vérifier si tout marche, 
+npm start
+ => Lancement de server.js qui regarde l'index.html du dist/eauservicedebebe/browser
+
+## Génération automatique readme
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
 
 ## Development server
@@ -25,3 +40,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
